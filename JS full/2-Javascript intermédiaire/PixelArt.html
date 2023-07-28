@@ -1,0 +1,1120 @@
+﻿
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>pexlays</title>
+<style>
+body {position :absolute ; background-color :rgb(200,250,200);}
+		canvas { position : absolute;}
+		div { position : absolute;}
+		
+</style>
+
+
+
+<script>
+var grphcs = [[[]]];
+for (var ytt = 0; ytt < 36; ytt ++) {
+
+grphcs[0][0].push([(Math.random()*500)-250]);
+
+
+for (var yp = 0; yp < 36; yp ++) {
+if (yp != 0) {
+grphcs[0][0][ytt].push(grphcs[0][0][ytt][yp-1]+(Math.PI/2)*((Math.random()*10*(Math.PI))-(Math.random()*10*(Math.PI))));
+} else {
+grphcs[0][0][ytt].push((Math.random()*500)-250);
+}
+
+}
+}
+</script>
+
+
+
+
+
+
+<script>
+
+function capture (thi) {
+
+document.getElementById("ccon").src = document.getElementById(thi).toDataURL('image/png');
+}
+
+
+var admingeo;
+function okaay2 () {
+
+admingeo = "{\n" +
+'"type":"FeatureCollection",\n' +
+'"name":"XML_doss",\n' +
+'"crs":{"type":"name","properties":{"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}},\n' +
+'"features":[\n';
+
+var hgg = grphcs;
+var ooo = 0;
+ for (var o = 0; o < hgg.length; o++) {
+for (var om = 0; om < hgg[o].length; om++) {
+if (ooo >= 1) {
+admingeo +=
+',';
+}
+ooo += 1;
+
+
+admingeo +=
+'{"type":"Feature","properties":{ "id": ' +
+
+Number((ooo)).toString() +
+
+',"building": "' +
+Number((Math.random()*255)).toString() +
+'" , "typeZone": "rgb(' +
+Number(((Math.abs(255)/Number(document.getElementById("velociterG").value))*255)+(Math.random()*Number(document.getElementById("velociterR").value))).toString() +
+', ' +
+Number(((Math.abs(255)/Number(document.getElementById("velociterG").value))*255)+(Math.random()*Number(document.getElementById("velociterV").value))).toString() +
+', ' +
+Number(((Math.abs(255)/Number(document.getElementById("velociterG").value))*255)+(Math.random()*Number(document.getElementById("velociterB").value))).toString() +
+')" , "wall": "' + 
+o.toString() +
+'" , "highway": "null"} , "geometry": { "type": "Polygon" , "coordinates": [ [ [ \n';
+var ooo2 = 0;
+for (var o2 = 0; o2 < hgg[o][om].length; o2++) {
+for (var om2 = 0; om2 < hgg[o][om][o2].length; om2++) {
+if (ooo2 >= 1) {
+admingeo +=
+',';
+}
+var H = [Number(o2+1), Number(om2+1), Number(o2+1), Number(om2+2), Number(o2+2), Number(om2+2), Number(o2+2), Number(om2+1), Number(o2+1), Number(om2+1)]
+var lengtH = H.length;
+var simple = -1;
+ooo2 += 1;
+for (var double = 0; double < lengtH-1; double += 2) {
+simple += 2;
+admingeo +=
+"[ " +
+Number(H[double]).toString() +
+", " +
+Number(H[simple]).toString() +
+" ]";
+if (double < lengtH-3) {
+admingeo +=
+', ';
+}
+}
+
+}
+}
+admingeo +=
+' ] ] ] \n } }';
+}
+}
+admingeo += '\n]\n}\n ';
+console.log(admingeo);
+}
+
+
+
+
+
+
+
+</script>
+
+
+
+
+<script>
+
+
+
+
+
+
+
+function okaay () {
+var divdrr=document.createElement("div");
+divdrr.id = "PagesMuliple";
+divdrr.innerHTML = '<div id ="viewPages" style="background-color:white;"></div>';
+document.body.appendChild(divdrr);
+var divdrrfont=document.createElement("div");
+divdrrfont.id = "font";
+divdrrfont.style.width = "550px";
+divdrrfont.innerHTML = '<div id ="grenier" style="top:'
++ Number(0).toString()
++ 'px; left:0px; background-color:black; width:100%; color:white;">C|//**//D</div>';
+document.body.appendChild(divdrrfont);
+};
+var bbres = false;
+//ih/2+ih
+function LancementDD(results, arrbo, bb, menuOne, boula) {
+var boool = true;
+
+var bbb = bb;
+if (arrbo != null) {
+arrbo = arrbo.split('_');
+}
+var interv;
+results = results;
+
+results.addEventListener('click', function() {
+if (bbres == false) {
+bbres = true;
+
+
+interv = setInterval(funt, 250);
+
+
+} else {
+
+
+}
+
+});
+var ttoopp = 0;
+function funt() {
+
+if (boool == false) {
+bb = bbb + "ro" + ttoopp.toString();
+document.getElementById(bb).innerHTML = '';
+document.getElementById(bb).remove();
+ttoopp -= 20;
+
+
+
+
+} else if (boool) {
+
+ttoopp += 20;
+bb = bbb+"ro" + ttoopp.toString();
+var innHTm = "";
+innHTm += '<div onclick="fuse(this,`';
+innHTm += Number(ttoopp/20).toString();
+innHTm += "`, `";
+innHTm += boula;
+innHTm += '`);';
+innHTm += bb; 
+innHTm += `" style='left:`;
+innHTm += "0px";
+innHTm += `; align:left; top:`; 
+innHTm += '0px';
+innHTm += `; position:absolute;'>`;
+//innHTm += `<img src="menuUsers" left='150px' width='185' height='100' top='`; innHTm += Number(ttoopp-15).toString(); innHTm += `px' position='absolute' style="position:'absolute';" onclick='fuse(this)'/>`;
+innHTm += arrbo[Number(ttoopp/20)]; innHTm += `</div>`;
+document.getElementById('contei').innerHTML += innHTm;
+//document.getElementById(bb).style.position = "absolute";
+var mm = Number(ttoopp-15).toString();
+mm += "px";
+document.getElementById('contei').style.marginLeft = "150px";
+
+} 
+if ((Number(ttoopp/20) >= arrbo.length-1)){
+bbres = false;
+boool = false;
+clearInterval(interv);
+
+} else if (ttoopp == 0 && boool == false) {
+bbres = false;
+boool = true;
+clearInterval(interv);
+}
+}  
+
+}
+function fuse(prou, nuunu, boula) {
+prou.style.color = "red";
+if (boula.split('_')[0] == "true") {
+document.getElementById("viewPages").innerHTML = boula.split('_')[nuunu];
+}
+}
+
+
+var X11 = 0;
+var X22 = 0;
+var W11 = 0;
+var W22 = 0;
+function InitialLoadingBounds(frakt) {
+
+var ekt = [];
+var ekt2 = [];
+	lancementA(frakt);	
+
+		function lancementA(Xf) {
+		
+		
+		var buildings = "rien";
+		var bouger;
+var bouger2 = 0;
+var bou = 0;
+var lload;
+datacolleuback = JSON.parse(Xf);
+		buildings = datacolleuback; 
+if(buildings == datacolleuback && bou == 0) { lload = setInterval(LanceB(), 3500);  bou += 1;}
+
+
+		function LanceB() {
+
+ bou += 1;
+		clearInterval(lload);
+		var jesonContent = buildings;
+
+var exo = Number(buildings.features.length);
+
+var as2 = 0;
+
+function thh(o) {
+if (ekt2.hasOwnProperty(o)) {
+for (ao = o+1; ao < exo; ao ++) {
+if (ekt2.hasOwnProperty(ao)) { o ++; } else { break; };
+}
+}
+return o;
+}
+if (exo > 0) {
+	var AAas3 = 0;
+var AAas33 = 0;
+var AAas333 = 0;
+var AAas3333 = 0;	
+var w1;
+var x1;
+w1 = 0;
+x1 = 0;
+var w2 = 0;
+var x2 = 0;
+var as3 = 1;
+var as33 = 1;
+var as333 = 1;
+var as3333 = 1;
+
+for (var o = 0; o < exo; o++) {
+
+
+/*
+w1 = Number.parseFloat(jesonContent.features[0].geometry.coordinates[0][0][0][0]); 
+w2 = Number.parseFloat(jesonContent.features[0].geometry.coordinates[0][0][1][0]); 
+x1 = Number.parseFloat(jesonContent.features[0].geometry.coordinates[0][0][1][1]); 
+x2 = Number.parseFloat(jesonContent.features[0].geometry.coordinates[0][0][0][1]); 
+W11 = w2;
+W22 = w1;
+X11 = x2;
+X22 = x1;
+ekt2.push(0);
+ekt2.push(0);
+ekt2.push(0);
+ekt2.push(0);
+console.log(W11.toString()+"/"+W22.toString()+"/"+X11.toString()+"/"+X22.toString());
+lancementAA(frakt);
+
+} else {*/
+o = thh(o);
+
+
+
+
+
+for (var aaaaa = 0; aaaaa < jesonContent.features[o].geometry.coordinates[0][0].length; aaaaa ++) {
+
+if (aaaaa == jesonContent.features[o].geometry.coordinates[0][0].length-1 && o == jesonContent.features.length-1 && ekt2.length == 0) {
+W11 = w2;
+W22 = w1;
+X11 = x2;
+X22 = x1;
+ekt2.push(o);
+ekt2.push(o);
+ekt2.push(o);
+ekt2.push(o);
+}
+if (AAas3 == 0 && as3 == 0 && W11 != w1) {
+
+W11 = w2;
+console.log(jesonContent.features[o].properties.id);
+ekt2.push(o);
+AAas3 = 1;
+
+
+}
+if (AAas33 == 0 && as33 == 0 && W22 != w2) {
+
+
+W22 = w1;
+console.log(jesonContent.features[o].properties.id);
+ekt2.push(o);
+AAas33 = 1;
+
+
+}
+
+if (AAas333 == 0 && as333 == 0 && X11 != x1) {
+
+
+X11 = x2;
+console.log(jesonContent.features[o].properties.id);
+ekt2.push(o);
+AAas333 = 1;
+
+
+}
+
+if (AAas3333 == 0 && as3333 == 0 && X22 != x2) {
+
+
+X22 = x1;
+console.log(jesonContent.features[o].properties.id);
+ekt2.push(o);
+AAas3333 = 1;
+
+}
+
+
+
+
+for (var op = 0; op < exo; op++) {
+
+if (o == 0) { as3 = 0;
+as33 = 0;
+as333 = 0;
+as3333 = 0; 
+w1 = Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaaa][0]); 
+w2 = Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaaa][0]); 
+x1 = Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaaa][1]); 
+x2 = Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaaa][1]); 
+
+}
+//op = thh(op);
+if (op >= exo) { break; }
+for (var aaaa = 0; aaaa < jesonContent.features[o].geometry.coordinates[0][0].length; aaaa ++) {
+
+
+
+
+
+
+
+		
+
+
+
+
+
+
+if (w1-Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaa][0]) > 0) {
+as3 = 1;
+
+} else { w1 = Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaa][0]); }
+if (w2-Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaa][0]) < 0) {
+as33 = 1;
+
+} else { w2 = Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaa][0]); }
+if (x1-Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaa][1]) > 0) {
+as333 = 1;
+
+} else { x1 = Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaa][1]); }
+if (x2-Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaa][1]) < 0) {
+as3333 = 1;
+
+} else { x2 = Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaa][1]); }
+
+
+
+
+if (ekt2.length == 4) { break; }
+}
+if (ekt2.length == 4) { break; }
+}
+
+
+
+if (ekt2.length == 4) { break; }
+
+
+}
+
+if (ekt2.length == 4) { break; }
+}
+
+if (ekt2.length == 4) { console.log(W11.toString()+"/"+W22.toString()+"/"+X11.toString()+"/"+X22.toString());lancementAA(frakt); }
+}
+}
+}
+
+}
+
+
+
+
+
+var ih=window.innerHeight*0.3;
+var iw=window.innerWidth*0.15;
+
+var couleurs=window.screen.colorDepth;
+
+var ekt3 = [];
+var ekt22 = [];
+		function lancementAA(Xf) {
+
+		
+
+		var buildings = false;
+		var bouger;
+var bouger2 = 0;
+var lload;
+var bou = 0;
+		datacolleuback = JSON.parse(Xf);
+
+		buildings = datacolleuback; 
+if(buildings == datacolleuback) { if(bou == 0) { lload = setInterval(LanceB(), 2000); bou += 1;}}
+
+
+ 
+
+		function LanceB() {
+ bou += 1;
+		clearInterval(lload);
+		var jesonContent = buildings;
+
+var exo = Number(jesonContent.features.length);
+
+var as2 = 0;
+
+
+
+
+var AAas3 = 0;
+var AAas33 = 0;
+var AAas333 = 0;
+var AAas3333 = 0;	
+
+var as3 = 1;
+var as33 = 1;
+var as333 = 1;
+var as3333 = 1;
+
+for (var o = 0; o < exo; o++) {
+
+
+var x1;
+var x2;
+var w1;
+var w2;
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+for (var aaaa = 0; aaaa < jesonContent.features[o].geometry.coordinates[0][0].length; aaaa ++) {
+
+
+
+
+		if (aaaa == 0) {
+w1 = Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaa][0]); 
+w2 = Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaa][0]); 
+x1 = Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaa][1]); 
+x2 = Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaa][1]);
+
+}
+
+
+
+
+
+
+
+
+
+
+for (var aaaaa = 0; aaaaa < jesonContent.features[o].geometry.coordinates[0][0].length; aaaaa ++) {
+
+
+
+
+
+
+
+
+if (Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaaa][1]) <= x2) {
+
+} else { 
+if (x2 <= Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaaa][1])) {
+x2 = Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaaa][1]); 
+}
+}
+if (Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaaa][1]) >= x1) {
+
+} else {
+if (x1 >= Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaaa][1])) {
+ x1 = Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaaa][1]); 
+}
+}
+if (Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaaa][0]) <= w2) {
+
+} else { 
+if (w2 <= Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaaa][0])) {
+w2 = Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaaa][0]);
+}
+} 
+if (Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaaa][0])>= w1) {
+
+
+
+} else { 
+if (w1 >= Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaaa][0])) {
+w1 = Number.parseFloat(jesonContent.features[o].geometry.coordinates[0][0][aaaaa][0]); 
+}
+}
+
+
+
+if (aaaa == aaaaa && aaaaa == jesonContent.features[o].geometry.coordinates[0][0].length-1) {
+ekt3.push([buildings.features[o].properties.id, w1, w2, x1, x2]); 
+ekt22.push([ convert(w2, 0, -1, 1), convert( 0, x2,-1, 1), convert( w1, 0, -1, 1), convert(0, x1, -1, 1)]);
+
+
+}
+
+}
+
+
+
+}
+
+
+if (exo-1 == o) { LanceCC(); }
+
+
+
+
+}
+
+
+
+
+		}
+		var ekt444 = [];
+
+var lourd = -1;
+var lourd2 = 0;
+var lourd3 = -1;
+var relou;
+var loudass = false;
+function LanceCC(truc) {
+
+
+loudass = false;
+
+
+
+
+
+
+	
+if (!truc && truc != 0) {
+
+var truc = -1;
+}
+
+
+
+
+
+		var canv=document.body;
+//canv.innerHTML = "";
+//document.body.innerHTML = "";
+
+for (var bbbb = 0; bbbb < buildings.features.length; bbbb++) {
+var thebop = 0;
+var thebop2 = 0;
+for (var bbbb3 = 0; bbbb3 <= buildings.features.length-1; bbbb3++) {
+if (buildings.features[bbbb].properties.id == buildings.features[bbbb3].properties.id && bbbb < bbbb3) { thebop += 1; } if (buildings.features[bbbb].properties.id == buildings.features[bbbb3].properties.id && bbbb != bbbb3) {
+thebop2 = -2;
+}
+}
+
+if (thebop2 == 0) {
+smoth(bbbb, -3);
+}
+/*
+if(truc == -1) {
+	//ekt444.push(buildings.features[bbbb].properties.id);
+if (bbbb == 0) {
+if (lourd < 10 && lourd2 <= 1) { lourd += 1; lourd3 = 1; } else if (lourd <= 10 && lourd > 0) { lourd -= 1; lourd2 = 2; lourd3 = 1; } else { lourd += 1; lourd2 = 1; lourd3 = -1; }
+ }
+ 
+console.log('load');
+} else if (truc != -1 && bbbb == truc) {
+loudass = true;
+function aty() {
+if (lourd3 == -1) { loudass = false; if (lourd2 == 1) { clearInterval(relou); lourd2 = 0; lourd3 = 1;}; };
+if (loudass) {
+if (lourd < 10 && lourd2 <= 1) { lourd += 1; smoth(truc, 2); } else if (lourd <= 10 && lourd > 0) { lourd -= 1; lourd2 = 2; lourd3 = 1; smoth(truc, 2); } else { lourd += 1; lourd2 = 1; lourd3 = -1; }
+
+} else {
+
+
+
+}
+
+
+}
+
+relou = setInterval(aty, 10);*/
+
+else {
+
+console.log('0');
+
+}
+
+
+
+}
+
+ var imgo;
+
+
+
+
+
+		function smoth(bbbb2, radie) {
+
+
+
+if (radie == -3) {
+
+
+exea();
+
+} else {
+exea();
+
+//lourd2 = 1;
+}
+
+		function exea() {
+
+
+
+
+
+jesonContent = buildings;
+if (radie == -3) {
+var divd3=document.createElement("div");
+divd3.id = buildings.features[bbbb2].properties.id.toString() + "a";
+divd3.style.position = 'absolute';
+divd3.style.height = Number((ekt22[bbbb2][1])-(ekt22[bbbb2][3])).toString() + "px";
+divd3.style.width = Number((ekt22[bbbb2][0])-(ekt22[bbbb2][2])).toString() + "px";
+divd3.style.zIndex = "2";
+divd3.style.top = Number((-ih + ekt22[bbbb2][1])*-1).toString()+"px";
+divd3.align = "left";
+
+divd3.style.left = Number(ekt22[bbbb2][2]).toString()+"px";
+
+var yop = '<canvas id="';
+yop += bbbb2.toString();
+yop += buildings.features[bbbb2].properties.id;
+yop += '" height="';
+yop += Number(Number((ekt22[bbbb2][1])-(ekt22[bbbb2][3]))).toString();
+yop += '" width="';
+yop += Number(Number((ekt22[bbbb2][0])-(ekt22[bbbb2][2]))).toString();
+yop += '"';
+yop += " style='top:0px; left:0px; height:0px; zIndex:1; position:absolute;"; 
+
+yop += " width:0px;"; 
+
+yop += "'";
+yop += '>';
+//buildings.features[bbbb2].properties.wall
+yop += '</canvas>';
+yop += "<div";
+yop += " style='height:";
+yop += Number(Number((ekt22[bbbb2][1])-(ekt22[bbbb2][3]))).toString() + "px"; 
+yop += "; position:absolute; zIndex:3;"; 
+yop += " width:"; 
+yop += Number(Number((ekt22[bbbb2][0])-(ekt22[bbbb2][2]))).toString() + "px";
+yop += ";'>";
+//yop += buildings.features[bbbb2].properties.wall;
+yop += "</div>";
+divd3.innerHTML = yop;
+
+document.body.appendChild(divd3);
+
+
+
+var canvd3 = document.getElementById((bbbb2.toString() + buildings.features[bbbb2].properties.id));
+
+console.log(canvd3);
+
+
+
+  canvd3.style.position = 'absolute';
+
+
+canvd3.style.zIndex = "-1";
+
+var canvde=document.getElementById(buildings.features[bbbb2].properties.id.toString()+"a");
+canvde.style.height = Number((ekt22[bbbb2][1])-(ekt22[bbbb2][3])).toString() + "px";
+canvde.style.width = Number((ekt22[bbbb2][0])-(ekt22[bbbb2][2])).toString() + "px";
+canvd3.style.height = Number((ekt22[bbbb2][1])-(ekt22[bbbb2][3])).toString() + "px";
+canvd3.style.width = Number((ekt22[bbbb2][0])-(ekt22[bbbb2][2])).toString() + "px";
+canvde.style.zIndex = "1";
+canvde.style.top = Number((-ih + ekt22[bbbb2][1])*-1).toString()+"px";
+canvde.align = "left";
+
+canvde.style.left = Number(ekt22[bbbb2][2]).toString()+"px";
+} else {
+
+
+var canvd3 = document.getElementById((bbbb2.toString() + buildings.features[bbbb2].properties.id));
+
+var canvde=document.getElementById(buildings.features[bbbb2].properties.id.toString() + "a");
+}
+
+
+
+
+
+
+
+if (radie == -3) {
+cli(canvde, buildings.features[bbbb2].properties.building, (buildings.features[bbbb2].properties.id.toString()), buildings.features[bbbb2].properties.wall, bbbb2, buildings.features[bbbb2].properties.highway);
+}
+
+
+	
+var ctx = canvd3.getContext('2d');
+
+ctx.clearRect(0, 0, ih, iw);
+var poly = [];
+var ppow = Number(((ekt22[bbbb2][0])-(ekt22[bbbb2][2])));
+
+var ppoh = Number(((ekt22[bbbb2][1])-(ekt22[bbbb2][3])));
+
+		var hhhx = 0;
+var hhhy = 0;
+var hhhy22 = 0;
+
+for (var aaaa = 0; aaaa < buildings.features[bbbb2].geometry.coordinates[0][0].length; aaaa ++) {
+
+hhhx = convert(0, buildings.features[bbbb2].geometry.coordinates[0][0][aaaa][1], bbbb2, ppoh);
+hhhy = convert(buildings.features[bbbb2].geometry.coordinates[0][0][aaaa][0], 0, bbbb2, ppow);
+		
+		for (var doubll = 0; doubll <= buildings.features.length-1; doubll++) {
+
+if (buildings.features[doubll].properties.id == buildings.features[bbbb2].properties.id && doubll != bbbb2 && radie != -1) {
+
+var d = (360*(Math.atan2((convert(buildings.features[doubll].geometry.coordinates[0][0][aaaa][0], 0, doubll, iw)-convert(buildings.features[bbbb2].geometry.coordinates[0][0][aaaa][0], 0, bbbb2, iw)), (convert(0, buildings.features[doubll].geometry.coordinates[0][0][aaaa][1], doubll, ih)-convert(buildings.features[bbbb2].geometry.coordinates[0][0][aaaa][1], 0, bbbb2, ih))))/(2*Math.PI));
+
+ppow = Number(((ekt22[bbbb2][0])-(ekt22[bbbb2][2]))) + ((Number(((ekt22[doubll][0])-(ekt22[doubll][2])))-Number(((ekt22[bbbb2][0])-(ekt22[bbbb2][2]))))*(lourd*0.1));
+
+ppoh =  Number(((ekt22[bbbb2][1])-(ekt22[bbbb2][3]))) + ((Number(((ekt22[doubll][1])-(ekt22[doubll][3])))-Number(((ekt22[bbbb2][1])-(ekt22[bbbb2][3]))))*(lourd*0.1));
+var vitesse2 = (((convert(buildings.features[doubll].geometry.coordinates[0][0][aaaa][0], 0, doubll, iw)-convert(buildings.features[bbbb2].geometry.coordinates[0][0][aaaa][0], 0, bbbb2, iw))));
+var vitesse = (((convert(0, buildings.features[doubll].geometry.coordinates[0][0][aaaa][1], doubll, ih)-convert(buildings.features[bbbb2].geometry.coordinates[0][0][aaaa][1], 0, bbbb2, ih))));
+
+
+
+hhhx = convert(0, Number(buildings.features[bbbb2].geometry.coordinates[0][0][aaaa][1]+(((Number(((buildings.features[doubll].geometry.coordinates[0][0][aaaa][1])))-Number((buildings.features[bbbb2].geometry.coordinates[0][0][aaaa][1])))*(lourd*0.1)))), bbbb2, ppoh, (((Number(((buildings.features[doubll].geometry.coordinates[0][0][aaaa][1])))-Number(((buildings.features[bbbb2].geometry.coordinates[0][0][aaaa][1]))))*(lourd*0.1))));
+hhhy = convert(Number(buildings.features[bbbb2].geometry.coordinates[0][0][aaaa][0]+(((Number(((buildings.features[doubll].geometry.coordinates[0][0][aaaa][0])))-Number((buildings.features[bbbb2].geometry.coordinates[0][0][aaaa][0])))*(lourd*0.1)))), 0, bbbb2, ppow, (((Number(((buildings.features[doubll].geometry.coordinates[0][0][aaaa][0])))-Number(((buildings.features[bbbb2].geometry.coordinates[0][0][aaaa][0]))))*(lourd*0.1))));
+
+
+
+if (aaaa == 0) {
+vitesse2 = (lourd*0.1);
+vitesse = (lourd*0.1);
+
+canvde.style.height = Number(ppoh).toString() + "px";
+canvde.style.width = Number(ppow).toString() + "px";
+canvd3.style.height = Number(ppoh).toString() + "px";
+canvd3.style.width = Number(ppow).toString() + "px";
+
+canvd3.height = Number(ppoh);
+canvd3.width = Number(ppow);
+//canvde.style.top = Number(Number((-ih + ekt22[bbbb2][1])*-1) + ((Number((-ih + ekt22[doubll][1])*-1)-Number((-ih + ekt22[bbbb2][1])*-1))*(lourd*0.1))).toString() + "px";
+canvde.style.left = Number(Number(((ekt22[bbbb2][2]))) + ((Number(((ekt22[doubll][2])))-Number(((ekt22[bbbb2][2]))))*(lourd*0.1))).toString() + "px";
+
+
+}
+
+
+		
+
+}
+	
+
+	
+
+
+//hhhy = hhhy+(((convert(buildings.features[bbbb2].geometry.coordinates[0][0][aaaa][0], 0, bbbb2, ppow)-convert(buildings.features[doubll].geometry.coordinates[0][0][aaaa][0], 0, doubll, ppow3))/(10/lourd)));
+//hhhx = hhhx+(((convert(0, buildings.features[bbbb2].geometry.coordinates[0][0][aaaa][1], bbbb2, ppoh)-convert(buildings.features[doubll].geometry.coordinates[0][0][aaaa][1], 0, doubll, ppoh3))/(10/lourd)));
+//console.log(hhhy);
+
+
+		
+
+		}
+
+		
+		
+		poly.push(hhhy);
+		poly.push(hhhx);
+	
+}
+
+
+var image = new Image();
+var pattern;
+function LoadImages() {
+	
+	
+ctx.beginPath();
+
+	
+	
+if (buildings.features[bbbb2].properties.typeZone != "null") {
+
+if (buildings.features[bbbb2].properties.typeZone.split("~")[0] == "LoadImage") {
+
+pattern = ctx.createPattern(image, "repeat");
+} else {
+pattern = buildings.features[bbbb2].properties.typeZone;
+}
+             } else {
+pattern = "white";
+//ctx.strokeStyle = "black";
+}   
+          
+                
+
+
+
+
+var techCarrer = 5;
+
+         //ctx.moveTo(poly[0], poly[1]);
+//ctx.lineTo(poly[0] , poly[1]);        
+//ctx.arcTo( poly[0] , poly[1] , poly[2] , poly[3] , lourd );
+
+for( item=0 ; item < poly.length-1 ; item+=2 ){
+
+
+
+if (item < poly.length-3) {
+
+//ctx.moveTo(poly[item+2], poly[item+3]);
+if (techCarrer > 4) {
+
+
+
+
+//ctx.stroke();
+
+ctx.closePath();
+
+
+
+
+ctx.fill();
+
+
+
+ctx.beginPath();
+
+
+
+
+ctx.fillStyle = "rgb(" +
+Number(((Number(document.getElementById("velociterR").value)))* (Math.random()*Number(document.getElementById("velociterG").value/100))).toString() +
+', ' +
+Number(((Number(document.getElementById("velociterV").value)))*(Math.random()*Number(document.getElementById("velociterG").value/100))).toString() +
+', ' +
+Number(((Number(document.getElementById("velociterB").value)))*(Math.random()*Number(document.getElementById("velociterG").value/100))).toString() +
+")";
+
+ctx.moveTo( poly[item] , poly[item+1] );
+ctx.lineTo(poly[item+2] , poly[item+3]);
+techCarrer = 1;
+} else {
+techCarrer += 1;
+
+ctx.lineTo(poly[item+2] , poly[item+3]);
+}
+//ctx.quadraticCurveTo(poly[item], poly[item+1], poly[item+2] , poly[item+3]);
+//ctx.arcTo(  poly[item] , poly[item+1] , poly[item+2] , poly[item+3], lourd*lourd);
+
+
+} else if (item < poly.length-1) {
+//ctx.lineTo(poly[0] , poly[1]);
+//ctx.quadraticCurveTo(poly[item], poly[item+1] , poly[0] , poly[1]);
+//ctx.arcTo( poly[0] , poly[1], poly[item]  , poly[item+1] , lourd*lourd);
+
+
+}
+}
+
+ctx.closePath();
+
+
+//ctx.stroke();
+
+
+ctx.fill();
+
+canvd3.update;
+
+
+
+}
+if (buildings.features[bbbb2].properties.typeZone.split("~")[0] == "LoadImage") {
+	
+	image.onload = function() { LoadImages(); };
+		image.src = buildings.features[bbbb2].properties.typeZone.split("~")[1];
+image.height = canvd3.height;
+image.width = canvd3.width;
+} else {
+	 LoadImages();
+}
+	
+
+
+
+if (bbbb2 == buildings.features.length-1) {
+console.log("load");
+
+//console.log(document.querySelectorAll("div"));
+//document.querySelectorAll("canvas").update;
+}
+
+
+
+
+
+
+
+};
+
+
+	
+
+
+
+
+		};
+	}	
+		
+
+function convert(lat, lng, opp, pourcent, opp2) {
+if (!opp2) {
+opp2 = 0;
+}
+if (pourcent < 2) {
+		var MAP_HEIGHT = ih*pourcent;
+		var MAP_WIDTH = iw*pourcent;
+} else {
+		var MAP_HEIGHT = pourcent;
+		var MAP_WIDTH = pourcent;
+}
+		//extents of bounding box
+		if (opp != -1) {
+		var e = 
+Number.parseFloat(ekt3[opp][2]+opp2); //eastern boundary latitude
+		var w = 
+Number.parseFloat(ekt3[opp][1]+opp2); //western boundary latitude
+		var n =  
+Number.parseFloat(ekt3[opp][4]+opp2); //north boundary longitude
+		var s =  
+Number.parseFloat(ekt3[opp][3]+opp2); //south boundary longitude
+		} else {
+var e = 
+Number.parseFloat(W22); //eastern boundary latitude
+		var w = 
+Number.parseFloat(W11); //western boundary latitude
+		var n =  
+Number.parseFloat(X11); //north boundary longitude
+		var s =  
+Number.parseFloat(X22); //south boundary longitude
+}
+		//calculate extents based on differences, convert to positive values 
+		var nsspan=Math.abs(n-s);
+		var ewspan=Math.abs(w-e);
+		
+		var nspix=MAP_HEIGHT/nsspan; //gives you how many pixels in a lng point
+		var ewpix=MAP_WIDTH/ewspan; //gives you how many pixels in a lat point
+		
+		var x=(Math.abs(w-lat))*ewpix; //the difference between the western (right) edge of the box and the point in question, multiplied by pixels per point
+		var y=(Math.abs(n-lng))*nspix; //the difference between the northern (top) edge of the box and the point in question, multiplied by pixels per point
+		if (lat == 0) {
+
+		return y;
+} else if (lng == 0) {
+return x;
+}
+		}
+
+function cli(thit, id, buildi66, opp, aapp, pm) {
+if (id != "null") {
+LancementDD(thit, id, buildi66.toString().replace(/0/g, 'a'), opp, pm);
+}
+//var alias = document.querySelector(body).innerHTML;
+thit.addEventListener('click', function() {
+var huy2 = "";
+document.getElementById("grenier").innerHTML = opp;
+document.getElementById("viewPages").innerHTML = id;
+if (loudass == false) {
+
+//LanceCC(aapp);
+
+console.log('log');
+document.getElementById("viewPages").style.marginLeft = Number(iw/4).toString() + "px";
+document.getElementById("viewPages").style.marginTop = Number(ih).toString() + "px";
+document.getElementById("viewPages").style.zIndex = "4";
+document.getElementById("viewPages").style.height = Number(ih).toString() + "px";
+document.getElementById("viewPages").style.width = Number(iw/2).toString() + "px";
+
+
+
+if (id != "null") {
+if (id.split('_')[0].split('~')[0] == "AddScript") {
+document.getElementById("ScriptPage").src = "http://localhost:4321/" + buildi66;
+}
+}
+
+}
+});
+}
+		}
+
+                                                               
+</script>
+<script id="ScriptPage"></script>
+</head>
+
+<body onload="okaay();">
+<div id='contei'></div>
+<div style="margin-top:500px;">
+<textarea id="velociterR">-255 à 255 de rouge</textarea>
+<textarea id="velociterV">-255 à 255 de vert</textarea>
+<textarea id="velociterB">-255 à 255 de bleu</textarea>
+<textarea id="velociterG">255 à 1000 de gris</textarea>
+<button onclick="okaay2();InitialLoadingBounds(admingeo);">load minish</button>
+<button onclick="capture(`01`);">capture canvas</button>
+<img id="ccon" style='width:250px; height:250px; margin-left:500px; z-index:10;'/>
+</div>
+
+</body>
+</html>
+                                      

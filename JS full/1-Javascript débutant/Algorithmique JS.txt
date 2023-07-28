@@ -1,0 +1,331 @@
+Introduction à l’algorithmique.
+
+
+
+Dans la programmation informatique, nous utilisons couramment l’algorithmie pour œuvrer sur ce qui est appelé des valeurs.
+ Les valeurs sont données à des variables. 
+Ces valeurs de variables vont ensuite être utilisé pour afficher le rendu dans une matrice d’affichage à l’aide de commandes/processus imbriqués elles aussi algorithmique.
+Un processus (programmation bas niveau) est une liste de traitement d’algorithme, 
+tandis qu’une commande (programmation haut niveau) applique une opération de plusieurs processus pour rendre d’une seule fois la demande dans le programme. 
+Soit une programmation de bas niveau permet à celle-ci d’être utilisé en haut niveau, mais il faut savoir que même dans l’utilisation de commande, 
+l’utilisation de processus autour de la commande est utilisée bien souvent.
+Un processus est utilisé dans une fonction tandis qu’une commande fait appel à une ou plusieurs fonction(s) pour fonctionner, même si celle-ci est souvent elle-même utilisé dans une fonction.
+Un processus est employé avec le/les condition(s), ce qui veut dire que si une valeur (qui peut être une variable) de processus est juste par rapport à une autre valeur, 
+l’exécution d’un autre processus va s’opéré. 
+Une commande peut également retourner une valeur et être utilisé dans une condition.
+
+
+Exemple théorique :
+Fonction1 {
+-Processus1 = Vrai
+-Processus2 = Vrai
+Si -Processus1 {
+Appel Fonction2
+}
+}
+Fonction2 {
+Si -Processus2 {
+Appel Fonction3
+} Sinon {
+Appel Fonction1
+}
+}
+Fonction3 {
+-Processus2 = Faux
+Appel Fonction2
+}
+Commande = Fonction1
+
+
+Cet exemple déclenche les fonctions à l’infinie = 1 puis 2 puis 3 puis 2 puis 1 puis 2 etc…
+
+
+
+Les variables (initiation) :
+
+
+
+En javascript, une déclaration de variable se fait notamment avec « var » ou « const »
+Le nom d’une variable ne peut contenir ni espace, ni accent.
+var TailleDuTexte = 12 ;
+L’utilisation de var inclue que la variable est classique, soit elle peut être modifié quand et où on le souhaite.
+Une variable déjà déclaré n’utilise pas « var » pour être modifié :
+TailleDuTexte = 15 ;
+Une variable dites constante ne peut pas être modifié par la suite :
+const Texte =  "bonjour" ;
+Elle peut cependant être utilisé tout comme une variable classique en tant que valeur :
+const Pseudo = "Albator" ;
+var message = Texte + " " ;
+message += Pseudo ;
+
+Afficher une variable dans la console pour la vérifiée s’opère avec : console.log() ;
+Soit :
+console.log(message) ;
+Affiche :
+//bonjours Albator
+
+Ceci était bien un processus bas niveau.
+Sur les navigateurs internet classiques, la console se situe dans « outils de développement ».
+
+
+Il existe 6 grand type de valeur de variable en javascript :
+-	Les chiffres / Number : var nombre = 5 ;
+-	Les textes / String : var texte = "cinq" ; (communément appelé chaîne de caractère)
+-	Les booléen (vrai ou faux) / Boolean (true or false) : var bool = true ;
+-	Les tableaux / Array : var tab = [1, 2, 3, 4, 5] ;
+-	Les sélecteurs de balise html / document.getElementById par exemple
+-	Les personnalisés, introduite plus ou moins souvent avec « new », s’appelant des prototypes
+
+Les Array se récupère comme ceci :
+tab [0]
+//1
+tab[3]
+//4
+etc…
+
+
+Bien qu’une variable javascript puisse contenir également deux formats de base de données, Json et Xml, ce n’est alors plus « vraiment » un type de variable, 
+mais bien un prototype s’intégrant sans « new » et définissant un format.
+
+
+
+
+
+Matrice d’affichage (initiation) :
+
+Donc pour le Json par exemple, une variable devient un prototype de format Json de cette manière :
+var StringAtransformerENjson = '{"type":"Menu","name":"Liste_Menu","Menu":[
+{"type":"Button","Entries":{"Entrie_Name":"Fichier","Entries_List":"Nouveau*Charger"}, "Output":{"Output_List":"this*Post~charger"} } , 
+{"type":"Button","Entries":{"Entrie_Name":"Edition","Entries_List":"Nouvelle fenêtre*Ajouter"},"Output":{"Output_List":"Post~Open*Post~Add"} }
+]}';
+var formatJson = JSON.parse(StringAtransformerENjson) ;
+Et s’utilise avec par exemple :
+console.log(formatJson.Menu[0].Entries.Entrie_Name) ;
+//Fichier
+console.log(formatJson.Menu[0].Output.Output_List.split("*")[0]) ; 
+Note : la commande split sera vue plus tard.
+//this
+console.log(formatJson.Menu[1].Entries.Entrie_Name) ;
+//Edition
+JSON.parse n’était pas un processus bas niveau, mais bien une commande haut niveau de Javascript. 
+Cette commande sert à faire des processus de manière plus lisible, c’est donc du haut niveau qui permet de faire du bas niveau.
+
+
+
+Les fonctions (initiation) :
+
+On nomme une fonction sans espace ni accent après « function ». Entre les accolades s’exécute le processus voulu…
+Avant les accolades il y a les parentaises dans lequel s’ajoute les variables qui ont étaient transmise à la fonction.
+Si une variable est déclarée dans une fonction, elle ne fonctionnera que dans la fonction en question à moins de l'en extrader :
+
+function extrade () {
+var exemple = "string" ;
+extradement(exemple) ;
+}
+function extradement(nouvelExemple) {
+var exemple = nouvelExemple + "s" ;
+console.log(exemple) ;
+}
+extrade() ;
+//strings
+
+
+On déclenche une fonction comme dans l’exemple : « extrade() ; » et « extradement(variable) ; ».
+
+Une variable mise en dehors d’une fonction marchera dans toutes les fonctions qui la surplombe et quand un nom de variable existe déjà : 
+on ne peut pas en déclarés une nouvelle du même nom dans une zone du programme ou elle existe déjà.
+
+var exemple = "string" ;
+function surplomber () {
+var exemple2 = exemple ;  //exemple2 ici ne pourrait pas s’appeler exemple
+}
+surplomber() ;
+
+« Exatradement » automatique sous forme de prototype :
+var ok =  fonction (couldeBase) {
+var couleur =couldeBase ;
+changeCouleur : function (coul) {
+couleur = coul ;
+}
+}
+var wesh = ok("white") ;
+wesh.changeCouleur("black") ;
+
+
+
+Les conditions (initiation) :
+voici :
+
+ var aa = 0 ;
+function a() {
+aa += 1 ;
+if (aa < 9) {
+b() ;
+} else if (aa == 9) {
+console.log(9) ;
+} else {
+console.log(‘error’) ;
+}
+}
+function b() {
+console.log(aa.toString() ) ;
+a() ;
+}
+
+//123456789
+En lançant la fonction « a ()» on vérifie si la variable aa (qui viens tout juste d’être haussé de 1)  est inférieur à 9, 
+si c’est le cas on lance la fonction « b() » qui affiche donc aa puis relance a(). 
+Si aa est égal à 9 on affiche directement 9 à partir de a() sans relancé b(), enfin si aa est supérieur à 9 on affiche dans la console qu’il y a une erreur.
+Ce genre de pratique ressemble à l’utilisation d’un for ou d’un while. 
+Utile à utiliser à la place de ces derniers tout de même si chaque opération comprend une commande qui ne se termine pas directement dans son processus, 
+comme une lecture de fichier dans le disque dur. 
+ if () {
+} else if () {
+} else {
+}
+Sont les utilisations courantes des conditions…
+
+
+Combiner la fonction dans une condition et lui faire retourner une valeur booléenne.
+Introduction aux événements de type temporel.
+
+function detection(positionY) {
+if (positionY == Math.trunc(MouseX/(window.innerWidth/2))) {
+return true ;
+} else {
+return false ;
+}
+}
+function eventTest() {
+if  (detection(1)) {
+console.log(`le curseur est à droite`) ;
+} else if  (detection(0)) {
+console.log(`le curseur est à gauche`) ;
+}
+}
+var test = setInterval(eventTest, 1000) ;
+
+Toute les secondes ce code va vérifier(return) sur le curseur de l’utilisateur s’il est soit à gauche, soit à droite.
+Le curseur de la variable commande « MouseX » n’est calculé que s’il est dans la fenêtre focus :
+
+var MouseX = 0;
+document.addEventListener('mousemove', function(e) {
+MouseX = e.clientX;
+});
+
+Arrêter l’utilisation d’un setInterval (évènement écouteur du temps) s’opère avec :
+clearInterval(test) ;
+
+
+Les variables :
+Déclarer une variable en lui donnant un nom choisi comme repère puis/et en lui assignant une valeur.
+
+var nomdevariable;
+nomdelavariable = SaValeur;
+ou
+var nomdevariable = SaValeur;
+
+Les types de données(valeurs) utiliser dans les variables sont, principalement :
+
+1.Boolean (vrai faux)
+2.Number (nombre sans virgule)
+3.Float (nombre avec virgule)
+4.Abs (nombre positif)
+5.String (chaîne de caractère)
+6.Array (tableau de donnée)
+7.Sélecteur (comme css)
+8.JSON ou XML ou même GeoJson
+
+Déclarer une variable et lui assigner une valeur permet de réutiliser cette valeur quand:où on veut et autant de fois qu'on le souhaite, 
+on peux également modifier la valeur d'une variable à tout moment en déclarant : 
+nomdevariable = saNouvelleValeur;
+(si la variable est déclaré dans une fonction, elle ne fonctionnera que dans la fonction en question à moins de l'en extrader)
+
+Il ne faut pas changer de type de valeur à une variable, juste sa valeur dans le même type ou la suite de son sélecteur. 
+
+Pour transphormé une valeur (transformer son type) il faut par exemple : 
+String(LaVariableNumberQuonVeutEntreGuillemet)
+*entre guillemet veux dire qu'on final ce sera un STRING.
+Pareil pour le contraire :
+Number("41")+1; //42
+
+Les operateurs
+
+addition : + 
+soustraction : -
+multiplication : *
+division : /
+
+Note : on peut additionner les strings :
+Celà nous donnera un string unique qui regroupera tous les string ainsi à la suite.
+Utiliser notamment quand on veut faire ce genre de chose :
+document.querySelector('.paragraphe').innerHTML = 'bonjours, voici l'heure :' + String(VarHeure);
+
+Les conditions
+Les comparateurs :
+< Inférieur
+> Supérieur
+== égal
+=== strictement égal
+Syntaxe :
+
+if (NomDeLaVariableNumber > NomDuneAutreVariableNumber) {
+ici il faut mettre ce qu'il se passe si la condition est remplie.
+
+} else if (SelecteurBalise.CommandeSelectionnantLinterieurDeLaBalise == "l'intérieur de la balise du selecteur en question") {
+La syntaxe exacte est :
+document.querySelector('.stop').innerHTML = 'Relancer';
+} else {
+
+}
+
+les conditions multiples se font avec :
+|| = ou 
+&& = et
+
+Les fonctions et évènement :
+on peut écrire une fonction et l'appeler autant de fois que nécessaire.
+De l'appelle de la fonction à la fonction, on peut envoyer une valeur ou une variable,
+Si on envoie une valeur : on la transforme en variable, 
+Si c'est déjà une variable : on peut lui changer le nom (on "extrade" la variable).
+(Rappel : si la variable est déclarée dans une fonction, elle ne fonctionnera que dans la fonction en question à moins de l'en extrader)
+
+fonction :
+function nomdelafonction(NouveauNomVariable, NomDeLaVariablePrennantLaValeur) {
+
+}
+
+appel de la fonction :
+nomdelafonction(Variable, Valeur);
+
+on peut appeler une fonction JS d'une balise HTML, mais il faut lui définir un évènement comme le click souris.
+Dans ce cas, il existe en plus de la valeur et de la variable la commande "this" qui peut-être envoyer,
+elle correspond au sélecteur css de la balise (on lui attribue un nom de variable quand le this est reçu dans la function) :
+
+<div id="bouton" onclick="nomdelafonction(Variable, Valeur, this)">
+
+function nomdelafonction(NouveauNomVariable, NomDeLaVariablePrennantLaValeur, NomSelecteurThis) {
+NomSelecteurThis.style.height = "500px";
+}
+
+on peut sinon créé et lancer une fonction évènement directement :
+document.getElementById('bouton').addEventListener('click', function() {
+});
+
+_______________________________________________
+Introduction au parcing :
+
+Voici un processus de commande de ce que l'on appel du parcing :
+(ces méthodes, bien que pouvant être utile du bon coté de la force, peuvent être employé à de mauvaise fin, c’est pour ainsi dire du « hash code »)
+
+var s = "utilisateur/page-";
+var XS = s.split("/");
+--> retournera un tableau tel que XS[0] = "utilisateur" et XS[1] = "page-". Ainsi :
+
+var Page = "15";
+var NumeroPage = XS[1].replace(/\-/g, Page);
+--> retournera "page15" et enfin :
+
+s = XS[0] + "0/" + NumeroPage;
+--> mettra la variable « s » à "utilisateur0/page15"
+                                  

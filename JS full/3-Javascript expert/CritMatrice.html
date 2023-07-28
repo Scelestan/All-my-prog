@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta https-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>critJS</title>
+
+
+<script>
+var ad=[],prog=function(e,t,i,n,o){document.body.clientWidth;var r=!1,m=window.innerHeight*F()/window.innerHeight/F(),l=window.innerWidth*F()/window.innerWidth/F();ad.push([e]);var a,u,d,g,s="",p=0,c=0,h=0,y=0,b=i,N=t;if(o)f=n,v=o;else var f=0,v=0;var w="",S=[],E=[],I=e;function B(e){var t,i=w;function n(){document.getElementById(s).innerHTML="";for(var e=i.item.length-1;e>=0;e--){for(var n=0,r=0,p=0;p<=i.item.length-1;p++)i.item[e].utilisation.id==i.item[p].utilisation.id&&e<p&&(n+=1),i.item[e].utilisation.id==i.item[p].utilisation.id&&e!=p&&(r=-2);0==r||0==n?c(e,Number(i.item[e].utilisation.Ordre)):console.log("erreur conflit d'identifiants")}function c(e,n){!function(r){if(t=i,"number"==typeof n){var p=document.createElement("div");p.id=i.item[e].utilisation.id,p.style.position="absolute",p.style.height=Number(E[e][1]-E[e][3]).toString()+"px",p.style.width=Number(E[e][0]-E[e][2]).toString()+"px",p.style.zIndex=n.toString(),p.style.top=Number(-1*(-a+E[e][3])).toString()+"px",p.align="left",i.item[e].utilisation.contour&&2==i.item[e].utilisation.contour.split("*").length&&(p.style.border=i.item[e].utilisation.contour.split("*")[1]+"px solid "+i.item[e].utilisation.contour.split("*")[0]),p.style.left=Number(E[e][2]).toString()+"px";var c='<canvas id="';c+=e.toString(),c+=i.item[e].utilisation.id,c+='" height="',c+=Number(Number(E[e][1]-E[e][3])).toString(),c+='" width="',c+=Number(Number(E[e][0]-E[e][2])).toString(),c+='"',c+=" style='top:0px; left:0px; height:0px; position:absolute;",c+=" width:0px;",c+="'",c+=">",c+="</canvas>",c+="<div",c+=" style='height:",c+=Number(Number(E[e][1]-E[e][3])).toString()+"px",c+="; position:absolute; z-index:",c+=(n-1).toString(),c+="; width:",c+=Number(Number(E[e][0]-E[e][2])).toString()+"px",c+=";'>",1==i.item[e].utilisation.utiliser.split("#*#").length&&(c+=i.item[e].utilisation.utiliser),c+="</div>",p.innerHTML=c,document.getElementById(s).appendChild(p);var h=document.getElementById(e.toString()+i.item[e].utilisation.id);h.style.position="absolute",h.style.zIndex=(n-2).toString();var y=document.getElementById(i.item[e].utilisation.id);y.style.height=Number(E[e][1]-E[e][3]).toString()+"px",y.style.width=Number(E[e][0]-E[e][2]).toString()+"px",h.style.height=Number(E[e][1]-E[e][3]).toString()+"px",h.style.width=Number(E[e][0]-E[e][2]).toString()+"px",y.style.zIndex=n.toString(),y.style.top=Number(-1*(-a+E[e][1])).toString()+"px",y.align="left",y.style.left=Number(E[e][2]).toString()+"px"}w=i.item[e].utilisation.route,S=i.item[e].utilisation.id,i.item[e].utilisation.utiliser,B=i.item[e].utilisation.contour,"null"!=w&&(O=w,J=S,(C=B)&&("mouse"==(C=C.split("_"))[0]?document.getElementById(J).addEventListener("mouseover",(function e(){for(var t,i=0;i<ad.length;i++)ad[i][0]==C[2]&&(t=i);document.getElementById(J).removeEventListener("mouseover",e);var n=ad[t][1],o=JSON.parse(n);for(i=0;i<o.item.length;i++)o.item[i].utilisation.id==J&&(o.item[i].utilisation.contour="this_"+C[1]+"_"+C[2]);n=JSON.stringify(o),ad[t][1]=n;var r=s,p=I,c=document.createElement("canvas");c.id="imgLoader",c.width="0",c.height="0",c.hidden=!0,document.body.appendChild(c);var h=document.createElement("img");h.id="loaderImages",h.width="0",h.height="0",h.hidden=!0,document.body.appendChild(h);var y=document.createElement("div");y.id=r,y.style.position="absolute",document.body.appendChild(y),m=window.innerWidth/window.innerHeight*.7*F(),l=1*F(),d=Number(window.innerWidth),g=Number(window.innerHeight),document.getElementById(r).style.top=Number(g*f).toString()+"px",document.getElementById(r).style.left=Number(d*v).toString()+"px",document.getElementById(r).style.height=Number(g*m).toString()+"px",document.getElementById(r).style.width=Number(d*l).toString()+"px",a=Number(document.getElementById(r).style.height.split("p")[0])*b,u=Number(document.getElementById(r).style.width.split("p")[0])*N,document.getElementById(r).innerHTML="",s=r,x(p)})):"this"==C[0]&&document.getElementById(J).addEventListener("mouseout",(function e(){var t;document.getElementById(J).removeEventListener("mouseout",e);for(var i=0;i<ad.length;i++)ad[i][0]==C[2]&&(t=i);var n=ad[t][1],o=JSON.parse(n);for(i=0;i<o.item.length;i++)o.item[i].utilisation.id==J&&(o.item[i].utilisation.contour="mouse_"+C[1]+"_"+C[2]);n=JSON.stringify(o),ad[t][1]=n;var r=s,p=I,c=document.createElement("canvas");c.id="imgLoader",c.width="0",c.height="0",c.hidden=!0,document.body.appendChild(c);var h=document.createElement("img");h.id="loaderImages",h.width="0",h.height="0",h.hidden=!0,document.body.appendChild(h);var y=document.createElement("div");y.id=r,y.style.position="absolute",document.body.appendChild(y),m=window.innerWidth/window.innerHeight*.7*F(),l=1*F(),d=Number(window.innerWidth),g=Number(window.innerHeight),document.getElementById(r).style.top=Number(g*f).toString()+"px",document.getElementById(r).style.left=Number(d*v).toString()+"px",document.getElementById(r).style.height=Number(g*m).toString()+"px",document.getElementById(r).style.width=Number(d*l).toString()+"px",a=Number(document.getElementById(r).style.height.split("p")[0])*b,u=Number(document.getElementById(r).style.width.split("p")[0])*N,document.getElementById(r).innerHTML="",s=r,x(p)}))),null==O&&"null"==O||("this"==(O=O.split("_"))[0]?(O=["this",O[1],O[2]],document.getElementById(J).addEventListener("click",(function e(){if("this"==O[0]){document.getElementById(J).removeEventListener("click",e);var t=O[1],i=O[2];m=window.innerWidth/window.innerHeight*.7*F(),l=1*F(),d=Number(window.innerWidth),g=Number(window.innerHeight),document.getElementById(t).style.top=Number(g*f).toString()+"px",document.getElementById(t).style.left=Number(d*v).toString()+"px",document.getElementById(t).style.height=Number(g*m).toString()+"px",document.getElementById(t).style.width=Number(d*l).toString()+"px",a=Number(document.getElementById(t).style.height.split("p")[0])*b,u=Number(document.getElementById(t).style.width.split("p")[0])*N,document.getElementById(t).innerHTML="",s=t,I=i,x(i)}}))):"replace"==O[0]&&document.getElementById(J).addEventListener("click",(function e(){document.getElementById(J).removeEventListener("click",e),"replace"==O[0]&&"socket"==O[1]&&Manivelle(O[2])}))));var w,S,B,O,C,J;for(var H=h.getContext("2d"),L=[],T=Number(E[e][0]-E[e][2]),W=Number(E[e][1]-E[e][3]),M=0,k=0,P=0;P<i.item[e].geometrie.place[0].length;P++)M=o(0,i.item[e].geometrie.place[0][P][1],e,W),k=o(i.item[e].geometrie.place[0][P][0],0,e,T),L.push(k),L.push(M);var _,z=new Image;function G(){function t(t){if(0==t?"null"!=i.item[e].utilisation.couleur?"LoadImage"==i.item[e].utilisation.couleur.split("~")[0]?_=H.createPattern(R,"no-repeat"):"stroke"==i.item[e].utilisation.couleur.split("~")[0]?(_=i.item[e].utilisation.couleur.split("~")[1],H.strokeStyle="black"):_=i.item[e].utilisation.couleur:(_="rgba(0,0,0,0)",H.strokeStyle="black"):_=i.item[e].utilisation.contour.split("_")[1],H.fillStyle=_,H.moveTo(L[0],L[1]),"arc"==i.item[e].utilisation.contour)for(H.arcTo(L[0],L[1],L[2],L[3],100),item=0;item<L.length-1;item+=2)if(item<L.length-3){L[item+4],L[item+5],L[item+2],L[item+3];H.arcTo(L[item+2],L[item+3],L[item+4],L[item+5],100)}else item<L.length-1&&H.arcTo(L[0],L[1],L[2],L[3],100);else for(H.lineTo(L[0],L[1]),item=0;item<L.length-1;item+=2)item<L.length-3?H.lineTo(L[item+2],L[item+3]):(item,L.length);H.fill(),H.closePath()}if(H.beginPath(),t(0),4==i.item[e].utilisation.utiliser.split("#*#").length){var n=i.item[e].utilisation.utiliser.split("#*#");!function(e,t,i,n,o,r,m){var l=e.width,a=e.height,u=m.replace(/\n/g," \n ").split(" "),d=[];i=window.innerWidth/1600*(2.1*i)*F(),t.font=i+"px "+n;for(var g=0;g<u.length;g++)d.push(t.measureText(u[g]).width);var s=t.measureText(" ").width,p=[];t.fillStyle=r;var c=t.getImageData(0,0,l,a).data;for(g=0;g<c.length;g+=4)p.push(c[g+3]);function h(){var e=0,i=0,n=0,r=0;for(t.textBaseline="top";n<a&&r<u.length;){e=0,i=n;for(var m=r;e<l&&r<u.length&&"\n"!=u[r];){for(var g=y(e,i,o),p=g-e,c=s,h=c+d[r];p>=h&&"\n"!=u[r];)t.fillText(u[r],c+e,i),e+=h,p-=h,r++,h=(c=s)+d[r];e=g+1}"\n"==u[r]&&r++,n=r>m?n+o:n+1}}function y(e,t,i){for(var n=e,o=t,r=!0;r;)p[o*l+n]<250&&(r=!1),++o>=t+i&&(o=t,++n>=l&&(r=!1));return n}h()}(h,H,Number(n[0]),n[1],parseInt(1.286*Number(n[0])),n[2],n[3])}if(H.beginPath(),i.item[e].utilisation.contour){if("this"==i.item[e].utilisation.contour.split("_")[0]&&"null"!=i.item[e].utilisation.contour){for(H.globalCompositeOperation="source-in",H.fillStyle=i.item[e].utilisation.contour.split("_")[1],H.moveTo(L[0],L[1]),H.lineTo(L[0],L[1]),item=0;item<L.length-1;item+=2)item<L.length-3?H.lineTo(L[item+2],L[item+3]):(item,L.length);H.closePath(),H.beginPath(),H.globalCompositeOperation="multiply",t(1)}}else;h.update}if("LoadImage"==i.item[e].utilisation.couleur.split("~")[0]){var R=new Image;R.onload=function(){G()},z.onload=function(){document.getElementById("imgLoader").height=Number(y.style.height.split("p")[0]*r),document.getElementById("imgLoader").width=Number(y.style.width.split("p")[0]*r),document.getElementById("imgLoader").getContext("2d").drawImage(z,-(r-1)*(y.style.width.split("p")[0]/2),0,Number(y.style.width.split("p")[0]*r),Number(y.style.height.split("p")[0]*r)),document.getElementById("loaderImages").style.height=Number(h.style.height.split("p")[0]*r).toString()+"px",document.getElementById("loaderImages").style.width=Number(h.style.width.split("p")[0]*r).toString()+"px",document.getElementById("loaderImages").src=document.getElementById("imgLoader").toDataURL("image/png"),R.height=Number(y.style.height.split("p")[0]*r),R.width=Number(y.style.width.split("p")[0]*r),R.src=document.getElementById("loaderImages").src},z.height=Number(y.style.height.split("p")[0]*r),z.width=Number(y.style.width.split("p")[0]*r),z.src=i.item[e].utilisation.couleur.split("~")[1]}else G();i.item.length}(1)}}function o(e,t,i,n,o){if(o||(o=0),n<2)var r=a*n,m=u*n;else r=n,m=n;if(-1!=i)var l=parseFloat(S[i][2]+o),d=parseFloat(S[i][1]+o),g=parseFloat(S[i][4]+o),s=parseFloat(S[i][3]+o);else l=parseFloat(y),d=parseFloat(h),g=parseFloat(p),s=parseFloat(c);var b=r/Math.abs(g-s),N=m/Math.abs(d-l),f=Math.abs(d-e)*N,v=Math.abs(g-t)*b;return 0==e?v:0==t?f:void 0}!function(){t=i;for(var e=Number(t.item.length),r=0;r<e;r++){for(var m,l,a,u,d=0;d<t.item[r].geometrie.place[0].length;d++){0==d&&(a=Number.parseFloat(t.item[r].geometrie.place[0][d][0]),u=Number.parseFloat(t.item[r].geometrie.place[0][d][0]),m=Number.parseFloat(t.item[r].geometrie.place[0][d][1]),l=Number.parseFloat(t.item[r].geometrie.place[0][d][1]));for(var g=0;g<t.item[r].geometrie.place[0].length;g++)Number.parseFloat(t.item[r].geometrie.place[0][g][1])<=l||l<=Number.parseFloat(t.item[r].geometrie.place[0][g][1])&&(l=Number.parseFloat(t.item[r].geometrie.place[0][g][1])),Number.parseFloat(t.item[r].geometrie.place[0][g][1])>=m||m>=Number.parseFloat(t.item[r].geometrie.place[0][g][1])&&(m=Number.parseFloat(t.item[r].geometrie.place[0][g][1])),Number.parseFloat(t.item[r].geometrie.place[0][g][0])<=u||u<=Number.parseFloat(t.item[r].geometrie.place[0][g][0])&&(u=Number.parseFloat(t.item[r].geometrie.place[0][g][0])),Number.parseFloat(t.item[r].geometrie.place[0][g][0])>=a||a>=Number.parseFloat(t.item[r].geometrie.place[0][g][0])&&(a=Number.parseFloat(t.item[r].geometrie.place[0][g][0])),d==g&&g==t.item[r].geometrie.place[0].length-1&&(S.push([i.item[r].utilisation.id,a,u,m,l]),E.push([o(u,0,-1,1),o(0,l,-1,1),o(a,0,-1,1),o(0,m,-1,1)]))}e-1==r&&n()}}()}function x(e){p=0,c=0,h=0,y=0,S=[],E=[];var t,i,n=[];t=e,i=JSON.parse(function(e){for(var t=0;t<ad.length;t++)if(ad[t][0]==e)return ad[t][1]}(t)),w=i,function(){var e,t,o=i,r=Number(i.item.length);e=0,t=0;for(var m=0,l=0,a=0;a<r;a++){for(var u=0;u<o.item[a].geometrie.place[0].length;u++){0==a&&0==u&&(e=Number.parseFloat(o.item[a].geometrie.place[0][u][0]),m=Number.parseFloat(o.item[a].geometrie.place[0][u][0]),t=Number.parseFloat(o.item[a].geometrie.place[0][u][1]),l=Number.parseFloat(o.item[a].geometrie.place[0][u][1]));for(var d=0;d<o.item[a].geometrie.place[0].length;d++)e-Number.parseFloat(o.item[a].geometrie.place[0][d][0])>0||(e=Number.parseFloat(o.item[a].geometrie.place[0][d][0])),m-Number.parseFloat(o.item[a].geometrie.place[0][d][0])<0||(m=Number.parseFloat(o.item[a].geometrie.place[0][d][0])),t-Number.parseFloat(o.item[a].geometrie.place[0][d][1])>0||(t=Number.parseFloat(o.item[a].geometrie.place[0][d][1])),l-Number.parseFloat(o.item[a].geometrie.place[0][d][1])<0||(l=Number.parseFloat(o.item[a].geometrie.place[0][d][1]));if(u==o.item[a].geometrie.place[0].length-1&&a==o.item.length-1&&0==n.length&&(h=m,y=e,p=l,c=t,n.push(a),n.push(a),n.push(a),n.push(a)),4==n.length)break}if(4==n.length)break}4==n.length&&B()}()}function F(){return r?window.devicePixelRatio:1}return{autoZoom:function(e){"boolean"==typeof e?r=e:console.log("prog.autoZoom() dois être définie sur un boolean")},Activer:function(){return{autoRedimention:function(e){window.onresize=function(){m=window.innerWidth/window.innerHeight*.7*F(),l=1*F(),d=Number(window.innerWidth),g=Number(window.innerHeight),document.getElementById(s).style.top=Number(g*f).toString()+"px",document.getElementById(s).style.left=Number(d*v).toString()+"px",document.getElementById(s).style.height=Number(g*m).toString()+"px",document.getElementById(s).style.width=Number(d*l).toString()+"px",a=Number(document.getElementById(s).style.height.split("p")[0])*b,u=Number(document.getElementById(s).style.width.split("p")[0])*N,e?C():x(I)}},ChargerPage:function(e,t,i){if(i){var n=document.createElement("canvas");n.id="imgLoader",n.width="0",n.height="0",n.hidden=!0,document.body.appendChild(n);var o=document.createElement("img");o.id="loaderImages",o.width="0",o.height="0",o.hidden=!0,document.body.appendChild(o);var r=document.createElement("div");r.id=e,r.style.position="absolute",document.body.appendChild(r)}m=window.innerWidth/window.innerHeight*.7*F(),l=1*F(),d=Number(window.innerWidth),g=Number(window.innerHeight),document.getElementById(e).style.top=Number(g*f).toString()+"px",document.getElementById(e).style.left=Number(d*v).toString()+"px",document.getElementById(e).style.height=Number(g*m).toString()+"px",document.getElementById(e).style.width=Number(d*l).toString()+"px",a=Number(document.getElementById(e).style.height.split("p")[0])*b,u=Number(document.getElementById(e).style.width.split("p")[0])*N,document.getElementById(e).innerHTML="",s=e,x(t)}}},ajouterGeometry:function(e,t){for(var i=-1,n=0;n<ad.length;n++)ad[n][0]==e&&(i=n);-1!=i?ad[i].push(t):(ad.push([e]),ad[ad.length-1].push(t))},cadreGeometry:function(e,t,i,n,o){t&&i&&n&&o||(t=1,i=1,n=100,o=100);var r='{\n"type":"Collection",\n"name":"XML_doss",\n"crs":{"type":"name","utilisation":{"name": "CritCanvas"}},\n"item":[\n{"type":"Feature","utilisation":{"id":"'+e+'","route":"null","couleur":"red","utiliser":"","contour":null,"Ordre":"-3"},"geometrie":{"type":"Polygon","place":[[['+t.toString()+","+i.toString()+"],["+(t+n).toString()+","+i.toString()+"],["+(t+n).toString()+","+(i+o).toString()+"],["+t.toString()+","+(i+o).toString()+"],["+t.toString()+","+i.toString()+"]]]}}]}";return{GeoString:function(){return r},GeoJson:function(){return JSON.parse(r)},plusItem:function(e,t,i,n,o){var m=JSON.parse(r),l='{"type":"Feature","utilisation":{"id":"'+e+'","route":"null","couleur":"blue","utiliser":"","contour":null,"Ordre":"-1"},"geometrie":{"type":"Polygon","place":[[['+t.toString()+","+i.toString()+"],["+(t+n).toString()+","+i.toString()+"],["+(t+n).toString()+","+(i+o).toString()+"],["+t.toString()+","+(i+o).toString()+"],["+t.toString()+","+i.toString()+"]]]}}";m.item.push(JSON.parse(l)),r=JSON.stringify(m)},changeCouleur:function(e,t){for(var i=JSON.parse(r),n=0;n<i.item.length;n++)i.item[n].utilisation.id==e&&(i.item[n].utilisation.couleur=t);r=JSON.stringify(i)},utiliserHTML:function(e,t){for(var i=JSON.parse(r),n=0;n<i.item.length;n++)i.item[n].utilisation.id==e&&(i.item[n].utilisation.utiliser=t.replace(/\"/g,"`"));r=JSON.stringify(i)},definirClique:function(e,t){for(var i=JSON.parse(r),n=0;n<i.item.length;n++)i.item[n].utilisation.id==e&&(i.item[n].utilisation.route=t);r=JSON.stringify(i)},changeOrdre:function(e,t){for(var i=JSON.parse(r),n=0;n<i.item.length;n++)i.item[n].utilisation.id==e&&(i.item[n].utilisation.Ordre=t);r=JSON.stringify(i)},definirContour:function(e,t){for(var i=JSON.parse(r),n=0;n<i.item.length;n++)i.item[n].utilisation.id==e&&(i.item[n].utilisation.contour=t);r=JSON.stringify(i)}}}}};
+</script>
+
+
+<script type="text/javascript">
+var arrstr = [];
+var listINT = "zzzzzz0-0-0prout(-)";
+function C() {
+
+}
+function updated(element, tth) {
+	
+    var val=element.value;
+    var content=element.innerHTML;
+   // this.innerHTML = content;
+
+	//document.getElementById('liliContent' + tth).value = content;
+	if (content != "Fermer") {
+	//window.open("."+("/"+content.split("0-0-0")[0] + content.split("-*")[1].replace(/\-/g, "")));
+	document.getElementById('Loading' + tth).innerHTML = content;
+	
+	} else {
+document.getElementById('Loading' + tth).innerHTML = '<div id="select'+ tth + '">reouvrir</div>';
+ChargClick(tth);
+}
+}
+
+
+
+
+function createimage(element)
+{
+
+   element.style.backgroundColor = "#A9F5F2";
+}
+
+function removeimage(element)
+{
+
+    element.style.backgroundColor = "white";
+}
+
+   
+function ChargClick(tthh) {
+	function resetChargClick(tthh2) {
+document.getElementById('select'+tthh2).removeEventListener('mouseup', poin);
+} 
+document.getElementById('select'+tthh).addEventListener('mouseup', poin);
+function poin() {
+resetChargClick(tthh);
+pty(tthh);
+
+}
+}
+var stock = [];
+
+function pty(tthh) {
+
+
+//document.getElementById('Loading'+tthh).onselectstart = new Function ("return false");
+
+
+	
+	var stringos = '<div name="ici" id="select' + tthh + '">' + '</div>' +
+					'<div style="font-size: 20px; vertical-align: top;" label="Liste items"><button style="top:-20px;position:absolute;" onmousedown="updated(this, `'+ tthh + '`)"' + ' value="Fermer">Fermer</button><br/>';
+					for (var cha = 0; cha < arrstr.length; cha++) {
+					
+					var tessts = 1;
+							
+					 for (var cha3 = 0; cha3 < stock.length; cha3++) {
+					 if (arrstr[cha].split(stock[cha3]).length >= 2) {
+					if (tthh.replace(/\^/g, "*") == stock[cha3] && stock[cha3].split(tthh.replace(/\^/g, "*"))[0] == "") {
+						tessts = arrstr[cha].replace(stock[cha3], "*").split("*").length;
+						
+					} else {
+						
+						
+						
+					}
+					
+					if (stock[cha3].split("***")[0] == "" || (stock[cha3].split("***")[0] != "" && tthh.replace(/\^/g, "*") == stock[cha3])) {
+							tessts = 2;
+						}
+					}
+					}
+					if (arrstr[cha] == "") {
+						tessts = -1;
+						}
+					if (tessts > 1) {
+					stringos += '<textarea id="';
+					stringos += arrstr[cha];
+					stringos += cha.toString();
+					stringos += '" style="left:175px;position:absolute;background-color:yellow;" value="';
+					stringos += arrstr[cha];
+					stringos += '">';
+					stringos += arrstr[cha];
+					stringos += '</textarea>';
+					stringos += "<button style='left:75px;position:absolute;' onmousedown='replacies(this, `" + tthh + "`, `";
+					stringos += arrstr[cha];
+					stringos += cha.toString();
+					stringos += "`);' value='";
+					stringos += arrstr[cha];
+					stringos += "'>V</button>";
+					stringos += "<button style='left:105px;position:absolute;' onmousedown='suppr(this, `" + tthh + "`);' value='";
+					stringos += arrstr[cha];
+					stringos += "'>X</button><br/>";
+					}
+					
+					}
+					stringos += '</div>';
+				
+				
+document.getElementById('Loading'+tthh).innerHTML = stringos;
+
+};
+/*
+function poww(thise) {
+document.getElementById("log-name").value = thise.value.split("_")[0];
+document.getElementById("log-pw").value = thise.value.split("_")[1];
+document.getElementById("polise").click();
+}
+*/
+function tries(a,b)
+{
+return (a < b)?1:-1;
+}
+
+ var tableauListINT = listINT.split("(-)");
+ tableauListINT.sort(tries);
+ for (var bab = 0; bab < tableauListINT.length; bab++) {
+ 
+ tableauListINT[bab] = tableauListINT[bab].split("0-0-0");
+ 
+ }
+
+
+var Adeumin = [];
+var XAdd = 4;
+var YAdd = tableauListINT.length;
+var trya2 = "";
+
+
+
+
+for (var ab = 1; ab < XAdd; ab++) {
+if (ab < 3) {
+if (ab == 1) {
+var leli = "<div id='log-menu' style='left:5%;position:absolute;'><div class='log-input'><label for='name'>Entrer le nom: </label><br/><input type='text' name='name' id='log-name' /></div><div class='log-input' style='left:110%;top:-5%;position:absolute;'><label for='password'>Entrer l'inscription : </label><br/><input type='text' name='password' id='log-pw'/><input value='Ajouter' onmouseup='addj();' type='submit' id='addj'/><input value='Supprimer' onmousedown='addj(true);' type='submit' id='suppr'/></div><div class='log-submit'><input type='submit' id='polise' value='Subscr!' hidden></div></div>";
+
+trya2 += `{"type":"Feature","utilisation":{"id":"`+ab.toString()+(ab).toString()+`000","route":"null","couleur":"#509334","utiliser":"`+ leli + `","contour":null,"Ordre":`+ab.toString()+`},"geometrie":{"type":"Polygon","place":[[[`+XAdd.toString()+`, `+(YAdd).toString()+`],[`+XAdd.toString()+`, `+(YAdd).toString()+`],[`+XAdd.toString()+`, `+(YAdd+0.9).toString()+`],[`+(XAdd+0.9).toString()+`, `+(YAdd+0.9).toString()+`],[`+(XAdd+0.9).toString()+`, `+(YAdd).toString()+`]]]}} ,`
+} else if (ab == 2) {
+
+}
+} else {
+
+for (var a = 1; a < YAdd; a++) {
+
+trya2 += `{"type":"Feature","utilisation":{"id":"` + a.toString() + ab.toString() + (a+ab).toString() + `","route":"null","couleur":"#509334","utiliser":"` + `<div style='left:75%;position:absolute;'>` + `<div style='width:500px;' id='Loading` + tableauListINT[a][0] + `'><div id='select` + tableauListINT[a][0] + `'>Consulter</div></div><input type='text' row='21' id='liliContent` + tableauListINT[a][0] + tableauListINT[a][1] + `' name='NameOfContentIMG' value='' hidden /></div>` + `<div style='left:35%;position:absolute;'>`+ tableauListINT[a][0] + `_` + `</div><input type='submit' style='left:35%;position:absolute;' value='`+ tableauListINT[a][0] + `_` + tableauListINT[a][1] +`' onmouseup='poww(this);' hidden><br/><button type='button' style='left:5%;position:absolute;' onmouseup='scan(this);'>`+ "Scanner" + tableauListINT[a][0] +"0-0-0"+ tableauListINT[a][1]+`</button>` +`","contour":null,"Ordre":`+a.toString()+`},"geometrie":{"type":"Polygon","place":[[[`+ab.toString()+`, `+a.toString()+`],[`+ab.toString()+`, `+a.toString()+`],[`+ab.toString()+`, `+(a+0.9).toString()+`],[`+(ab+0.9).toString()+`, `+(a+0.9).toString()+`],[`+(ab+0.9).toString()+`, `+a.toString()+`]]]}}`;
+if (a != YAdd-1 || ab != XAdd-1) {
+trya2 += " ,";
+}
+}
+}
+}
+Adeumin.push(["cbd"]);Adeumin[0].push(`{"type":"Collection","name":"XML_doss","crs":{"type":"name","utilisation":{"name": "CritCanvas"}},"item":[`
++
+trya2
++
+`]}`);
+function Matrice() {
+ad = [];
+document.getElementById("crit").innerHTML = "";
+var ok = prog("ouvrir", 0.7, tableauListINT.length/10, 0.1, 0.3);
+ok.ajouterGeometry("ouvrir", Adeumin[0][1]);
+var charge = ok.Activer(); 
+charge.ChargerPage("crit", "ouvrir");
+ok.autoZoom(true);
+charge.autoRedimention(true); 
+document.getElementById("log-name").addEventListener("keyup", NCI);
+NCI();
+}
+	function NCI() {
+	tableauListINT = listINT.split("(-)");
+ tableauListINT.sort(tries);
+ for (var bab = 0; bab < tableauListINT.length; bab++) {
+ 
+ tableauListINT[bab] = tableauListINT[bab].split("0-0-0");
+ 
+ }
+	var tmpStr = document.getElementById("log-name").value;
+var trya = "";
+var tableauListINT2 = [["", ""]];
+for (var bab2 = 1; bab2 < tableauListINT.length; bab2++) {
+ if (tableauListINT[bab2][0].split(document.getElementById("log-name").value).length > 1) {
+ tableauListINT2.push([tableauListINT[bab2][0], tableauListINT[bab2][1]]);
+ 
+ }
+ }
+ 
+YAdd = tableauListINT2.length;
+
+
+for (var ab = 1; ab < XAdd; ab++) {
+if (ab < 3) {
+if (ab == 1) {
+var leli = "<div id='log-menu' style='left:6%;position:absolute;'><div class='log-input'><label for='name'>Entrer le nom: </label><br/><input type='text' name='name' id='log-name' /></div><div class='log-input' style='left:110%;top:-5%;position:absolute;'><label for='password'>Entrer l'inscription : </label><br/><input type='text' name='password' id='log-pw'/><input value='Ajouter' onmouseup='addj(false);' type='submit' id='addj'/><input value='Supprimer' onmousedown='addj(true);' type='submit' id='suppr'/></div><div class='log-submit'><input type='submit' id='polise' value='Subscr!' hidden></div></div>";
+
+trya += `{"type":"Feature","utilisation":{"id":"`+ab.toString()+(ab).toString()+`000","route":"null","couleur":"#509334","utiliser":"`+ leli + `","contour":null,"Ordre":`+ab.toString()+`},"geometrie":{"type":"Polygon","place":[[[`+XAdd.toString()+`, `+(YAdd).toString()+`],[`+XAdd.toString()+`, `+(YAdd).toString()+`],[`+XAdd.toString()+`, `+(YAdd+0.9).toString()+`],[`+(XAdd+0.9).toString()+`, `+(YAdd+0.9).toString()+`],[`+(XAdd+0.9).toString()+`, `+(YAdd).toString()+`]]]}}`
+
+
+
+} else if (ab == 2) {
+
+}
+} else {
+
+for (var a = 1; a < YAdd; a++) {
+if (a == 1) {
+trya += ", ";
+}
+trya += `{"type":"Feature","utilisation":{"id":"`+a.toString()+ab.toString()+(a+ab).toString()+`","route":"null","couleur":"#509334","utiliser":"`+ `<input type='text' id='`+ tableauListINT2[a][0] +`name' value='0.0.0' /><div style='left:75%;position:absolute;'>` +
+"<div style='width:500px;' id='Loading"+ tableauListINT2[a][0] + `'><div id='select` + tableauListINT2[a][0] + `'>Consulter</div></div><input type='text' row='21' id='liliContent` + tableauListINT2[a][0] + `' name='NameOfContentIMG' value='' hidden /></div>` +
+`<div style='left:35%;position:absolute;'>`+ tableauListINT2[a][0] +`</div><input type='submit'style='left:35%;position:absolute;' value='`+ tableauListINT2[a][0] + `_` + tableauListINT2[a][1] +`' hidden><br/><button type='button' style='left:5%;position:absolute;' onmouseup='scan(this);'>`+"Add " + tableauListINT2[a][0]+ `</button> `+
+`","contour":null,"Ordre":`+a.toString()+`},"geometrie":{"type":"Polygon","place":[[[`+ab.toString()+`, `+a.toString()+`],[`+ab.toString()+`, `+a.toString()+`],[`+ab.toString()+`, `+(a+0.9).toString()+`],[`+(ab+0.9).toString()+`, `+(a+0.9).toString()+`],[`+(ab+0.9).toString()+`, `+a.toString()+`]]]}}`
+if (a != YAdd-1 || ab != XAdd-1) {
+trya += " ,";
+}
+
+}
+}
+}
+Adeumin[0][1] = (`{"type":"Collection","name":"XML_doss","crs":{"type":"name","utilisation":{"name": "CritCanvas"}},"item":[`
++
+trya
++
+`]}`);
+
+ad = [];
+
+var ok = prog("ouvrir", 0.7, tableauListINT2.length/10, 0.1, 0.3);
+ok.ajouterGeometry("ouvrir", Adeumin[0][1]);
+var charge = ok.Activer(); 
+charge.ChargerPage("crit", "ouvrir");
+ok.autoZoom(true);
+charge.autoRedimention(true); 
+
+document.getElementById("log-name").value = '';
+document.getElementById("log-name").value = tmpStr;
+document.getElementById("log-name").focus();
+document.getElementById("log-name").addEventListener("keyup", NCI);
+for (var bab3 = 1; bab3 < tableauListINT2.length; bab3++) {
+ if (tableauListINT2[bab3][0].split(document.getElementById("log-name").value).length > 1) {
+ChargClick(tableauListINT2[bab3][0]);
+}
+ }
+ 
+
+	  for (var bab32 = 1; bab32 < tableauListINT2.length; bab32++) {
+					
+		  
+					
+					if (tableauListINT2[bab32][0].split("*").length <= 1) {
+					
+					if (stock.indexOf(tableauListINT2[bab32][0]) >= 0) {
+					
+						
+					} else {
+					stock.push(tableauListINT2[bab32][0]);
+						
+					}
+					
+					} else {
+					console.log("error type *");
+			  }
+			  
+			  
+	  
+	  
+	  	
+
+
+
+}
+
+}
+   var thisname;
+function scan(thois) {
+
+		thisname = thois.innerHTML.split("Add ")[1].split("_")[0].replace(/\*/g , "^") + document.getElementById(thois.innerHTML.split("Add ")[1].split("_")[0] + "name").value;
+		arrstr.push(thisname);
+		NCI();
+		
+}  
+  function addj(TF) {
+  
+  if (TF == true) {
+  
+if (document.getElementById("log-pw").value == "" || !listINT.split("(-)")[listINT.split("(-)").indexOf(document.getElementById("log-pw").value + "0-0-0accept")]) {
+		console.log("name exist already ? no");
+	} else {
+	console.log(document.getElementById("log-pw").value);
+	var Strin = (document.getElementById("log-pw").value + "0-0-0accept(-)");
+	var euh = "";
+	for (var ft = 0; ft < listINT.split(Strin).length; ft++) {
+	euh += listINT.split(Strin)[ft];
+	}
+	listINT = euh;
+	
+	NCI();
+}
+} else {
+if (document.getElementById("log-pw").value != "" && !listINT.split("(-)")[listINT.split("(-)").indexOf(document.getElementById("log-pw").value.replace(/\*/g , "") + "0-0-0accept")]) {
+listINT += document.getElementById("log-pw").value.replace(/\*/g , "") + "0-0-0accept(-)";
+		document.getElementById("log-pw").value = "";
+		NCI();
+} else {
+console.log("name exist already ? yes");
+	
+}
+		}
+}                        
+
+function suppr(thiis, tyh) {
+console.log(arrstr.indexOf(thiis.value));
+		arrstr[arrstr.indexOf(thiis.value)] = "";
+		pty(tyh);
+		
+}  
+function replacies(thiis, tyh, sor) {
+
+		arrstr[arrstr.indexOf(thiis.value)] = document.getElementById(sor).value;
+		pty(tyh);
+		
+}  
+
+</script>
+
+</head>
+
+<body onload="Matrice();">
+<div id="crit"></div>
+</body>
+</html>
+                                      

@@ -1,0 +1,2555 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Monopoly 2</title>
+
+<style>
+
+*{
+}
+
+.cellbase {
+  border: 1pt solid black;
+}
+
+#gameboard {
+    position:absolute;
+  height:5px;
+}
+
+.player-position {
+  color:brown
+}
+
+</style>
+
+
+
+
+
+<script>
+var q = [
+'data:image/png;base64,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'
+];
+
+var ad = [];//contrôleur Geojson
+var prog = function (A, x, y, t1, l1) {//function contrôleur Prototype
+
+//déclaration variable
+var boula2;
+var WII = self.innerWidth;
+var zm = false;
+var EH = (((self.innerHeight*getZoom())/(self.innerHeight))/(getZoom())*y);
+var EW = (self.innerWidth*getZoom())/(self.innerWidth)/(getZoom()*x);
+var c1113;
+ad.push([A]);
+var Ce = "";
+var ih;
+var iw;
+var X11 = 0;
+var X22 = 0;
+var W11 = 0;
+var W22 = 0;
+var VH = y;var VW = x;
+if (!l1) {
+var ET = 0;
+var EL = 0;
+var VT = 0;var VL = 0;
+} else {
+var ET = t1;
+var EL = l1;
+var VT = t1;var VL = l1;
+}
+var LW;
+var LH;
+var Ra = 1;
+var tbd = "";
+var ekt3 = [];
+var ekt22 = [];
+var VI = A;var IC = A;
+function datacollei(XXff) { //récupération d'un geojson dans le contrôleur 
+ for (var addd = 0; addd < ad.length; addd++) {
+ if (ad[addd][0] == XXff) {
+ return ad[addd][1];
+ }
+ }
+ }
+function LancementDD(results, arrbo, bb, menuOne, boula) {//définition des couleurs "ajouterCouleur()" Commande
+// Appel sur click
+//console.log("front click ajust");
+var interv;
+
+var bbb = bb;
+if (!boula) {
+} else {
+var bboula = boula;
+boula = boula.split('_');
+
+if (boula[0].split("*")[0] == "mouse") {
+
+boula2 = bboula;
+
+document.getElementById(bbb).addEventListener("mousedown", bghhemo);
+
+} else if (boula[0].split("*")[0] == "this") {
+//console.log("front click ajust 2");
+
+document.getElementById(bbb).addEventListener("mouseout", bghhemo2);
+
+
+}
+}
+if (arrbo != null || arrbo != "null") {
+arrbo = arrbo.split('_');
+
+if (arrbo[0].split("*")[0] == "this") {
+	arrbo = [arrbo[0], arrbo[1], arrbo[2]];
+	//console.log("front click ajust 3" + bbb);
+document.getElementById(bbb).addEventListener("mouseup", bghhe);
+
+}
+ if (arrbo[0] == "replace") {
+	document.getElementById(bbb).addEventListener("mouseup", bghhe2);
+}
+}
+function bghhemo() {
+var dre;
+for (var sT = 0; sT < ad.length; sT++) {
+if (ad[sT][0] == boula[2]) {
+//console.log("ici");
+dre = sT;
+}
+}
+document.getElementById(bbb).removeEventListener("mousedown", bghhemo);
+var cadre = ad[dre][1];
+var cool = JSON.parse(cadre);
+
+	for (var sT = 0; sT < cool.item.length; sT++) {
+	if (cool.item[sT].utilisation.id == bbb.split("DIV")[1]) {
+//console.log("test2");
+	cool.item[sT].utilisation.contour = "this*" + boula[0].split("*")[1] + "_" + boula[1] + "_" + boula[2];
+	}
+	
+	}
+	cadre = JSON.stringify(cool);
+	ad[dre][1] = cadre;
+	c1113 = Ce;
+	var VI2 = VI;
+	//document.body.innerHTML = "";
+	//console.log(Ce);
+ih=Number(document.getElementById(boula[0].split("*")[1]).style.height.split("p")[0]);
+iw=Number(document.getElementById(boula[0].split("*")[1]).style.width.split("p")[0]); 
+    document.getElementById(boula[0].split("*")[1]).innerHTML = "";
+	
+	if (boula2.split("_")[0].split("*").length == 2) {
+Ce = boula2.split("_")[0].split("*")[1];
+} else {
+Ce = c1113;
+}
+	
+    
+InitialLoadingBounds(boula[2]);
+
+}
+function bghhemo2() {
+document.getElementById(bbb).removeEventListener("mouseout", bghhemo2);
+//console.log("test");
+var dre;
+for (var sT = 0; sT < ad.length; sT++) {
+if (ad[sT][0] == boula[2]) {
+dre = sT;
+}
+}
+var cadre = ad[dre][1];
+/*
+if (boula2.split("_")[0].split("*").length == 2) {
+bbb = boula2.split("_")[0].split("*")[1];
+}
+*/
+var cool = JSON.parse(cadre);
+	for (var sT = 0; sT < cool.item.length; sT++) {
+	if (cool.item[sT].utilisation.id == bbb.split("DIV")[1]) {
+	cool.item[sT].utilisation.contour = "mouse*" + boula2.split("_")[0].split("*")[1] + "_" + boula[1] + "_" + boula[2];
+	//console.log(boula2);
+	}
+	
+	}
+	cadre = JSON.stringify(cool);
+	ad[dre][1] = cadre;
+	c1113 = Ce;
+	var VI2 = VI;
+	//document.body.innerHTML = "";
+	
+    
+	if (boula2.split("_")[0].split("*").length == 2) {
+Ce = boula2.split("_")[0].split("*")[1];
+} else {
+Ce = c1113;
+}
+  document.getElementById(Ce).innerHTML = ""; 
+InitialLoadingBounds(boula[2]);
+}
+function bghhe() {
+	
+
+
+if (arrbo[0].split("*")[0] == "this") {
+//console.log("front click ajust 4");
+document.getElementById(bbb).removeEventListener("mouseup", bghhe);
+if (arrbo[0].split("*").length == 1) {
+var cc = arrbo[1];
+var VI3 = arrbo[2]; 
+
+EH = (((self.innerWidth)/(self.innerHeight))*0.49)*getZoom()*VH;
+EW = 1*getZoom()*VW;
+/*
+LW = Number(self.innerWidth);
+LH = Number(self.innerHeight);
+document.getElementById(cc).style.top = Number(LH*ET).toString() + "px";
+document.getElementById(cc).style.left = Number(LW*EL).toString() + "px";
+document.getElementById(cc).style.height = Number(LH*EH).toString() + "px";
+document.getElementById(cc).style.width = Number(LW*EW).toString() + "px";
+*/
+ih=Number(document.getElementById(cc).style.height.split("p")[0]);
+	iw=Number(document.getElementById(cc).style.width.split("p")[0]);
+	
+    document.getElementById(cc).innerHTML = "";
+	Ce = cc;     
+	VI = VI3;
+InitialLoadingBounds(VI3);
+	} else if (arrbo[0].split("*")[1] == "function") {
+
+var VI3 = arrbo[2];
+//document.getElementById(VI3.split("*")[0]).innerHTML = "";
+//InitialLoadingBounds(VI3.split("*")[1]);
+}
+}
+
+
+}
+function bghhe2() {
+	//console.log("test");
+document.getElementById(bbb).removeEventListener("mouseup", bghhe2);
+
+if (arrbo[0] == "replace" && arrbo[1] == "socket") {
+
+Manivelle(arrbo[2]);
+//console.log(arrbo[2]);
+	
+}
+
+
+}
+
+
+}
+ function AA(Xf) {
+
+		var jesonContent;
+
+		var routes = tbd;
+		
+LanceB();
+ 
+		function LanceB() {
+
+		jesonContent = routes;
+
+var exo = Number(jesonContent.item.length);
+
+var as2 = 0;
+
+for (var o = 0; o < exo; o++) {
+
+var x1;
+var x2;
+var w1;
+var w2;
+
+for (var aaaa = 0; aaaa < jesonContent.item[o].geometry.coordinates[0].length; aaaa ++) {
+
+
+
+
+		if (aaaa == 0) {
+w1 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][0]); 
+w2 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][0]); 
+x1 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][1]); 
+x2 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][1]);
+
+}
+
+
+
+
+
+
+
+
+
+
+for (var aaaaa = 0; aaaaa < jesonContent.item[o].geometry.coordinates[0].length; aaaaa ++) {
+
+
+
+
+
+
+
+
+if (Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][1]) <= x2) {
+
+} else { 
+if (x2 <= Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][1])) {
+x2 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][1]); 
+}
+}
+if (Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][1]) >= x1) {
+
+} else {
+if (x1 >= Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][1])) {
+ x1 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][1]); 
+}
+}
+if (Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][0]) <= w2) {
+
+} else { 
+if (w2 <= Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][0])) {
+w2 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][0]);
+}
+} 
+if (Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][0])>= w1) {
+
+
+
+} else { 
+if (w1 >= Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][0])) {
+w1 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][0]); 
+}
+}
+
+
+
+if (aaaa == aaaaa && aaaaa == jesonContent.item[o].geometry.coordinates[0].length-1) {
+ekt3.push([routes.item[o].utilisation.id, w1, w2, x1, x2]); 
+ekt22.push([ convert(w2, 0, -1, 1), convert( 0, x2,-1, 1), convert( w1, 0, -1, 1), convert(0, x1, -1, 1)]);
+
+
+}
+
+}
+
+
+
+}
+
+
+if (exo-1 == o) { LanceCC(); }
+
+
+
+
+}
+
+
+
+
+		}
+		
+
+function LanceCC() {
+
+
+
+
+
+
+
+		var canv=document.getElementById(Ce);
+canv.innerHTML = "";
+
+for (var bbbb = routes.item.length-1; bbbb >= 0; bbbb--) {
+var thebop = 0;
+var thebop2 = 0;
+for (var bbbb3 = 0; bbbb3 <= routes.item.length-1; bbbb3++) {
+if (routes.item[bbbb].utilisation.id == routes.item[bbbb3].utilisation.id && bbbb < bbbb3) { thebop += 1; } 
+if (routes.item[bbbb].utilisation.id == routes.item[bbbb3].utilisation.id && bbbb != bbbb3) {
+thebop2 = -2;
+}
+}
+
+ if (thebop2 == 0) {
+smoth(bbbb, Number(routes.item[bbbb].utilisation.Ordre));
+} else if (thebop == 0) {
+smoth(bbbb, Number(routes.item[bbbb].utilisation.Ordre));
+} else {
+console.log("erreur conflit d'identifiants");
+}
+
+
+
+
+
+}
+
+ var imgo;
+
+		function smoth(bbbb2, radie) {
+
+	exea(Ra);
+
+
+		function exea(condi) {
+jesonContent = routes;
+if ((typeof radie == "number")) {
+var divd3=document.createElement("div");
+divd3.id = "DIV" + routes.item[bbbb2].utilisation.id;
+divd3.style.position = 'absolute';
+divd3.style.height = Number((ekt22[bbbb2][1])-(ekt22[bbbb2][3])).toString() + "px";
+divd3.style.width = Number((ekt22[bbbb2][0])-(ekt22[bbbb2][2])).toString() + "px";
+divd3.style.zIndex = radie.toString();
+divd3.style.top = Number((-ih + ekt22[bbbb2][3])*-1).toString()+"px";
+divd3.align = "left";
+if (!routes.item[bbbb2].utilisation.contour) {
+} else if (routes.item[bbbb2].utilisation.contour.split("*").length == 2) {
+divd3.style.border = routes.item[bbbb2].utilisation.contour.split("*")[1] + "px solid " + routes.item[bbbb2].utilisation.contour.split("*")[0];
+}
+divd3.style.left = Number(ekt22[bbbb2][2]).toString()+"px";
+var yop = '<canvas id="';
+yop += ""
+yop += routes.item[bbbb2].utilisation.id;
+yop += '" height="';
+yop += Number(Number((ekt22[bbbb2][1])-(ekt22[bbbb2][3]))).toString();
+yop += '" width="';
+yop += Number(Number((ekt22[bbbb2][0])-(ekt22[bbbb2][2]))).toString();
+yop += '"';
+yop += " style='top:0px; left:0px; height:0px; position:absolute;"; 
+yop += " width:0px;"; 
+yop += "'";
+yop += ' > ';
+yop += '</canvas> ';
+yop += "<div";
+yop += " style='height:";
+yop += Number(Number((ekt22[bbbb2][1])-(ekt22[bbbb2][3]))).toString() + "px"; 
+yop += "; position:absolute; z-index:"; 
+yop += (radie-1).toString();
+yop += "; width:"; 
+yop += Number(Number((ekt22[bbbb2][0])-(ekt22[bbbb2][2]))).toString() + "px";
+yop += ";' ";
+if (routes.item[bbbb2].utilisation.route.split("_")[0].split("*").length == 2 && routes.item[bbbb2].utilisation.route.split("_")[0].split("*")[1] == "function") {
+yop += "onclick='" + routes.item[bbbb2].utilisation.route.split("_")[1] + "'";
+}
+yop += ">";
+if (routes.item[bbbb2].utilisation.utiliser.split('#*#').length == 1) {
+yop += routes.item[bbbb2].utilisation.utiliser;
+}
+yop += "</div>";
+divd3.innerHTML = yop;
+document.getElementById(Ce).appendChild(divd3);
+var canvd3 = document.getElementById((routes.item[bbbb2].utilisation.id));
+  canvd3.style.position = 'absolute';
+canvd3.style.zIndex = (radie-2).toString();
+var canvde=document.getElementById("DIV" + routes.item[bbbb2].utilisation.id);
+canvde.style.height = Number(((ekt22[bbbb2][1])-(ekt22[bbbb2][3]))).toString() + "px";
+canvde.style.width = Number(((ekt22[bbbb2][0])-(ekt22[bbbb2][2]))).toString() + "px";
+canvd3.style.height = Number(((ekt22[bbbb2][1])-(ekt22[bbbb2][3]))).toString() + "px";
+canvd3.style.width = Number(((ekt22[bbbb2][0])-(ekt22[bbbb2][2]))).toString() + "px";
+canvde.style.zIndex = (radie).toString();
+canvde.style.top = Number((-ih + ekt22[bbbb2][1])*-1).toString()+"px";
+canvde.align = "left";
+canvde.style.left = Number(ekt22[bbbb2][2]).toString()+"px";
+}
+
+cli(canvd3, routes.item[bbbb2].utilisation.route, canvde.id, routes.item[bbbb2].utilisation.utiliser, bbbb2, routes.item[bbbb2].utilisation.contour);
+//routes.item[bbbb2].utilisation.id
+var ctx = canvd3.getContext('2d');
+
+var poly = [];
+var ppow = Number(((ekt22[bbbb2][0])-(ekt22[bbbb2][2])));
+
+var ppoh = Number(((ekt22[bbbb2][1])-(ekt22[bbbb2][3])));
+
+		var hhhx = 0;
+var hhhy = 0;
+var hhhy22 = 0;
+
+for (var aaaa = 0; aaaa < routes.item[bbbb2].geometry.coordinates[0].length; aaaa ++) {
+
+hhhx = convert(0, routes.item[bbbb2].geometry.coordinates[0][aaaa][1], bbbb2, ppoh);
+hhhy = convert(routes.item[bbbb2].geometry.coordinates[0][aaaa][0], 0, bbbb2, ppow);
+
+		poly.push(hhhy);
+		poly.push(hhhx);
+	
+}
+var image = new Image();
+var pattern;
+function LoadImages() {
+	ctx.beginPath();
+	function draww(conte) {
+
+
+	
+	if (conte == 0) {
+if (routes.item[bbbb2].utilisation.couleur != "null") {
+
+if (routes.item[bbbb2].utilisation.couleur.split("~")[0] == "LoadImage") {
+
+pattern = ctx.createPattern(imagefinali, "no-repeat");
+
+} else if (routes.item[bbbb2].utilisation.couleur.split("~")[0] == "stroke") {
+
+pattern = routes.item[bbbb2].utilisation.couleur.split("~")[1];
+ctx.strokeStyle = "black";
+} else {
+pattern = routes.item[bbbb2].utilisation.couleur;
+
+
+}
+             } else {
+pattern = "rgba(0,0,0,1)";
+ctx.strokeStyle = "black";
+}   
+          
+             } else {
+             
+             pattern = routes.item[bbbb2].utilisation.contour.split("_")[1];
+             }
+
+
+ctx.fillStyle = pattern;
+
+
+
+         ctx.moveTo(poly[0], poly[1]);
+     
+
+if (routes.item[bbbb2].utilisation.contour == "arc") {
+ctx.arcTo(poly[0] , poly[1], poly[2], poly[3], 100);  
+for( item=0 ; item < poly.length-1 ; item+=2 ){
+
+if (item < poly.length-3) {
+var calcpp = (poly[item+4] + poly[item+5])-(poly[item+2] + poly[item+3]);
+ ctx.arcTo(poly[item+2] , poly[item+3], poly[item+4], poly[item+5], 100);
+
+
+} else if (item < poly.length-1) {
+ctx.arcTo(poly[0] , poly[1], poly[2], poly[3], 100); 
+
+}
+}
+
+} else {
+ctx.lineTo(poly[0] , poly[1]);    
+for( item=0 ; item < poly.length-1 ; item+=2 ){
+
+if (item < poly.length-3) {
+
+
+ ctx.lineTo(poly[item+2] , poly[item+3]);
+
+} else if (item < poly.length-1) {
+
+}
+}
+}
+ctx.fill();
+
+
+ctx.closePath();
+	}
+	draww(0);
+
+if (routes.item[bbbb2].utilisation.utiliser.split('#*#').length == 4) {
+var arrPutText = routes.item[bbbb2].utilisation.utiliser.split('#*#');
+putText(canvd3, ctx, Number(arrPutText[0]), arrPutText[1], parseInt(Number(arrPutText[0])*1.286), arrPutText[2], arrPutText[3]);
+// 0 = taille 1 = police 2 = color 3 = texte
+}
+
+ctx.beginPath();
+if (!routes.item[bbbb2].utilisation.contour) {
+
+} else if (routes.item[bbbb2].utilisation.contour.split("_")[0].split("*")[0] == "this" && routes.item[bbbb2].utilisation.contour != "null") {
+
+ctx.globalCompositeOperation = 'source-in';
+ctx.fillStyle = routes.item[bbbb2].utilisation.contour.split("_")[1];//this*commande_multiply_"DEFAULT"_all_of_commande_options_["y a même", ["des", "bourins"...]]_Array
+ctx.moveTo(poly[0], poly[1]);
+ctx.lineTo(poly[0] , poly[1]);        
+
+
+for( item=0 ; item < poly.length-1 ; item+=2 ){
+
+if (item < poly.length-3) {
+
+ ctx.lineTo(poly[item+2] , poly[item+3]);
+
+
+} else if (item < poly.length-1) {
+
+
+}
+}
+
+ctx.closePath();
+
+ctx.beginPath();
+ctx.globalCompositeOperation = 'multiply';
+draww(1);
+}
+canvd3.update;
+
+
+
+}
+if (routes.item[bbbb2].utilisation.couleur.split("~")[0] == "LoadImage") {//"LoadImage~bourin.uneImage"
+	var imagefinali = new Image();
+	imagefinali.onload = function() {  LoadImages(); };
+	image.onload = function() { 
+	
+	document.getElementById("loaderCanvases").height = Number(canvde.style.height.split("p")[0]*condi); document.getElementById("loaderCanvases").width = Number(canvde.style.width.split("p")[0]*condi);
+	
+	document.getElementById("loaderCanvases").getContext("2d").drawImage(image, -((condi-1)*(canvde.style.width.split("p")[0]/2)), 0, Number(canvde.style.width.split("p")[0]*condi), Number(canvde.style.height.split("p")[0]*condi));
+	
+	document.getElementById("loaderIMG").style.height = Number(canvd3.style.height.split("p")[0]*condi).toString() + "px";
+	document.getElementById("loaderIMG").style.width = Number(canvd3.style.width.split("p")[0]*condi).toString() + "px";
+	
+	document.getElementById("loaderIMG").src = document.getElementById("loaderCanvases").toDataURL('image/png'); 
+	
+	imagefinali.height = Number(canvde.style.height.split("p")[0]*condi);
+	imagefinali.width = Number(canvde.style.width.split("p")[0]*condi);
+	imagefinali.src = document.getElementById("loaderIMG").src; 
+	};
+		image.height = Number(canvde.style.height.split("p")[0]*condi);
+		image.width = Number(canvde.style.width.split("p")[0]*condi);
+		image.src = routes.item[bbbb2].utilisation.couleur.split("~")[1];
+		
+		
+
+} else {
+	 LoadImages();
+}
+	
+
+
+
+if (bbbb2 == routes.item.length-1) {
+
+}
+
+
+
+
+
+
+
+};
+
+
+	
+
+
+
+
+		};
+	}	
+	
+function convert(lat, lng, opp, pourcent, opp2) {//le bordel
+if (!opp2) {
+opp2 = 0;
+}
+if (pourcent < 2) {
+		var MAP_HEIGHT = ih*pourcent;
+		var MAP_WIDTH = iw*pourcent;
+} else {
+		var MAP_HEIGHT = pourcent;
+		var MAP_WIDTH = pourcent;
+}
+		//extents of bounding box
+		if (opp != -1) {
+		var e2 = 
+parseFloat(ekt3[opp][2]+opp2); //eastern boundary latitude
+		var w2 = 
+parseFloat(ekt3[opp][1]+opp2); //western boundary latitude
+		var n2 =  
+parseFloat(ekt3[opp][4]+opp2); //north boundary longitude
+		var s2 =  
+parseFloat(ekt3[opp][3]+opp2); //south boundary longitude
+
+		} else {
+var e2 = 
+parseFloat(W22); //eastern boundary latitude
+		var w2 = 
+parseFloat(W11); //western boundary latitude
+		var n2 =  
+parseFloat(X11); //north boundary longitude
+		var s2 =  
+parseFloat(X22); //south boundary longitude
+}
+
+		//calculate extents based on differences, convert to positive values 
+		var nsspan=Math.abs(n2-s2);
+		var ewspan=Math.abs(w2-e2);
+		
+		var nspix=MAP_HEIGHT/nsspan; //gives you how many pixels in a lng point
+		var ewpix=MAP_WIDTH/ewspan; //gives you how many pixels in a lat point
+		
+		var x2=(Math.abs(w2-lat))*ewpix; //the difference between the western (right) edge of the box and the point in question, multiplied by pixels per point
+		var y2=(Math.abs(n2-lng))*nspix; //the difference between the northern (top) edge of the box and the point in question, multiplied by pixels per point
+		if (lat == 0) {
+
+		return y2;
+} else if (lng == 0) {
+
+return x2;
+}
+		}
+
+function cli(thit, id, buildi66, opp, aapp, pm) {
+if (id != "null") {
+//console.log(buildi66);
+LancementDD(thit, id, buildi66, opp, pm);
+}
+}
+		}
+function InitialLoadingBounds(frakt) {
+
+X11 = 0;
+X22 = 0;
+W11 = 0;
+W22 = 0;
+ekt3 = [];
+ekt22 = [];
+var ekt2 = [];
+	lA(frakt);	
+		function lA(Xf) {
+		var routes = "rien";
+var lload;
+//console.log(Xf);
+routes = JSON.parse(datacollei(Xf));
+tbd = routes;
+LanceB();
+		function LanceB() {	
+		var jesonContent = routes;
+var exo = Number(routes.item.length);
+var as2 = 0;	
+var w1;
+var x1;
+w1 = 0;
+x1 = 0;
+var w2 = 0;
+var x2 = 0;
+for (var o = 0; o < exo; o++) {
+for (var aaaaa = 0; aaaaa < jesonContent.item[o].geometry.coordinates[0].length; aaaaa ++) {
+if (o == 0 && aaaaa == 0) { 
+w1 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][0]); 
+w2 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][0]); 
+x1 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][1]); 
+x2 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][1]); 
+}
+for (var aaaa = 0; aaaa < jesonContent.item[o].geometry.coordinates[0].length; aaaa ++) {
+if (w1-Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][0]) > 0) {
+} else { w1 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][0]); }
+if (w2-Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][0]) < 0) {
+} else { w2 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][0]); }
+if (x1-Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][1]) > 0) {
+} else { x1 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][1]); }
+if (x2-Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][1]) < 0) {
+} else { x2 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][1]); }
+}
+if (aaaaa == jesonContent.item[o].geometry.coordinates[0].length-1 && o == jesonContent.item.length-1 && ekt2.length == 0) {
+W11 = w2;
+W22 = w1;
+X11 = x2;
+X22 = x1;
+ekt2.push(o);
+ekt2.push(o);
+ekt2.push(o);
+ekt2.push(o);
+
+}
+if (ekt2.length == 4) { break; }
+}
+if (ekt2.length == 4) { break; }
+}
+if (ekt2.length == 4) {  AA(frakt); }
+}
+}
+}
+function putText(caneuvas, ContentX, fontsize, fontface, lineHeight, colorim, text) {
+	lineHeight *= 2.2;
+	var cw=caneuvas.width;
+    var ch=caneuvas.height;
+    var words=text.replace(/\n/g, ' \n ').split(' ');
+    var wordWidths=[];
+fontsize = (self.innerWidth/1600) * (fontsize*2.1) * getZoom();
+    ContentX.font=fontsize+'px '+fontface;
+    for(var i=0;i<words.length;i++){ wordWidths.push(ContentX.measureText(words[i]).width); }
+    var spaceWidth=ContentX.measureText(' ').width;
+    var wordIndex=0
+    var data=[];
+    // fill heart with text
+    ContentX.fillStyle=colorim;
+
+    var imgDataData=ContentX.getImageData(0,0,cw,ch).data;
+    for(var i=0;i<imgDataData.length;i+=4){
+        data.push(imgDataData[i+3]);
+    }
+    coordinatesWords();   
+
+    // draw words sequentially into next available block of 
+    //    available opaque pixels 
+    function coordinatesWords(){
+        var sx=0;
+        var sy=0;
+        var y=0;
+        var wordIndex=0;
+        ContentX.textBaseline='top';
+        while(y<ch && wordIndex<words.length){
+            sx=0;
+            sy=y;
+            var startingIndex=wordIndex;
+            while(sx<cw && wordIndex<words.length && words[wordIndex] != '\n'){
+                var x=getRect(sx,sy,lineHeight);
+                var available=x-sx;
+                var spacer=spaceWidth;  // spacer=0 to have no left margin
+                var w=spacer+wordWidths[wordIndex];
+                while(available>=w && words[wordIndex] != '\n'){
+                    ContentX.fillText(words[wordIndex],spacer+sx,sy);
+                    sx+=w;
+                    available-=w;
+                    spacer=spaceWidth;
+                    wordIndex++;
+                    w=spacer+wordWidths[wordIndex];
+                }
+                sx=x+1;
+            }
+			if (words[wordIndex] == '\n') {
+				wordIndex++;
+			}
+            y=(wordIndex>startingIndex)?y+lineHeight:y+1;
+        }
+    }
+
+    // find a rectangular block of opaque pixels
+    function getRect(sx,sy,height){
+        var x=sx;
+        var y=sy;
+        var ok=true;
+        while(ok){
+            if(data[y*cw+x]<250){ok=false;}
+            y++;
+            if(y>=sy+height){
+                y=sy;
+                x++;
+                if(x>=cw){ok=false;}
+            }
+        }
+        return(x);
+    }
+}
+﻿
+   ﻿function getZoom() {
+    if (zm) {
+    return (window.devicePixelRatio);
+    } else {
+    
+    return 1;
+    }
+    }
+    
+    return {
+    autoZoom : function(B) {
+    if (typeof B == "boolean") {
+    zm = B;
+    } else {
+    console.log("prog.autoZoom() dois être définie sur un boolean");
+    }
+    },
+    
+    Activer : function() {//ça va mieux là
+    return {
+    
+    autoRedimention : function (VIp, VVi) {
+window.onresize = function () { 
+   
+EH = (((self.innerWidth)/(self.innerHeight)*0.49)*(getZoom())*VH);
+EW = (0.99*getZoom()*VW);
+LW = Number(self.innerWidth);
+LH = Number(self.innerHeight);
+document.getElementById(Ce).style.top = Number(LH*ET).toString() + "px";
+document.getElementById(Ce).style.left = Number(LW*EL).toString() + "px";
+document.getElementById(Ce).style.height = Number(LH*EH).toString() + "px";
+document.getElementById(Ce).style.width = Number(LW*EW).toString() + "px";
+
+ih=Number(document.getElementById(Ce).style.height.split("p")[0]);
+	iw=Number(document.getElementById(Ce).style.width.split("p")[0]);
+if (!VIp) {
+//document.getElementById(VVi).innerHTML = "";
+	Ce = VVi;
+	InitialLoadingBounds(VI);
+} else {
+	CCC();
+}
+    }
+    },
+    
+    ChargerPage : function (c, VI2, bool, bool2) {
+
+
+//document.body.innerHTML = "";
+if (!document.getElementById("loaderCanvases")) {
+    var divdrr=document.createElement("canvas");
+divdrr.id = "loaderCanvases";
+divdrr.width = "0";
+divdrr.height = "0";
+divdrr.hidden = true;
+document.body.appendChild(divdrr);
+var divdrr2=document.createElement("img");
+divdrr2.id = "loaderIMG";
+divdrr2.width = "0";
+divdrr2.height = "0";
+divdrr2.hidden = true;
+document.body.appendChild(divdrr2);
+}
+if (bool2 && !document.getElementById(c)) {
+    var divd3=document.createElement("div");
+divd3.id = c;
+document.body.appendChild(divd3);
+}
+if (bool) {
+EH = (((self.innerWidth)/(self.innerHeight)*0.49)*(getZoom())*VH);
+EW = (0.99*getZoom()*VW);
+LW = Number(self.innerWidth);
+LH = Number(self.innerHeight);
+document.getElementById(c).style.position = 'absolute';
+document.getElementById(c).style.top = Number(LH*ET).toString() + "px";
+document.getElementById(c).style.left = Number(LW*EL).toString() + "px";
+document.getElementById(c).style.height = Number(LH*EH).toString() + "px";
+document.getElementById(c).style.width = Number(LW*EW).toString() + "px";
+} else {
+	
+	EH = (((self.innerWidth)/(self.innerHeight)*0.49)*(getZoom())*VH);
+EW = (0.99*getZoom()*VW);
+LW = Number(self.innerWidth);
+LH = Number(self.innerHeight);
+}
+    
+ih=Number(document.getElementById(c).style.height.split("p")[0]);
+iw=Number(document.getElementById(c).style.width.split("p")[0]);
+
+	/*
+
+	*/
+    document.getElementById(c).innerHTML = "";
+	Ce = c;     
+InitialLoadingBounds(VI2);
+    
+    }
+    }
+    
+
+},
+
+ajouterGeometry : function (NN, GN) {
+var non = -1;
+for (var sT = 0; sT < ad.length; sT++) {
+if (ad[sT][0] == NN) {
+non = sT;
+}
+}
+if (non != -1) {
+ad[non].push(GN);
+} else {
+ad.push([NN]);
+ad[ad.length-1].push(GN);
+}
+},
+
+cadreGeometry : function (II, L, T, W, H) {
+if (!L || !T || !W || !H) {
+L = 1;
+T = 1;
+W = 100;
+H = 100;
+}
+var cadre = `{
+"type":"Collection",
+"name":"XML_doss",
+"crs":{"type":"name","utilisation":{"name": "CritCanvas"}},
+"item":[
+{"type":"Feature","utilisation":{"id":"` +
+II +
+`","route":"null","couleur":"red","utiliser":"","contour":null,"Ordre":"-3"},"geometry":{"type":"Polygon","coordinates":[[[` +
+L.toString() +
+`,` +
+T.toString() +
+`],[` +
+(L+W).toString() +
+`,` +
+T.toString() +
+`],[` +
+(L+W).toString() +
+`,` +
+(T+H).toString() +
+`],[` +
+L.toString() +
+`,` +
+(T+H).toString() +
+`],[` +
+L.toString() +
+`,` +
+T.toString() +
+`]]]}}` +
+`]}`;
+
+return {
+	GeoString : function () {
+	return cadre;
+	},
+	GeoJson : function () {
+	return JSON.parse(cadre);
+	},
+	plusItem : function (II, L, T, W, H) {
+	var Yu = JSON.parse(cadre);
+	var Uy = `{"type":"Feature","utilisation":{"id":"` +
+II +
+`","route":"null","couleur":"blue","utiliser":"","contour":null,"Ordre":"-1"},"geometry":{"type":"Polygon","coordinates":[[[` +
+L.toString() +
+`,` +
+T.toString() +
+`],[` +
+(L+W).toString() +
+`,` +
+T.toString() +
+`],[` +
+(L+W).toString() +
+`,` +
+(T+H).toString() +
+`],[` +
+L.toString() +
+`,` +
+(T+H).toString() +
+`],[` +
+L.toString() +
+`,` +
+T.toString() +
+`]]]}}`;
+	Yu.item.push(JSON.parse(Uy));
+	cadre = JSON.stringify(Yu);
+
+	},
+	changeCouleur : function (ssT, coul) {
+	var cool = JSON.parse(cadre);
+	for (var sT = 0; sT < cool.item.length; sT++) {
+	if (cool.item[sT].utilisation.id == ssT) {
+	cool.item[sT].utilisation.couleur = coul;
+	}
+	
+	}
+	cadre = JSON.stringify(cool);
+	}, utiliserHTML : function (ssT, coul) {
+	var cool = JSON.parse(cadre);
+	for (var sT = 0; sT < cool.item.length; sT++) {
+	if (cool.item[sT].utilisation.id == ssT) {
+	cool.item[sT].utilisation.utiliser = coul.replace(/\"/g, "`");
+	}
+	
+	}
+	cadre = JSON.stringify(cool);
+	}, definirClique : function (ssT, coul) {
+	var cool = JSON.parse(cadre);
+	for (var sT = 0; sT < cool.item.length; sT++) {
+	if (cool.item[sT].utilisation.id == ssT) {
+	cool.item[sT].utilisation.route = coul;
+	
+	}
+	
+	}
+	cadre = JSON.stringify(cool);
+	}, changeOrdre : function (ssT, coul) {
+	var cool = JSON.parse(cadre);
+	for (var sT = 0; sT < cool.item.length; sT++) {
+	if (cool.item[sT].utilisation.id == ssT) {
+	cool.item[sT].utilisation.Ordre = coul;
+	}
+	
+	}
+	cadre = JSON.stringify(cool);
+	}, definirContour : function (ssT, coul) {
+	var cool = JSON.parse(cadre);
+	for (var sT = 0; sT < cool.item.length; sT++) {
+	if (cool.item[sT].utilisation.id == ssT) {
+	cool.item[sT].utilisation.contour = coul;
+	}
+	
+	}
+	cadre = JSON.stringify(cool);
+	}
+}
+}
+}
+}
+
+// ---------------------------------------------------- //
+// ------------------ CORE GRAPH ---------------------- //
+// ---------------------------------------------------- //
+
+var critJS;
+var addition;
+
+
+function graphismeLoad() {
+	
+var ok = prog("page1", 1, 1);
+var ok2 = prog("page2", 1, 1);
+var ajoue = ok.cadreGeometry("Cadre"); 
+var ajoue2 = ok2.cadreGeometry("Cadre2");
+ajoue.plusItem("item1", 20, 20, 90, 90);
+ajoue2.plusItem("GameGraph", 40, 40, 20, 20);
+ajoue.changeCouleur("item1", "black"); 
+ajoue.changeCouleur("Cadre", "white"); 
+ajoue.definirClique("item1", "this_DIVitem1_page2");
+ajoue2.definirClique("GameGraph", "this_Header_page1");
+ajoue.changeOrdre("Cadre", "-5");
+ajoue.changeOrdre("item1", "50");
+ajoue2.changeCouleur("GameGraph", "blue"); 
+ajoue2.changeCouleur("Cadre2", "red"); 
+ajoue2.utiliserHTML("GameGraph", "<p style='font-size:30px; position:absolute; left:40%; top:40%;'>Tu as bien cliqué !</p>");
+ajoue2.changeOrdre("GameGraph", "2");
+ok.ajouterGeometry("page1", ajoue.GeoString());
+ok2.ajouterGeometry("page2", ajoue2.GeoString()); 
+var charge2 = ok.Activer(); 
+//var charge3 = ok2.Activer(); 
+charge2.ChargerPage("Header", "page1", true, true);
+document.getElementById("Header").style.zIndex = "-55";
+
+	return {
+    load : function() {
+				// his.sizeMap = number of anthite has to display (nombre de case de monopolie)
+ad = [];
+critJS = prog("graphGame", 1.922, 0.722, 0.02, 0.52);
+addition = critJS.cadreGeometry("Font", 2, 1, his.sizeMap/4-2, his.sizeMap/4-2); 
+
+	addition.changeCouleur("Font", "rgb(125,125,125)");//transparent = rgba(125,125,125, 0)
+	addition.definirContour("Font", "arc");
+
+	for (var graph = 1; graph < his.sizeMap+1; graph+=1) {
+	
+
+	if (graph <= his.sizeMap/4) {
+	addition.plusItem(`${his.map[graph].name+graph}`, Math.abs(graph), -1, 0.8, 0.8);
+	} else if (graph <= (his.sizeMap/4)*2) {
+	addition.plusItem(`${his.map[graph].name+graph}`, (his.sizeMap/4), Math.abs(-(his.sizeMap/4)+graph)-1, 0.8, 0.8);
+	} else if (graph < (his.sizeMap/4)*3) {
+	addition.plusItem(`${his.map[graph].name+graph}`, Math.abs((his.sizeMap/4*3)-graph)+1, (his.sizeMap/4), 0.8, 0.8);
+	} else {
+	addition.plusItem(`${his.map[graph].name+graph}`, 1, Math.abs((his.sizeMap)-graph), 0.8, 0.8);
+	}
+addition.plusItem(`${(graph*2*graph).toString()}`, Math.abs((his.sizeMap/4*3)-graph)+2, (his.sizeMap/4)+1, 1, 1);
+addition.changeCouleur(`${(graph*2*graph).toString()}`, "white");
+	if (his.map[graph].type == "gare") {
+	addition.definirClique(`${his.map[graph].name+graph}`, `this*function_clickItem(this, ${graph})_GameGraph*graphGame`);
+	addition.changeCouleur(`${his.map[graph].name+graph}`, "rgb(100, 50, 150)");
+	} else if (his.map[graph].type == "event") {
+	addition.changeCouleur(`${his.map[graph].name+graph}`, "white");
+
+	} else if (his.map[graph].type == "service") {
+	addition.definirClique(`${his.map[graph].name+graph}`, `this*function_clickItem(this, ${graph})_GameGraph*graphGame`);
+	addition.changeCouleur(`${his.map[graph].name+graph}`, "purple");
+	} else {
+	addition.definirClique(`${his.map[graph].name+graph}`, `this*function_clickItem(this, ${graph})_GameGraph*graphGame`);
+	addition.definirContour(`${his.map[graph].name+graph}`, "mouse*GameGraph_rgba(50,50,50,1)_graphGame");
+	addition.changeCouleur(`${his.map[graph].name+graph}`, his.map[graph].type.toString());
+	
+	}
+	
+	if (!his.map[graph].owner) {
+	var loadText = `${his.map[graph].name} coûte ${his.map[graph].value.price} ICI= `;
+	
+	} else {
+		
+		var loadText = `${his.map[graph].name} appartient a ${his.map[graph].owner} et coûte ${his.map[graph].value.cost[his.map[graph].house.toString()+' h']} ICI= `;
+	
+		
+	
+	
+	}
+console.log(his.players[1]);
+	if (!his.players[1]) {
+	} else {
+	for (var gamers = 1; gamers <= his.nbPlayer; gamers++) {
+		
+
+			if (graph == his.players[gamers].position) {
+		loadText += `${his.players[gamers].id}`;
+		addition.utiliserHTML(`${his.map[graph].name+graph}`,"6#*#verdana#*##000000#*#"+loadText);
+	}
+	}
+	
+	}
+	
+	addition.changeOrdre(`${his.map[graph].name+graph}`, "1");
+
+	}
+	
+	
+	critJS.ajouterGeometry("graphGame", addition.GeoString());
+	var charge = critJS.Activer(); 
+	critJS.autoZoom(false);
+
+	if (!document.getElementById("GameGraph")) {
+		charge.autoRedimention(true, "GameGraph");
+charge.ChargerPage("GameGraph", "graphGame", true, true);
+	} else {
+		charge.autoRedimention(true, "GameGraph");
+charge.ChargerPage("GameGraph", "graphGame", true, false);
+	}
+
+	document.getElementById("GameGraph").style.zIndex = "2";
+	
+	}
+	}
+
+
+	}
+
+
+
+
+function clickItem(element, graph) {
+					var Cellmap = currentGame.map;
+					
+		var stringADD = `${Cellmap[graph].owner} il y a ici`;
+element.style.fontSize = "16px";
+element.style.color = "white";
+element.style.display = "flex";
+  element.style.justifyContent= "center";
+  element.style.alignItems= "center";
+  element.style.border= "1pt solid white";
+element.onselectstart = "return false;";
+element.innerHTML = "";
+
+
+	  	if (!currentGame.map) {
+		} else {
+	  var Cellmap = currentGame.map;
+			if (!Cellmap[graph].house) {
+		} else {
+		console.log(Cellmap[graph].house.toString());
+
+		
+	
+		
+	
+	
+		var nombre = Cellmap[graph].house;
+for (var nombre2 = 1; nombre2 <= nombre; nombre2++) {
+ stringADD += `<img id="Ifinal" src="data:image/png;base64,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" height="150px" width="350px" style="width: 20px; height: 70px; top: 30px; left: `+(nombre2*5).toString()+`0px; position: absolute; z-index: 39;">`;
+
+		
+			
+
+    
+element.innerHTML += stringADD;
+stringADD = "";
+
+		}
+	}
+		}
+}
+
+</script>
+
+
+	<script>
+
+// ---------------------------------------------------- //
+// ------------------- COMBINE ------------------------ //
+// ---------------------------------------------------- //
+var Graphisme;
+
+	</script>
+
+
+
+		<script>
+
+// ---------------------------------------------------- //
+// ------------------ CORE FUNC ----------------------- //
+// ---------------------------------------------------- //
+
+const randomise = (arr) => {
+  for (let i = arr.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+};
+
+const getGameCard = (nbCards, nbFam, isHead) => {
+  let pioche = [];
+  let longCard = [];
+  let famType = "";
+
+  for (let i = 0; i < nbCards; i++) {
+    if (isHead) {
+      let cardValue = i + 1;
+      if (i == 10) cardValue = "V";
+      if (i == 11) cardValue = "D";
+      if (nbCards == 13) {
+        if (i == 12) cardValue = "R";
+      } else if (nbCards == 14) {
+        if (i == 12) cardValue = "C";
+        if (i == 13) cardValue = "R";
+      }
+      longCard.push(cardValue + "");
+    } else {
+      longCard.push(i + 1 + "");
+    }
+  }
+
+  for (let i = 0; i < nbFam; i++) {
+    if (i == 0) famType = "A";
+    if (i == 1) famType = "B";
+    if (i == 2) famType = "C";
+    if (i == 3) famType = "D";
+
+    for (const value of longCard) {
+      pioche.push(`${value}_${famType}`);
+    }
+  }
+
+  return pioche;
+};
+
+const getDice = (nbFace) => {
+  let diceValue = [];
+  for (let i = 0; i < nbFace; i++) {
+    diceValue.push(i + 1);
+  }
+  randomise(diceValue);
+  return diceValue[0];
+};
+
+// ---------------------------------------------------- //
+// ----------------------- DOM ------------------------ //
+// ---------------------------------------------------- //
+
+class Component {
+  createDOMNode(parentId, typeNode, idEl, classEl) {
+    const newEl = document.createElement(typeNode);
+    if (idEl) {
+      newEl.setAttribute("id", idEl);
+    }
+    if (classEl) {
+      newEl.className = classEl;
+    }
+    if (!parentId) {
+      document.body.append(newEl);
+    } else {
+      document.getElementById(parentId).append(newEl);
+    }
+    return newEl;
+  }
+
+  moveDOMElement(idEl, parentId) {
+    const el = document.getElementById(idEl);
+    const parentEl = document.getElementById(parentId);
+    parentEl.append(el);
+  }
+
+  cloneDOMElement(el) {
+    const cloneEl = el.cloneNode(true);
+    element.parentElement.replaceChild(cloneEl, el);
+  }
+}
+
+// ---------------------------------------------------- //
+// --------------------- PLAYER ----------------------- //
+// ---------------------------------------------------- //
+
+let currentGame = null;
+
+class Player extends Component {
+  constructor(id) {
+    super();
+    this.id = id;
+    this.perso = null;
+    this.money = 1500;
+    this.hand = [];
+    this.properties = [];
+    this.challenge = null;
+    this.score = 0;
+    this.position = 1;
+    this.locritJSthatshit();
+    this.displayPlayer();
+  }
+
+  locritJSthatshit() {}
+
+  play() {
+    this.displayActionBoard();
+    // DICEROLL
+    //CHECKCELL
+    console.log(`au tour du joueur ${this.id}`);
+  }
+
+  displayPlayer() {
+    if (document.getElementById(`player${this.id}-pos`)) {
+      document.getElementById(`player${this.id}-pos`).remove();
+    }
+    let newCellEl = this.createDOMNode(
+      `cell-${this.position}`,
+      "h4",
+      `player${this.id}-pos`,
+      "player-position"
+    );
+    newCellEl.innerText = this.id;
+  }
+
+  displayActionBoard() {
+    let actionBoardEl = document.getElementById("actionboard");
+    if (actionBoardEl.hasChildNodes()) {
+      actionBoardEl.removeChild(actionBoardEl.childNodes[0]);
+    }
+    this.createDOMNode("actionboard", "div", `action-player-${this.id}`);
+
+    let playerNameEl = this.createDOMNode(
+      `action-player-${this.id}`,
+      "p",
+      null,
+      null
+    );
+    playerNameEl.innerText = `Joueur ${this.id}`;
+
+    this.displayMoney();
+    this.displayDiceBtn(`action-player-${this.id}`);
+  }
+
+  displayMoney() {
+    if (document.getElementById(`money-player-${this.id}`)) {
+      document.getElementById(`money-player-${this.id}`).remove();
+    }
+    let playerMoneyEl = this.createDOMNode(
+      `action-player-${this.id}`,
+      "p",
+      `money-player-${this.id}`,
+      null
+    );
+    playerMoneyEl.innerText = `Coffre : ${this.money} U`;
+  }
+
+  displayDiceBtn(parentId) {
+    const diceBtn = this.createDOMNode(parentId, "button", null, null);
+    diceBtn.innerText = "Lancer de dé";
+    diceBtn.addEventListener("mouseup", (e) => {
+      this.diceRoll();
+      diceBtn.remove();
+
+	  Graphisme.load();
+    });
+  }
+
+  displayUpHouseBtn(parentId) {
+    if (document.getElementById("buy-house-btn")) {
+      document.getElementById("buy-house-btn").remove();
+      document.getElementById("buy-house-container").remove();
+    }
+    const notHouse = ["event", "gare", "service"];
+    let cellCanUp = this.properties
+      .filter((id) => !notHouse.includes(currentGame.map[id].type))
+      .filter((id) => currentGame.map[id].house < 5);
+    if (cellCanUp != 0) {
+      const upHouseBtn = this.createDOMNode(
+        parentId,
+        "button",
+        "buy-house-btn",
+        null
+      );
+      const upHouseCont = this.createDOMNode(
+        parentId,
+        "div",
+        "buy-house-container",
+        null
+      );
+      upHouseBtn.innerText = "Acheter une maison";
+      upHouseBtn.addEventListener("mouseup", (e) => {
+        upHouseCont.innerHTML = "";
+        cellCanUp.forEach((id) => {
+          let currentCell = currentGame.map[id];
+          let currentBtn = this.createDOMNode(
+            "buy-house-container",
+            "button",
+            null,
+            "action-buy-house"
+          );
+          currentBtn.innerText = `${currentCell.name} - ${currentCell.value.houseCost} U`;
+          currentBtn.addEventListener("mouseup", (e) => {
+            this.money -= currentCell.value.houseCost;
+            currentCell.house += 1;
+            this.displayMoney();
+            this.displayUpHouseBtn(`action-player-${this.id}`);
+            console.log(
+              `Joueur ${this.id} a acheté une ${currentCell.house}e maison pour ${currentCell.name}`
+            );
+
+          });
+        });
+
+		Graphisme.load();
+      });
+    }
+  }
+
+  displayNexTurnBtn(parentId) {
+    const nextTurnBtn = this.createDOMNode(parentId, "button", null, null);
+    nextTurnBtn.innerText = "Tour suivant";
+    nextTurnBtn.addEventListener("mouseup", (e) => {
+      currentGame.turnHandler(false);
+      nextTurnBtn.remove();
+
+	  Graphisme.load();
+    });
+  }
+
+  cellCheck() {
+    this.displayNexTurnBtn(`action-player-${this.id}`);
+    this.displayUpHouseBtn(`action-player-${this.id}`);
+    let cell = currentGame.map[this.position];
+    console.log(cell.value.cost[`${cell.house} h`]);
+    if (cell.owner === this.id) {
+      return console.log("t'es chez toi maggle");
+    }
+    if (cell.owner) {
+      return this.getBill(cell);
+    }
+    if (cell.type == "event") {
+      return this.eventHandler(cell);
+    }
+    if (cell.value.price <= this.money) {
+      return this.buyCell(cell);
+    }
+    return console.log(
+      `Il manque ${cell.value - this.money} au joueur ${this.id} pour acheter ${
+        cell.name
+      }`
+    );
+  }
+
+  diceRoll() {
+    let dice = getDice(6);
+    this.position + dice > currentGame.sizeMap
+      ? (this.position = this.position + dice - currentGame.sizeMap)
+      : (this.position += dice);
+    console.log(
+      `Le joueur ${this.id} a avancé de ${dice} pour arriver ${this.position}`
+    );
+    this.displayPlayer();
+    this.cellCheck();
+
+	Graphisme.load();
+  }
+
+  getBill(cell) {
+    let bill = cell.value.cost[`${cell.house} h`];
+    this.money -= bill;
+    currentGame.players[cell.owner].money += bill;
+    this.displayMoney();
+
+    console.log(
+      `Le joueur ${this.id} doit ${bill} unités au joueur ${cell.owner}`
+    );
+  }
+
+  eventHandler(cell) {
+    console.log(`Le joueur ${this.id} tire une carte ${cell.name} `);
+  }
+
+  buyCell(cell) {
+    let actBuyBtn = this.createDOMNode(
+      `action-player-${this.id}`,
+      "button",
+      "action-buy",
+      null
+    );
+    actBuyBtn.innerHTML = `Acheter ${cell.value.price} U`;
+    actBuyBtn.addEventListener("mouseup", (e) => {
+      actBuyBtn.remove();
+      this.money -= cell.value.price;
+      cell.owner = this.id;
+      this.properties.push(this.position);
+      this.displayUpHouseBtn(`action-player-${this.id}`);
+      this.displayMoney();
+      console.log(`Félicitation, joueur ${this.id} a acheté ${cell.name}`);
+	  Graphisme.load();
+	  for (var graph = 1; graph < his.sizeMap+1; graph++) {
+	  	if (!currentGame.map) {
+		} else {
+	  var Cellmap = currentGame.map;
+			if (!Cellmap[graph].house) {
+		} else {
+		console.log(Cellmap[graph].house.toString());
+
+		
+	
+		
+	
+	
+		var nombre = Cellmap[graph].house;
+for (var ti = 0; ti < nombre; ti++) {
+			var nombre2 = ti;
+			
+			var image = new Image();
+	image.onload = function() { 
+	
+	const newEl = document.createElement("img");
+const newEl2 = document.createElement("canvas");
+	document.getElementById("loaderCanvases").getContext("2d").drawImage(image, "100px", "100px");
+	
+	document.getElementById("img").src = document.getElementById("loaderCanvases").toDataURL('image/png');
+    newEl.src = document.getElementById("img").src;
+ 
+      document.getElementById(`DIV${his.map[graph].name+graph}`).appendChild(newEl);
+console.log(document.getElementById(`DIV${his.map[graph].name+graph}`));
+	}
+			
+			
+			image.src = q[nombre2+""];
+		}
+	}
+		}
+		}
+    });
+  }
+
+  getHouse() {
+    
+  }
+}
+
+// ---------------------------------------------------- //
+// ---------------------- CARDS ----------------------- //
+// ---------------------------------------------------- //
+
+class Card {
+  constructor(type, num, content, effect) {
+    this.type = type;
+    this.num = num;
+    this.content = content;
+    this.uncount = 0;
+    this.effect = effect;
+  }
+
+  getOwnedBy(player) {
+    return (this.owner = player);
+  }
+}
+
+const luckCards = [
+  "Super loto du village vous offre 200 U",
+  "Facture impayée, vous devez 150 U",
+];
+
+const allLuckCards = [];
+const allEventCards = [];
+const allChallCards = [];
+
+allChallCards.push(new Card("Chall", 1, "Finir en 3 tours"));
+
+//Type = Chance, evenement, challenge
+
+// ---------------------------------------------------- //
+// ----------------------- GAME ----------------------- //
+// ---------------------------------------------------- //
+
+class SetGame extends Component {
+  constructor() {
+    super();
+    this.map = {};
+    this.players = {};
+    this.nbPlayer = 0;
+    this.currentPlayerId = null;
+    this.senseOfPlay = [];
+    this.luckCards = [];
+    this.EventCards = [];
+    this.challCards = [];
+    this.mapSize = 0;
+    this.setPage();
+    this.setGameInfo();
+  }
+
+  setPage() {
+    const headerEl = this.createDOMNode(null, "header", "header");
+    const titlePageEl = this.createDOMNode(null, "h1", "game-name");
+    titlePageEl.textContent = "Monopoly du ghetto";
+    headerEl.append(titlePageEl);
+  }
+
+  //choix de joueurs et taille du plateau
+  setGameInfo() {
+    this.createDOMNode(null, "div", "init-game");
+    const initTitleEl = this.createDOMNode("init-game", "h2", "init-title");
+    initTitleEl.innerText = "Un classique revisité !";
+    const initForm = this.createDOMNode("init-game", "form", "init-form");
+
+    //Nombre de joueurs
+    const nbPlayersLabel = this.createDOMNode(
+      "init-form",
+      "label",
+      null,
+      "init-label"
+    );
+    nbPlayersLabel.innerText = "Combien de joueurs ?";
+
+    const nbPlayerInput = this.createDOMNode(
+      "init-form",
+      "input",
+      null,
+      "init-input"
+    );
+    nbPlayerInput.setAttribute("type", "number");
+    nbPlayerInput.setAttribute("min", "2");
+    nbPlayerInput.setAttribute("max", "6");
+    nbPlayerInput.value = 2;
+
+    //Taille du plateau
+    const sizeMapLabel = this.createDOMNode(
+      "init-form",
+      "p",
+      null,
+      "init-label"
+    );
+    sizeMapLabel.innerText = "Taille du plateau :";
+
+    const sizeLittleMapInput = this.createDOMNode(
+      "init-form",
+      "input",
+      "little-map-choice",
+      "init-input"
+    );
+    sizeLittleMapInput.setAttribute("type", "radio");
+    sizeLittleMapInput.setAttribute("name", "map");
+    sizeLittleMapInput.setAttribute("value", "petit");
+
+    const sizeLittleMapLabel = this.createDOMNode(
+      "init-form",
+      "label",
+      null,
+      "init-input"
+    );
+    sizeLittleMapLabel.setAttribute("for", "little-map-choice");
+    sizeLittleMapLabel.innerText = "Petit";
+
+    const sizeNormalMapInput = this.createDOMNode(
+      "init-form",
+      "input",
+      "normal-map-choice",
+      "init-input"
+    );
+    sizeNormalMapInput.setAttribute("type", "radio");
+    sizeNormalMapInput.setAttribute("name", "map");
+    sizeNormalMapInput.setAttribute("value", "normal");
+
+    const sizeNormalMapLabel = this.createDOMNode(
+      "init-form",
+      "label",
+      null,
+      "init-input"
+    );
+    sizeNormalMapLabel.setAttribute("for", "normal-map-choice");
+    sizeNormalMapLabel.innerText = "Normal";
+
+    const initBtn = this.createDOMNode("init-form", "button", "init-btn", null);
+    initBtn.setAttribute("type", "submit");
+    initBtn.innerText = "Lancer la partie";
+
+    sizeLittleMapInput.checked = true;
+
+    initForm.addEventListener("submit", (ev) => {
+      ev.preventDefault();
+      let sizeMap;
+      const initData = new FormData(initForm);
+      for (const entry of initData) {
+        sizeMap = entry[1];
+      }
+      console.log(
+        `Partie à ${nbPlayerInput.value} joueurs avec une carte ${sizeMap}`
+      );
+      this.nbPlayer = nbPlayerInput.value;
+      this.initialiseGame(sizeMap);
+    });
+  }
+
+  initialiseGame(sizeMap) {
+    document.getElementById("init-game").remove();
+    this.gameSenseHandler();
+    console.log(`Sens du jeu : ${this.senseOfPlay}`);
+    this.initialiseCards();
+    this.createGameBoard(sizeMap);
+
+    for (let i = 1; i < parseInt(this.nbPlayer) + 1; i++) {
+      this.players[i] = new Player(i);
+    }
+    this.turnHandler(true);
+  }
+
+  createGameBoard(sizeMap) {
+    let cells,
+      idCell = 1;
+
+    if (sizeMap === "petit") {
+      cells = [
+        ["event", "Départ"],
+        ["brown", "Petite rue", [60, 2, 10, 30, 90, 160, 250, 30, 50]],
+        ["event", "challenge"],
+        ["brown", "Grande rue", [60, 4, 20, 60, 180, 320, 450, 30, 50]],
+        [
+          "gare",
+          "Gare du Sud",
+          [250, null, null, null, null, null, null, null, null],
+        ],
+        ["blue", "Rue de l'égalité", [100, 6, 30, 90, 270, 400, 550, 50, 50]],
+        ["event", "chance"],
+        ["blue", "Rue des halles", [100, 8, 40, 100, 300, 450, 600, 60, 50]],
+        ["event", "evenement"],
+        [
+          "pink",
+          "Rue Saint-Antoine",
+          [140, 10, 50, 150, 450, 625, 750, 70, 100],
+        ],
+        [
+          "service",
+          "Service de l'eau",
+          [200, null, null, null, null, null, null, null, null],
+        ],
+        [
+          "pink",
+          "Rue Saint-Martin",
+          [140, 12, 60, 180, 500, 700, 900, 80, 100],
+        ],
+        [
+          "gare",
+          "Gare du l'Ouest",
+          [250, null, null, null, null, null, null, null, null],
+        ],
+        ["orange", "Rue des Quais", [180, 14, 70, 200, 550, 750, 950, 90, 100]],
+        ["event", "chance"],
+        [
+          "orange",
+          "Rue du Square",
+          [180, 16, 80, 220, 600, 800, 1000, 100, 100],
+        ],
+        ["event", "evenement"],
+        [
+          "red",
+          "Rue de Provence",
+          [220, 18, 90, 250, 700, 875, 1050, 110, 150],
+        ],
+        ["event", "challenge"],
+        [
+          "red",
+          "Rue de Normandie",
+          [220, 20, 100, 300, 750, 925, 1100, 120, 150],
+        ],
+        [
+          "gare",
+          "Gare du Nord",
+          [250, null, null, null, null, null, null, null, null],
+        ],
+        [
+          "yellow",
+          "Rue de Merde",
+          [260, 22, 110, 330, 800, 975, 1150, 130, 150],
+        ],
+        ["event", "chance"],
+        [
+          "yellow",
+          "Rue de la Liberté",
+          [260, 24, 120, 360, 850, 1025, 1200, 140, 150],
+        ],
+        ["event", "evenement"],
+        [
+          "green",
+          "Rue des oliviers",
+          [300, 26, 130, 390, 900, 1100, 1275, 150, 200],
+        ],
+        [
+          "service",
+          "Service de l'elec",
+          [200, null, null, null, null, null, null, null, null],
+        ],
+        [
+          "green",
+          "Rue du chêne",
+          [300, 28, 150, 450, 1000, 1200, 1400, 160, 200],
+        ],
+        [
+          "gare",
+          "Gare de l'Est",
+          [250, null, null, null, null, null, null, null, null],
+        ],
+        [
+          "rgb(200,20,50)",
+          "Rue de la République",
+          [350, 35, 175, 500, 1100, 1300, 1500, 175, 200],
+        ],
+        ["event", "chance"],
+        [
+          "rgb(200,20,50)",
+          "Rue de la Révolte",
+          [350, 50, 200, 600, 1400, 1700, 2000, 200, 200],
+        ],
+      ];
+    } else if ((sizeMap = "normal")) {
+      cells = [
+        ["test", "1"],
+        ["test", "2"],
+        ["test", "3"],
+      ];
+    }
+
+    this.sizeMap = cells.length;
+
+    class Cell extends Component {
+      constructor(type, name, value) {
+        super();
+        this.type = type;
+        this.name = name;
+        this.owner = null;
+        this.house = 0;
+        this.value = {
+          cost: {
+            "0 h": value[1],
+            "1 h": value[2],
+            "2 h": value[3],
+            "3 h": value[4],
+            "4 h": value[5],
+            "5 h": value[6],
+          },
+          price: value[0],
+          mortage: value[7],
+          houseCost: value[8],
+        };
+      }
+
+      showCellInfo() {
+        let cellName = this.createDOMNode("infoboard", "p", "cell-name", null);
+        let cellOwner = this.createDOMNode(
+          "infoboard",
+          "p",
+          "cell-owner",
+          null
+        );
+        let cellCost = this.createDOMNode(
+          "infoboard",
+          "div",
+          "cell-cost",
+          null
+        );
+
+        cellName.innerText = `Case ${this.name}`;
+        if (this.type != "event") {
+          this.owner
+            ? (cellOwner.innerText = `Propiétaire Joueur ${this.owner}`)
+            : (cellOwner.innerText = "Aucun propriétaire");
+          let costInfoTxt = "";
+
+          for (const [key, value] of Object.entries(this.value.cost)) {
+            if (value != null) {
+              let txtValue = "";
+              parseInt(key[0]) === this.house
+                ? (txtValue = `<p><b>Loyer ${key[0]} maison : ${value} U </b></p>`)
+                : (txtValue = `<p>Loyer ${key[0]} maison : ${value} U </p>`);
+              costInfoTxt = costInfoTxt + txtValue;
+            }
+          }
+          cellCost.innerHTML = costInfoTxt;
+        }
+      }
+
+      hideCellInfo() {
+        document.getElementById("infoboard").innerHTML = "";
+      }
+    }
+
+    for (const data of cells) {
+      this.map[idCell] = new Cell(
+        data[0],
+        data[1],
+        data[2]
+          ? data[2]
+          : [null, null, null, null, null, null, null, null, null]
+      );
+      ;
+      idCell++;
+    }
+    this.createGameDOMStructure();
+his = this;
+	Graphisme.load();
+  }
+
+  createGameDOMStructure() {
+    this.createDOMNode(null, "div", "playerboard", null);
+    this.createDOMNode(null, "div", "actionboard", null);
+    this.createDOMNode(null, "div", "gameboard", null);
+    this.createDOMNode(null, "div", "infoboard", null);
+
+    for (const idCell in this.map) {
+      let currentCell = this.createDOMNode(
+        "gameboard",
+        "div",
+        `cell-${idCell}`,
+        "cellbase"
+      );
+      currentCell.innerHTML = `<p>${this.map[idCell].name}</p>`;
+
+      currentCell.addEventListener("mouseenter", (e) => {
+        this.map[idCell].showCellInfo();
+      });
+      currentCell.addEventListener("mouseleave", (e) => {
+        this.map[idCell].hideCellInfo();
+      });
+    }
+
+    const orderPlayEl = this.createDOMNode(
+      "playerboard",
+      "div",
+      "game-sense",
+      null
+    );
+    orderPlayEl.innerHTML = `<p>Sens de jeu :${this.senseOfPlay}</p>`;
+    const logAllEl = this.createDOMNode("playerboard", "div", null, null);
+    logAllEl.innerHTML = '<input type="text" row="21" id="DevsMode" required pattern="[0-9]{1,20}" value="0"/><br/><button id="DevsButton">load elements</button>';
+    document.getElementById("DevsButton").addEventListener("mouseup", (e) => {
+	if (document.getElementById("DevsMode").value == "test") {
+	
+	} else if (document.getElementById("DevsMode").value == "0") {
+		console.log(this.map);
+		console.log(this.players);
+	} else {
+      console.log(this.map[Number(document.getElementById("DevsMode").value)]);
+      console.log(this.players);
+	  }
+    });
+  }
+
+  createGameZone() {}
+
+  initialiseCards() {}
+
+  gameSenseHandler() {
+    for (let i = 0; i < this.nbPlayer; i++) {
+      this.senseOfPlay.push(i + 1);
+    }
+    randomise(this.senseOfPlay);
+    this.currentPlayerId = this.senseOfPlay[0];
+  }
+
+
+  turnHandler(firstTurn) {
+    if (firstTurn) {
+      return this.players[this.currentPlayerId].play();
+    }
+
+    let indexCurrentPlayer = this.senseOfPlay.indexOf(this.currentPlayerId);
+    indexCurrentPlayer === this.senseOfPlay.length - 1
+      ? (this.currentPlayerId = this.senseOfPlay[0])
+      : (this.currentPlayerId = this.senseOfPlay[indexCurrentPlayer + 1]);
+    this.players[this.currentPlayerId].play();
+  }
+  
+}
+
+class App {
+  static init() {
+
+Graphisme = graphismeLoad();
+ currentGame = new SetGame();
+  }
+}
+
+var his;
+
+
+
+		
+/*
+
+
+var socket;
+
+
+
+
+
+ if ("WebSocket" in window) {
+	  
+	 
+	 function Manivelle(ick) {
+
+	var dessinGeoJson = "socket" + "/" + ick;
+if (socket.bufferedAmount == 0) {
+
+	socket.send(dessinGeoJson, function(response){
+	
+});
+
+}
+
+}
+
+ }
+
+function socketL() {  
+
+ if ("WebSocket" in window) {
+               console.log("WebSocket is supported by your Browser!");
+socket = new WebSocket("ws://localhost:2424");
+
+console.log("web");
+
+socket.onerror=function (e) {
+console.log(e.toString());
+};
+socket.onclose=function (e) {
+
+};
+
+socket.onopen=function (event) {
+console.log("web socket");
+Manivelle("Page");
+};
+
+var xmlDoc;
+socket.onmessage=function (event) {
+   var st2 = document.getElementById("crits");
+document.head.removeChild(st2);
+//console.log(st2);
+var st = document.createElement('script');
+st.id = "crits";
+
+var codd = event.data.toString().replace('-_', '<').replace('_-', '>');
+var reader;
+  var text = codd;
+  const encoding = 'windows-1252'; // a.k.a ANSI
+
+  const utf8_blob = new Blob( [text], { endings: "native" } );
+  const utf_8_txt = utf8_blob.text();
+
+  const encoder = new TextEncoder(encoding, {
+    NONSTANDARD_allowLegacyEncoding: true
+  });
+  const data = encoder.encode(utf_8_txt); // now `data` is an Uint8Array
+  const encoded_as_ANSI = new Blob([data]);
+
+  const read_as_ANSI = readAsText(encoded_as_ANSI, encoding)
+  //console.log(read_as_ANSI);
+st.src = URL.createObjectURL(utf8_blob);
+ document.head.appendChild(st);
+ad = [];
+var setys = setInterval(prrt, 150);
+	
+	
+	function prrt() { clearInterval(setys); C(); }
+
+function readAsText(blob, encoding) {
+   reader = new FileReader(blob);
+     return reader;
+}
+  
+
+}
+}
+
+}
+function suite(th, lien) {
+	document.body.scrollTop = 0;
+document.documentElement.scrollTop = 0;
+	Manivelle(lien);
+}*/
+/*function C() { var choice = "Commencer#Recrutement";var texting = `
+<br/>
+<br/>** Introduction **
+<br/>
+<br/>
+<br/>Avant même que notre planète ne soit créée, dans ce même espace que nous habitons aujourd’hui, sur une planète magique plus tard remplacée par la nôtre, la vie existe. Mais pas seulement la vie, l’intelligence aussi a déjà fait son apparition. Des hommes, des elfes, des gnomes, des nains et toute autres créatures qui maintenant font partie de la fiction. Ces races créées par des dieux qui avaient fait de cette terre leur partie d’échecs.
+<br/>Plusieurs millénaires de vies simples et d‘évolutions. Mais la guerre suivait en même temps le chemin de chaque peuple. Déclarant bientôt la première Apocalypse, les dieux se livrèrent bataille, chacun voulant montrer à l’autre que leur race était supérieure… Les vainqueurs furent les elfes qui s’emparèrent du continent. Mais leur manque de fécondité fût la cause de leur défaite prochaine… Les humains étaient là.
+<br/>Un ordre mondial fût créé par le dieu suprême afin que l’équilibre du mal et du bien ne soit pas bouleversé : l’ordre des chevaliers du Sphinx, composé d‘êtres de toutes races. Mais malheureusement, les dieux et leurs idées de pouvoir, ne pensèrent ensuite qu’à s’approprier ces pions de choix. Car les chevaliers du Sphinx détenaient un pouvoir mystérieux.
+<br/>La deuxième apocalypse arriva, signant la destruction de la confrérie du sphinx.
+<br/>Nous nous retrouvons treize mille ans plus tard, à l’aube de la renaissance de l’ordre du Sphinx…
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+`;var ok = prog("page1-1", 1, (0.05*(texting.split("<br/>").length)));
+var ajoue = ok.cadreGeometry("Cadre");
+ajoue.changeCouleur("Cadre", "rgb(241,241,241)");
+ajoue.plusItem("item1", 10, 100-(texting.split("<br/>").length*3), 80, -20+(texting.split("<br/>").length*3));
+ajoue.changeCouleur("item1", "red");
+ajoue.definirClique("item1", "this*function_onclickItem(this, 'DIVitem1')");
+ajoue.definirContour("item1", "mouse*DIV030_rgba(50,50,50,1)_page1-1");
+ajoue.changeOrdre("item1", "230");
+var triag = "";
+for (var a = 0; a < choice.split("*").length; a++) {
+	triag += "<br/><button style='font-size: 38px; font-family: Helvetica;' onclick='suite(this, "+ '"' + choice.split("*")[a].split("#")[1] + '"' +")'>" + choice.split("*")[a].split("#")[0] + "</button>";
+}
+ajoue.utiliserHTML("item1", "<div style='font-size: 24px; font-family: Helvetica;' >" + texting + "</div><div style='position:fixed; bottom:0; right:50%'>" + triag + "</div>");
+ok.ajouterGeometry("page1-1", ajoue.GeoString());
+ var charge = ok.Activer(); 
+charge.ChargerPage("DIV030", "page1-1", false); 
+ok.autoZoom(false);
+charge.autoRedimention();
+document.getElementById("DIV7").click();}
+
+
+	
+	function onclickItem(element, graph) {
+					element = document.getElementById(graph);
+		var stringADD = element;
+element.style.fontSize = "16px";
+element.style.color = "red";
+element.style.display = "flex";
+  element.style.justifyContent= "center";
+  element.style.alignItems= "center";
+  element.style.border= "1pt solid white";
+element.onselectstart = "return false;";
+element.innerHTML = stringADD;
+	}
+	
+	*/
+	/*function C() { 
+
+
+
+
+
+
+var geoss = `{
+"type":"FeatureCollection",
+"name":"XML_doss",
+"crs":{"type":"name","utilisation":{"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}},
+"item":[
+{"type":"Feature","utilisation":{"id":"0","route":"null","couleur":"rgb(207,217,216)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.6325,43.9925],[4.6325,43.9925],[4.67342,43.9925],[4.67346,43.9913],[4.6703,43.99138],[4.66838,43.9913],[4.666460000000001,43.99146],[4.66542,43.9913],[4.663740000000001,43.99146],[4.6633000000000004,43.99134],[4.66322,43.99026],[4.660340000000001,43.9903],[4.66298,43.99038],[4.66282,43.99046],[4.66286,43.99058],[4.65646,43.9905],[4.65562,43.99058],[4.6555800000000005,43.99042],[4.65542,43.9905],[4.65522,43.99038],[4.659140000000001,43.9903],[4.6489400000000005,43.99026],[4.6489400000000005,43.990339999999996],[4.6513,43.99038],[4.64146,43.99058],[4.64086,43.99146],[4.64086,43.99138],[4.64106,43.99134],[4.64022,43.9913],[4.63894,43.99138],[4.6383,43.9913],[4.63422,43.99146],[4.63382,43.99138],[4.63366,43.99146],[4.63306,43.99138],[4.63298,43.99106],[4.632700000000001,43.99114],[4.6325,43.99102],[4.6325,43.9925],[4.64146,43.99154],[4.64146,43.99146],[4.64562,43.99146],[4.64146,43.99154],[4.6561,43.99154],[4.6561,43.99146],[4.66282,43.99146],[4.6561,43.99154],[4.65218,43.99122],[4.651940000000001,43.99098],[4.651940000000001,43.99114],[4.65186,43.99098],[4.6513800000000005,43.99114],[4.6513,43.990899999999996],[4.650980000000001,43.99106],[4.65122,43.99066],[4.65202,43.99074],[4.65306,43.99066],[4.65322,43.99066],[4.653700000000001,43.99074],[4.65402,43.99066],[4.65418,43.99074],[4.65434,43.99074],[4.65474,43.99058],[4.65474,43.99066],[4.65498,43.99074],[4.65522,43.99058],[4.65522,43.99066],[4.65538,43.99066],[4.65554,43.99098],[4.65458,43.990899999999996],[4.6545000000000005,43.99106],[4.654260000000001,43.99098],[4.654100000000001,43.99098],[4.65386,43.99106],[4.653700000000001,43.99106],[4.6535400000000005,43.99098],[4.653300000000001,43.99106],[4.6531400000000005,43.99106],[4.652900000000001,43.99098],[4.65258,43.99098],[4.6525,43.99114],[4.652340000000001,43.990899999999996],[4.65218,43.99122]]]}} , 
+{"type":"Feature","utilisation":{"id":"1","route":"null","couleur":"rgb(207,217,216)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.64174,43.990339999999996],[4.64174,43.990339999999996],[4.64658,43.9903],[4.64174,43.99026],[4.64174,43.990339999999996]]]}} , 
+{"type":"Feature","utilisation":{"id":"2","route":"null","couleur":"rgb(207,217,216)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.63286,43.98866],[4.63286,43.98866],[4.667260000000001,43.98858],[4.67346,43.98866],[4.67342,43.9849],[4.6325,43.9849],[4.6325,43.98854],[4.63278,43.98858],[4.63286,43.98866],[4.63618,43.9877],[4.63618,43.98666],[4.63586,43.98682],[4.6357,43.9869],[4.63602,43.98706],[4.635940000000001,43.98738],[4.635540000000001,43.9873],[4.6353,43.98698],[4.6353800000000005,43.98658],[4.63642,43.9865],[4.6365,43.98674],[4.63666,43.9865],[4.637300000000001,43.98674],[4.63746,43.9865],[4.63802,43.98666],[4.6381000000000006,43.9865],[4.63834,43.98658],[4.63858,43.98698],[4.63882,43.9865],[4.63922,43.98658],[4.63914,43.9873],[4.63874,43.98722],[4.63858,43.9873],[4.6381000000000006,43.98714],[4.63778,43.9873],[4.637300000000001,43.98706],[4.6371400000000005,43.9873],[4.636900000000001,43.98738],[4.63666,43.98722],[4.6365,43.98754],[4.63618,43.9877]]]}} , 
+{"type":"Feature","utilisation":{"id":"4","route":"null","couleur":"rgb(207,217,216)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.6325,43.95274],[4.6325,43.95274],[4.63886,43.95266],[4.6475,43.95274],[4.64782,43.95266],[4.65102,43.95274],[4.651260000000001,43.95266],[4.6631800000000005,43.95274],[4.66382,43.95266],[4.66446,43.95274],[4.665100000000001,43.95266],[4.667660000000001,43.95274],[4.6715,43.95266],[4.672140000000001,43.95274],[4.67326,43.95266],[4.67346,43.95274],[4.67342,43.95154],[4.6325,43.95154],[4.6325,43.95274]]]}} , 
+{"type":"Feature","utilisation":{"id":"5","route":"null","couleur":"rgb(0,1,1)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.64142,43.99154],[4.64142,43.99154],[4.64562,43.9915],[4.64142,43.99146],[4.64142,43.99154]]]}} , 
+{"type":"Feature","utilisation":{"id":"6","route":"null","couleur":"rgb(0,1,1)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.65606,43.99154],[4.65606,43.99154],[4.66282,43.9915],[4.65606,43.99146],[4.65606,43.99154]]]}} , 
+{"type":"Feature","utilisation":{"id":"30","route":"null","couleur":"rgb(207,217,216)","utiliser":"","contour":null,"Ordre":"7"},"geometry":{"type":"Polygon","coordinates":[[[4.63366,43.99146],[4.63366,43.99146],[4.63414,43.99138],[4.634860000000001,43.99146],[4.63886,43.9913],[4.640140000000001,43.99138],[4.64102,43.9913],[4.64102,43.99138],[4.640820000000001,43.99142],[4.641100000000001,43.99146],[4.64146,43.99138],[4.6513,43.99038],[4.648540000000001,43.99026],[4.64806,43.990339999999996],[4.64662,43.99026],[4.64174,43.990339999999996],[4.64174,43.99026],[4.6421,43.99022],[4.64174,43.99018],[4.6325,43.99026],[4.632700000000001,43.99114],[4.63298,43.99106],[4.63306,43.99138],[4.63366,43.99146]]]}} , 
+{"type":"Feature","utilisation":{"id":"8","route":"null","couleur":"rgb(0,1,1)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.66342,43.99146],[4.66342,43.99146],[4.66382,43.99138],[4.66574,43.9913],[4.66702,43.99146],[4.6683,43.99138],[4.6691,43.99146],[4.6691,43.99138],[4.668340000000001,43.99134],[4.6702200000000005,43.9913],[4.672140000000001,43.99138],[4.67346,43.9913],[4.67342,43.99026],[4.663340000000001,43.99026],[4.66054,43.99018],[4.66054,43.99026],[4.6631800000000005,43.99026],[4.66322,43.99062],[4.66342,43.99146]]]}} , 
+{"type":"Feature","utilisation":{"id":"9","route":"null","couleur":"rgb(0,1,1)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.65562,43.99058],[4.65562,43.99058],[4.66262,43.9905],[4.66286,43.99058],[4.66286,43.99042],[4.66298,43.99038],[4.6600600000000005,43.99026],[4.65942,43.990339999999996],[4.65918,43.99026],[4.65522,43.99038],[4.6555,43.9905],[4.65562,43.99046],[4.65562,43.99058]]]}} , 
+{"type":"Feature","utilisation":{"id":"10","route":"null","couleur":"rgb(0,1,1)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.65078,43.99026],[4.65078,43.99026],[4.65658,43.99022],[4.65078,43.99018],[4.65078,43.99026]]]}} , 
+{"type":"Feature","utilisation":{"id":"11","route":"null","couleur":"rgb(0,1,1)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.6364600000000005,43.98866],[4.6364600000000005,43.98866],[4.6673,43.98862],[4.6364600000000005,43.98858],[4.6364600000000005,43.98866]]]}} , 
+{"type":"Feature","utilisation":{"id":"12","route":"null","couleur":"rgb(0,1,1)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.666860000000001,43.97978],[4.666860000000001,43.97978],[4.66962,43.97974],[4.666860000000001,43.9797],[4.666860000000001,43.97978]]]}} , 
+{"type":"Feature","utilisation":{"id":"13","route":"null","couleur":"rgb(0,1,1)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.633900000000001,43.97434],[4.633900000000001,43.97434],[4.63762,43.9743],[4.633900000000001,43.97426],[4.633900000000001,43.97434]]]}} , 
+{"type":"Feature","utilisation":{"id":"14","route":"null","couleur":"LoadImage~q['canvases-2022-03-16T151500291png']","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.649100000000001,43.97434],[4.649100000000001,43.97434],[4.652340000000001,43.9743],[4.649100000000001,43.97426],[4.649100000000001,43.97434]]]}} , 
+{"type":"Feature","utilisation":{"id":"15","route":"null","couleur":"rgb(0,1,1)","utiliser":"LES GARDIENS D'HYLZaNDRE","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.64342,43.9721],[4.64342,43.9721],[4.66206,43.97202],[4.6623,43.9721],[4.66242,43.9699],[4.64534,43.96978],[4.64534,43.96986],[4.6469000000000005,43.9699],[4.64618,43.97006],[4.64634,43.9701],[4.64646,43.97026],[4.64654,43.97042],[4.64634,43.97078],[4.6465000000000005,43.97078],[4.6463,43.9709],[4.6459,43.971379999999996],[4.64578,43.97142],[4.64594,43.9717],[4.6469000000000005,43.97198],[4.64342,43.9721]]]}} , 
+{"type":"Feature","utilisation":{"id":"16","route":"null","couleur":"rgb(0,1,1)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.634180000000001,43.9717],[4.634180000000001,43.9717],[4.63438,43.97162],[4.63454,43.9717],[4.6347000000000005,43.9717],[4.63494,43.97162],[4.6351,43.97162],[4.635260000000001,43.9717],[4.6355,43.97162],[4.635660000000001,43.9717],[4.6359,43.97162],[4.6361,43.97158],[4.63598,43.971379999999996],[4.6355,43.971379999999996],[4.6353800000000005,43.9715],[4.6353,43.9715],[4.63494,43.971379999999996],[4.63478,43.971379999999996],[4.63442,43.97142],[4.634580000000001,43.9715],[4.63434,43.97154],[4.634180000000001,43.971379999999996],[4.634180000000001,43.9717]]]}} , 
+{"type":"Feature","utilisation":{"id":"17","route":"null","couleur":"rgb(0,1,1)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.63382,43.97162],[4.63382,43.97162],[4.63386,43.96978],[4.6340200000000005,43.96974],[4.633900000000001,43.9697],[4.63382,43.97162]]]}} , 
+{"type":"Feature","utilisation":{"id":"18","route":"null","couleur":"rgb(0,1,1)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.66246,43.96898],[4.66246,43.96898],[4.6625000000000005,43.96518],[4.66242,43.96518],[4.66246,43.96898]]]}} , 
+{"type":"Feature","utilisation":{"id":"19","route":"null","couleur":"rgb(0,1,1)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.633900000000001,43.96514],[4.633900000000001,43.96514],[4.66162,43.9651],[4.633900000000001,43.96506],[4.633900000000001,43.96514]]]}} , 
+{"type":"Feature","utilisation":{"id":"20","route":"null","couleur":"rgb(0,1,1)","utiliser":"<div>button</div>","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.6635800000000005,43.96514],[4.6635800000000005,43.96514],[4.67346,43.9651],[4.6635800000000005,43.96506],[4.6635800000000005,43.96514]]]}} , 
+{"type":"Feature","utilisation":{"id":"21","route":"null","couleur":"rgb(0,1,1)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.633900000000001,43.96442],[4.633900000000001,43.96442],[4.63858,43.96438],[4.633900000000001,43.96434],[4.633900000000001,43.96442]]]}} , 
+{"type":"Feature","utilisation":{"id":"22","route":"null","couleur":"rgb(0,1,1)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.64038,43.96442],[4.64038,43.96442],[4.66226,43.96438],[4.64038,43.96434],[4.64038,43.96442]]]}} , 
+{"type":"Feature","utilisation":{"id":"23","route":"null","couleur":"rgb(0,1,1)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.66246,43.96442],[4.66246,43.96442],[4.6625000000000005,43.95958],[4.66242,43.95958],[4.66246,43.96442]]]}} , 
+{"type":"Feature","utilisation":{"id":"24","route":"null","couleur":"rgb(0,1,1)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.6631800000000005,43.95922],[4.6631800000000005,43.95922],[4.66322,43.95582],[4.6623,43.9557],[4.6623,43.95578],[4.66314,43.95582],[4.6631800000000005,43.95922]]]}} , 
+{"type":"Feature","utilisation":{"id":"25","route":"null","couleur":"rgb(0,1,1)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.633900000000001,43.9569],[4.633900000000001,43.9569],[4.653020000000001,43.95682],[4.65334,43.95682],[4.66194,43.95678],[4.66066,43.95666],[4.66118,43.9565],[4.66118,43.95642],[4.66098,43.9563],[4.66078,43.95594],[4.66066,43.956179999999996],[4.65878,43.95586],[4.65862,43.95594],[4.65814,43.95578],[4.65766,43.95586],[4.65742,43.95578],[4.63318,43.9557],[4.63318,43.95578],[4.63386,43.9559],[4.633780000000001,43.95678],[4.633900000000001,43.9569]]]}} , 
+{"type":"Feature","utilisation":{"id":"26","route":"null","couleur":"rgb(0,1,1)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.6325,43.95346],[4.6325,43.95346],[4.63278,43.95338],[4.6329400000000005,43.95346],[4.64686,43.95338],[4.6471800000000005,43.95346],[4.64886,43.95338],[4.649100000000001,43.95346],[4.67346,43.95338],[4.6733400000000005,43.95274],[4.67222,43.95266],[4.6715800000000005,43.95274],[4.66774,43.95266],[4.66518,43.95274],[4.664540000000001,43.95266],[4.6639,43.95274],[4.66326,43.95266],[4.65134,43.95274],[4.6511000000000005,43.95266],[4.6479,43.95274],[4.6475800000000005,43.95266],[4.63894,43.95274],[4.6383,43.95266],[4.6325,43.95274],[4.6325,43.95346]]]}} , 
+{"type":"Feature","utilisation":{"id":"27","route":"null","couleur":"rgb(0,0,0)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.650980000000001,43.99106],[4.650980000000001,43.99106],[4.65122,43.99094],[4.651260000000001,43.99082],[4.6513,43.99098],[4.6519,43.99106],[4.6520600000000005,43.99082],[4.6521,43.99106],[4.65226,43.99074],[4.651660000000001,43.99082],[4.6515,43.99074],[4.65134,43.99074],[4.650980000000001,43.99094],[4.650980000000001,43.99106]]]}} , 
+{"type":"Feature","utilisation":{"id":"28","route":"null","couleur":"rgb(0,0,0)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.65346,43.99098],[4.65346,43.99098],[4.653700000000001,43.99094],[4.65366,43.99082],[4.6545000000000005,43.99098],[4.65454,43.99082],[4.65458,43.99098],[4.65486,43.990899999999996],[4.6551,43.99098],[4.65554,43.99086],[4.65538,43.99074],[4.655340000000001,43.990899999999996],[4.6553,43.99074],[4.65502,43.99082],[4.65346,43.99074],[4.65346,43.99098]]]}} , 
+{"type":"Feature","utilisation":{"id":"7","route":"replace_socket_Intro","couleur":"#ff0000","utiliser":"<button>lancer le livre</button>","contour":null,"Ordre":"150"},"geometry":{"type":"Polygon","coordinates":[[[4.6325,43.99026],[4.6325,43.99026],[4.64206,43.99018],[4.6489400000000005,43.99026],[4.65062,43.99018],[4.65078,43.99018],[4.6604600000000005,43.99026],[4.66326,43.99018],[4.67346,43.99026],[4.67342,43.98866],[4.6325,43.98866],[4.6325,43.99026]]]}} , 
+{"type":"Feature","utilisation":{"id":"34","route":"null","couleur":"rgb(0,0,0)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.63678,43.9873],[4.63678,43.9873],[4.6371400000000005,43.98718],[4.63718,43.98698],[4.63766,43.9873],[4.63794,43.98722],[4.63806,43.98698],[4.6381000000000006,43.9873],[4.6387,43.98714],[4.63902,43.9873],[4.63922,43.98722],[4.6391,43.98706],[4.63894,43.98714],[4.63902,43.98698],[4.63922,43.98686],[4.6391,43.98658],[4.63894,43.9865],[4.638660000000001,43.9867],[4.63858,43.98706],[4.63834,43.98662],[4.6381000000000006,43.98662],[4.63806,43.98674],[4.6375,43.9865],[4.6371400000000005,43.98674],[4.637020000000001,43.98658],[4.6367,43.9865],[4.6365,43.9871],[4.63678,43.9873]]]}} , 
+{"type":"Feature","utilisation":{"id":"31","route":"null","couleur":"#ffe5e5","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.6325,43.9849],[4.6325,43.9849],[4.67342,43.9849],[4.67346,43.97978],[4.63306,43.97978],[4.63306,43.9557],[4.6622200000000005,43.95578],[4.6631,43.9557],[4.66322,43.96442],[4.67346,43.9643],[4.67346,43.95338],[4.64918,43.95338],[4.6489400000000005,43.95346],[4.64726,43.95338],[4.64694,43.95346],[4.63302,43.95338],[4.63286,43.95346],[4.632700000000001,43.95338],[4.6325,43.95346],[4.6325,43.9849]]]}} , 
+{"type":"Feature","utilisation":{"id":"32","route":"null","couleur":"rgb(0,0,0)","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.633780000000001,43.97922],[4.633780000000001,43.97922],[4.66246,43.97922],[4.6625000000000005,43.97462],[4.66242,43.97434],[4.63382,43.97434],[4.633780000000001,43.97922]]]}} , 
+{"type":"Feature","utilisation":{"id":"030","route":"null","couleur":"LoadImage~q['canvases-2022-03-16T151500291png']","utiliser":"","contour":null,"Ordre":"200"},"geometry":{"type":"Polygon","coordinates":[[[4.66422,43.97922],[4.66422,43.97922],[4.66574,43.97914],[4.67302,43.97922],[4.67346,43.97914],[4.67346,43.96514],[4.6635800000000005,43.96514],[4.663340000000001,43.96506],[4.66322,43.97914],[4.66422,43.97922]]]}}
+]}`;
+
+var ok = prog("page1", 1, 0.15);
+var cool = JSON.parse(geoss);
+geoss = JSON.stringify(cool);
+ok.ajouterGeometry("page1", geoss);
+
+var charge = ok.Activer();
+
+
+charge.ChargerPage("page1", "page1", true, true); 
+ 
+document.getElementById("DIV7").click();
+
+}*/
+/*function C() { var choice = "Phaze#Explication";var texting = `
+<br/>
+<br/>** Recrutement du sud **
+<br/>
+<br/>
+<br/>
+<br/>Dans la ville d’Alvi’ndra, dans le sud de l'Empire du Sphinx, tous les enfants rêvent de devenir chevaliers au château impérial où réside le comte, mais préfèreraient par-dessus tout devenir chevaliers dans la citée impériale où vit l'empereur. C'est dans Alvi’ndra que Xalendan a vu le jour. Il est le fils cadet du forgeron et la forge ne lui plait point, au grand désarroi de son père*. Ce dont il rêve : c'est la chevalerie. C’est son but dans la vie, sa raison de vivre.
+<br/>Il a des cheveux châtains mal coiffé et les yeux noirs de la nuit. Ce garçon a toujours voulu voir le monde extérieur, oui, Xalendan n’est jamais sorti de sa région. Tous les ans, il regarde partir les quelques nouveaux chevaliers choisis pour aller à la citée impériale avec envi. Il s’est juré que lui aussi partirait quand il aurait réussi à convaincre son père qui lui refuse avec opiniâtreté son départ. Ce jour-là, la veille de ses dix-sept ans, alors qu'il part pour livrer des outils à une ferme à l'extérieur de la ville ; Xalendan se retrouve face au fils du boucher, un gros personnage qui se vante toujours de ses avantages.
+<br/>     -   Tu vas encore rester ici alors que moi, je serai choisi pour être chevalier, se vanta celui-ci en levant la tête.
+<br/>     -   Tu as eu la permission de ton père, se renfrogna Xalendan
+<br/>     -  Non, c'est ma mère qui l’eu forcé, elle ne voulait pas que je devienne un vulgaire boucher. Ah ! Mais j'oublie, ta mère est morte, quelle perte pour toi et ton frère...
+<br/>Le garçon regarda le vantard droit dans les yeux d'un air menaçant. Celui-ci allait poursuivre mais Xalendan l'interrompit, plus menaçant :
+<br/>     -   Tais- toi Jules !! Ou je te fais manger les semelles de tes chaussures !
+<br/> Le fils du forgeron détestait que l'on parle de sa mère, maintenant dans l‘autre monde… Cela faisait maintenant cinq ans, ses vêtements avaient été retrouvés en bas d’une haute falaise dans une mare de sang. Elle était tombée.
+<br/>     -   Tu crois que j'ai peur de toi, viens plutôt te présenter au recruteur ! railla le fils du boucher.
+<br/>     -   On verra celui de nous deux qui vaincra ! défia-t-il, énervé.
+<br/>     -   Alors à demain, espèce de bon à rien !
+<br/>Jules s’éloigna d’un pas fier, content de s’être moqué du jeune homme.
+<br/>Xalendan finit son travail et rentra chez lui.
+<br/>Il se dépêcha de préparer ses affaires avant que son père ne revienne du travail. C’était à lui de prendre les décisions pour son avenir ! Il était décidé à désobéir à son père.
+<br/>Le lendemain, il se leva très tôt, avant tout le monde, et partit se présenter devant le recruteur. Il attendit deux heures, avec l'angoisse que son père le retrouve.  
+<br/>Le chevalier chargé du recrutement arrive enfin et jauge en un regard le monde qui l'attend : il y a une bonne cinquantaine de personnes. Autant dire qu’il y avait de la concurrence. Mais ce nombre ne surprit guère le garçon qui connaissait le rêve de tous les enfants. L'homme les emmena sur la place du village et monta sur une estrade qu’il créa avec la magie. Il commença enfin, après une
+<br/>
+<br/>* Dans ce monde, les enfants sont destinés à faire le métier que font leurs parents. Ainsi, Xalendan doit devenir forgeron selon la tradition.
+<br/>
+<br/>courte attente :
+<br/>     -   Le métier de chevalier est un métier où l'on fait passer les autres avants soi, où l'on est solidaire et où meurent facilement les incompétents, où la peur de mourir n'existe pas, où le devoir ne s'arrête que dans la mort, où la souffrance est mirage et le désespoir une illusion. Mais avant toute chose, que ceux qui sont magiciens s'approchent.
+<br/> Personne ne bouge... Xalendan était surprit de cette demande, pour lui, la magie faisait partie de l‘infaisable pour des gens normaux. (D’autre part, jamais Xalendan n’avait entendu un recruteur demander une telle chose, les années auparavant). Et dans cette ville, à part le comte et sa cour, il n’existait aucun bourgeois capable de prendre des cours de magie.
+<br/>     -   Cela ne m'étonne pas, très rares sont ceux qui connaissent la magie, lança le recruteur. Très bien, mettez vous les uns derrière les autres.
+<br/> Ce fut dans un brouhaha énorme que tout le monde s'exécuta.  Xalendan, lui, resta à l'écart.
+<br/>     -  Toi aussi, allez ! ordonna le chevalier à Xalendan, à moins que tu ne viennes que pour observer ?
+<br/>     -   A quoi bon se bousculer, se pousser : que l'on soit devant ou derrière, on passera tous, répondit celui-ci. De plus, logiquement les premiers devront quand même attendre que vous finissiez de vous entretenir avec les derniers.
+<br/> Un sourire franc se dessina sur le visage du recruteur qui salua respectueusement son état d‘esprit.
+<br/>Après une longue attente, le recruteur lui fit enfin signe de rentrer dans la tente. C’est normalement là que le candidat est interrogé par le chevalier. Un sourire s'installa sur le visage de l’homme quand l’adolescent de dix sept ans pénétra dans sa tente. Il lui demanda d’abord son nom, puis son prénom, puis la profession de son père, enfin le nombre de frères et sœurs et sa situation familiale.
+<br/>      -    Pourquoi veux-tu devenir chevalier ? lui demanda enfin le recruteur.
+<br/> Xalendan fronça lentement les sourcils, c’était une question qu’il ne fallait pas prendre à la légère.
+<br/>      -    Je rêve de le devenir depuis très longtemps, monsieur. Une fois, des chevaliers sont venus et ont fait la démonstration de l’art de l’épée puis ils ont montré quelque sort magique ; cela m'a tout de suite intéressé et je me suis promis de devenir chevalier, répondit-il d’un trait.
+<br/>      -    Hum… Et quel âge as tu ?
+<br/>      -    J’ai dix sept ans aujourd’hui monsieur.
+<br/> Le recruteur ferma les yeux, on aurait dit qu’il cherchait quelque chose.
+<br/>-	Très bien, tu peux disposer… Et bon anniversaire ! lança-t-il finalement.
+<br/> Il attendit le recruteur à l’extérieur de la tente avec les autres jeunes candidats qui s’impatientaient. Seuls dix sont sélectionnés pour l’exercice à l’épée choisit par le recruteur. Parmi eux, Xalendan et le fils du boucher.
+<br/>-	Je vais faire des groupes de deux, tiens ! Xalendan et Jules par exemple, proposa le   chevalier.
+<br/> On décrit un cercle autour d’eux et on leur tendit une épée. Le garçon était tellement excité, il n’aurait pas pu rêver d’un meilleur adversaire.
+<br/>-	Vous vous êtes déjà battus à l’épée ?
+<br/>-	Non, répondirent les concurrents d‘une même voix.
+<br/>      -	Très bien, c’est parti !
+<br/> Xalendan soulève son épée, elle pèse une tonne... mais il dévie l’offensive ennemie d’un coup vers la droite.
+<br/>Il a l’impression d’en avoir fait toute sa vie.  Malgré ses quelques maladresses, il exécute des enchaînements de plus en plus complexes qui sortent tous seuls. Son adversaire s’épuise et pour mettre fin à l’affrontement, Xalendan frappe l’épée de Jules latéralement. Ainsi, il le désarme puis porte son épée au cou de son adversaire. Quelques secondes passent…
+<br/>-	Très bien, dit le chevalier recruteur. Xalendan, viens par ici.
+<br/> Le garçon lança un regard de défi à Jules puis s'exécuta. Le chevalier dévisagea avec un léger sourire l’enfant avant de lui mettre ses doigts sur les tempes. Une minute s’écoula.
+<br/>-	Tu es sélectionné, affirma le chevalier en retirant ses doigts.
+<br/>-	Yata* !! s’écria l’adolescent.
+<br/>-	Tu n’as pas dit à ton père que tu venais, dit le chevalier.
+<br/>Sans attendre de réponse il continua :
+<br/>      -    J’irai lui parler, va te reposer.
+<br/>-	Merci monsieur.
+<br/>      -	Tu n’as plus besoin de m’appeler monsieur, tu peux m’appeler Kevin, tu es mon égal à présent*.
+<br/>-	Bien monsi…Kevin
+<br/>-	Nous partons demain pour la cité impériale !
+<br/>-	Euh… à demain alors…
+<br/> Tout s’était déroulé très vite, Xalendan avait encore du mal à réaliser… Il venait de changer sa vie, en quelques heures !…
+<br/>Le soir, il alla vers la maison pour dire adieu à son père et à son frère…
+<br/>-	Je savais que tu y arriverais. Je suis fier de toi, mon fils, lâcha son père.
+<br/>-	Merci père… Tu n’es pas fâché ? s’étonna Xalendan un peu inquiet.
+<br/>-	Fâché contre son fils qui réalise son vœu, non… répondit son père avec un sourire forcé. Une
+<br/>vraie tête de mule ! Tu me fais un peu penser à moi dans mon jeune âge…
+<br/> La soirée se passa avec une petite fête d’adieu improvisée, organisée par son frère et son père.
+<br/>Le lendemain arriva vite. Il partit de sa maison le cœur serré avec Kevin.
+<br/>-	Pourquoi n’y a-t-il que moi de recruté, demanda Xalendan qui se souvenait des années précédentes.
+<br/>-	Le chef nous a demandé de ne prendre au maximum qu'une personne cette année, sinon... On va tout t’expliquer lorsque nous arriverons à la cité, lui répondit le chevalier.
+<br/>
+<br/>*C’est un mot du patois d’Alvi’ndra, qui signifie littéralement : « youpi ».
+<br/>
+<br/>*Dés lors que le recruteur a dit qu’il était choisi chevalier, Xalendan en est un. Il n’y a pas d’épée de monarque que l’on pose sur l’épaule comme au moyen âge et le roi n’a point besoin de réciter des paroles. Il n’y a pas non plus de grade, on est un chevalier et point final. Sauf le maître des chevaliers qui est en fait le seul et unique chef. Le rang d’un chevalier se fait par ses titres, c'est-à-dire par le mérite des quêtes qu’ils accomplissent.
+<br/>
+<br/>          
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>                               
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>3.
+<br/>
+<br/>** Recrutement de l’est **
+<br/>
+<br/>
+<br/>
+<br/>-	Bonjour, dit le recruteur d’Aliga devant la soixantaine d’enfants d’âges divers.
+<br/>-	Bonjour, répondirent en cœur les concurrents.
+<br/>Parmi eux, Jasson, aux longs cheveux clairs et aux yeux bleus gris, un adolescent de 16 ans à l’esprit imaginatif, espiègle et joueur. Il a, depuis son enfance, le don de la lévitation et de la guérison. Bien qu’il ne le maîtrise pas, il a plusieurs fois guéri ses écorchures lui-même et a soigné la jambe de son père quand celui-ci s'est enfoncé très profondément une fourche dans le mollet. Son père et sa mère sont des fermiers. Ils lui ont permis de devenir chevalier et ainsi de réaliser son rêve. Son père espère qu’il sorte ainsi de la pauvreté, ainsi qu’il a toujours dis : « comme ceux-là ».
+<br/>Il arrive à soulever des objets légers sans les toucher et s’entraîne pour le faire avec des objets plus lourds. Quand le recruteur demande aux enfants magiciens de s’avancer, seul Jasson s’avance, à sa grande surprise.
+<br/>-	Que sais-tu faire, jeune homme, demanda le chevalier recruteur.
+<br/>-	Je sais soulever des objets sans les toucher et guérir les écorchures, monsieur.
+<br/>Le ton de fierté dans la voix de l'adolescent fit froncer les sourcils du recruteur :
+<br/>-	Montre-moi, soulève ce caillou sans le toucher !
+<br/>A la grande stupéfaction de la foule, Jasson s’exécuta et le caillou se leva faiblement. Le chevalier lui demanda s’il contrôlait ses pouvoirs et l’adolescent lui répondit que non, qu’il exécutait sans vraiment savoir comment s'opèrent les charmes magiques de guérison et de lévitation.
+<br/>      -    Bien, tu me raconteras tout cela dans la tente, tout le monde en rang ! ordonna le recruteur.
+<br/>Jasson entra dans la tente après un long moment et répondit aux questions diverses que posait le recruteur. Finalement, le chevalier soupira et il lui posa ses doigts aux tempes.
+<br/>-	Tu as de grandes qualités mais je vois aussi beaucoup d’indiscipline dans ta tête, dit-il.
+<br/>L’adolescent rougit.
+<br/>-	Serais tu prêt à devenir un enfant sérieux pour devenir chevalier ? demanda le recruteur.
+<br/>-	Oui ! Je serais prêt à tout pour le devenir, s’exclama joyeusement le candidat.
+<br/>-	Et bien, tu es maintenant un chevalier.
+<br/>-	Quoi ! s'exclama Jasson fou de joie.
+<br/>Sa seule crainte était d’avoir mal entendu.
+<br/>-	Tu es chevalier, répéta le chevalier avec un demi-sourire.
+<br/>Après l'éclatement de ses émotions pour sa victoire, le chevalier Jasson alla raconter son exploit à son père et sa mère qui le félicitèrent, malgré leur tristesse*.  Le lendemain, il partit les larmes aux yeux en sachant qu’il ne reverrait plus sa famille de sitôt. Ses larmes séchées, il demanda au recruteur :
+<br/>-	Pourquoi n’y a-t-il que moi de recruté ?
+<br/>-	Le chef nous a demandé de ne prendre maximum qu'une personne, lui répondit-il
+<br/>simplement.
+<br/>
+<br/>*Les chevaliers sont malheureusement contraints à ne plus revoir leur famille.
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>4.
+<br/>
+<br/>** Recrutement de l’ouest  **
+<br/>
+<br/>
+<br/>
+<br/>Dans la ville de Layad, un garçon de dix sept ans part pour la chasse. Sa vie va être changée à  jamais. Fils d’un marchand, Selestan aime l’aventure, le danger et les défis. Il est assez grand, a de longs cheveux bruns et des yeux marron clairs. Il aurait aimé devenir chevalier, mais il n’y a pas de recruteur qui vient dans la ville cette année. 
+<br/>« Le chef des chevaliers recrute de moins en moins » dit la rumeur. « Les recruteurs n’iront que dans les villes choisies par l'empereur. » Le jeune homme devra donc attendre l’année prochaine, en espérant que la caravane de marchandises de son père soit dans une grande ville à ce moment là.
+<br/>Selestan est d’une adresse incomparable dans le maniement de l’arc, c’est ce qui l’a conduit à être chasseur à gages avant de continuer dans une autre voie. Il poursuit sa proie... Un énorme sanglier... Jusqu'à la route... L’animal a déjà traversé quand il décide de tendre l’arc.
+<br/>-	Laisse-moi passer, ne tire pas, dit un homme à cheval.
+<br/>« Si je ne tire pas, je perds ma proie et devrais rentrer les mains vides », cette idée lui était insupportable. Alors, ignorant les paroles de l’homme, Selestan tira…
+<br/>La flèche frôla de très près la tête de l’homme qui esquissa un cri de surprise ; la flèche atteignit sa cible avec une puissance incroyable et le sanglier, qui se trouvait à quarante mètres du jeune chasseur, s’écroula.
+<br/>Selestan regarda alors l’homme en le défiant.
+<br/>-	Chevalier William, recruteur, dit l’homme d’un ton calme.
+<br/>-	Qu….quo…balbutia Selestan embarrassé, il pouvait dire adieu à ses ambitions de chevalier.
+<br/>-	Tu as déjà pensé à devenir chevalier ? demanda le recruteur comme s’il avait lu dans ses
+<br/>pensées.
+<br/> Il fût surpris par la question.
+<br/>-	Oui, monsieur, répondit le jeune homme en rougissant, mais il n’y avait pas de recruteur
+<br/>dans la ville, cette année.
+<br/>-	Et moi, il n’y avait pas de concurrents assez qualifiés, soupira le chevalier recruteur. Mais toi
+<br/>tu as l’air parfait, viens par ici.
+<br/> Selestan s’approcha et le chevalier lui mit ses doigts sur les tempes.
+<br/>-	Tu es qualifié ! s’écria le chevalier recruteur joyeusement.
+<br/> Si rapidement ! Les recrutés devaient habituellement faire un ou plusieurs tests avant d’être choisis.
+<br/>-	Que je deviens…. c'est, c'est... je vais aller préparer mes affaires et en informer mes parents.
+<br/>-	Va, nous partons demain, rendez-vous ici à  neuf heures du matin.
+<br/> Quand il en informa sa famille, elle parut satisfaite et heureuse, malgré leur tristesse qu'ils cachèrent rapidement pour laisser la fierté les envahir*. Le lendemain, il partit donc en compagnie de William et demanda :     
+<br/>-	Pourquoi n’allez-vous pas dans d’autres villes pour recruter ?
+<br/>      -	C'est à cause du chef, il n'a plus vraiment besoin de nouveaux chevaliers... Une bonne cinquantaine lui suffira, répondit-il.
+<br/>
+<br/>*Les parents acceptent généralement que leur fils devienne chevalier, car cela permet à celui-ci de sortir du bas peuple.
+<br/>
+<br/>          5.
+<br/>
+<br/>** Recrutement du nord  **
+<br/>
+<br/>
+<br/>
+<br/> Chloé, une fille de taille moyenne, aux longs cheveux bruns étincelants, aux yeux verts émeraude et à la peau douce comme des pétales de roses, âgée de 16 ans. C’est la fille légitime du comte de Colto, une ville du royaume de Zerande. Elle attend avec impatience l’arrivée du mystérieux recruteur venu du pays allié voisin. Douce et têtue, aussi turbulente que sage, cette fille a un mystérieux don pour la magie. Avec son esprit réaliste, elle n’arrive jamais à expliquer ses actions magiques incontrôlées. Quand un grand homme étranger entra dans les fortifications, tout le monde se tourna vers lui, avec l’espoir que ce soit le chevalier.
+<br/>-	Bonjour à tous, dit l’homme, je suis le recruteur de chevaliers.
+<br/>-	NON !! dit un homme avec exactement le même physique qui entrait en courant, c’est un
+<br/>imposteur !
+<br/>-	Argh !! Ce foutu a réussi à se libè…
+<br/> Mais avant qu’il ait pu finir sa phrase, l’homme reçut une décharge électrique envoyée par son sosie, ce sortilège révéla le vrai visage du faux recruteur.
+<br/>-	Un mage noir !! s’exclama le vrai recruteur.
+<br/> Le mage noir se retourna vers son adversaire et lui lança une boule de feu qui envoya valser le chevalier trois mètres plus loin. Celui-ci riposta avec un éclair étincelant qui sortit de sa paume, le mage se défendit à l’aide d’un bouclier invisible. Une épée magique apparut dans les mains du mage qui s’apprêtait à achever son ennemi. Alors, les mains de Chloé se levèrent toutes seules et une onde de choc frappa le bouclier invisible du mage noir. Celui-ci se tourna vers elle et Chloé sentit ses paumes lui brûler quand elle envoya une deuxième onde de choc qui brisa le bouclier du mage, celui-ci eut à peine le temps de se téléporter avant que l’onde de Chloé ne le frappe. Avec l’énorme quantité d’énergie qu'elle avait utilisée, Chloé s’évanouit…
+<br/>Quand elle se réveilla elle était sur son lit, son père à ses cotés qui marmonnait des choses incompréhensives. Un homme barbu de petite taille : le comte de Colto.
+<br/>-	Doucement, s’écria le père en la voyant lever la tête, tu as peut être fais l’objet d’un sortilège
+<br/>maléfique !
+<br/>-	Non père, je me sens très bien ! répliqua-t-elle sèchement.
+<br/> Chloé déteste quand on la traite comme une enfant gâtée ou qu’on la pouponne, elle déteste les flatteries et les compliments quand ils sont dits en l’air ou pour faire plaisir !
+<br/>-	Reste au lit, tu es fatiguée. S’il te plait, la supplia son père.
+<br/>-	Non, je dois être candidate, je veux devenir chevalier !
+<br/>-	Mais tu l’es déjà, dit calmement le recruteur qu’elle n’avait pas remarqué au coin de la pièce.
+<br/> Ce dernier  mit ses doigts sur les tempes de Chloé et dit :
+<br/>-	Tu nous as fait une belle démonstration de tes pouvoirs, certes non contrôlés, mais puissants.
+<br/>Tu es élue chevalier !
+<br/>-	Me… Merci, dit Chloé qui ne savait pas vraiment comment réagir à cette soudaine
+<br/>révélation. Elle était chevalier, enfin…
+<br/>-	Demain, nous partons pour la cité impériale ! dit joyeusement le recruteur.
+<br/>Quand l’homme partit, elle regarda son père qui pleurait.
+<br/>-	Ma fille va être chevalier, elle va peut-être mourir, tuée par un démon venu du dieu noir de la
+<br/>nécromancie, de l'enfer et du fe...
+<br/>-	Tais-toi père ! Où je te lance un sort ! lança-t-elle, bien qu'elle connaisse très bien la paranoïa
+<br/>de l'homme.
+<br/> Chloé est une fille autoritaire et à fort caractère, alors, son père ne dit mot et partit de la chambre…
+<br/>Le lendemain, elle quitta la ville en compagnie du recruteur et s’étonna d’être seule.
+<br/>-	Pourquoi suis-je la seule recrutée, demanda alors Chloé
+<br/>-	Le chef ne voulait pas plus d'une personne par recruteur, répondit le chevalier, soucieux de la
+<br/>réaction de la fille à fort caractère.
+<br/>-	D'accord, dit simplement la nouvelle chevalière.
+<br/>Le recruteur se détendit.
+<br/>
+<br/>        
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+`;var ok = prog("page1-1", 1, (0.05*(texting.split("<br/>").length)));
+var ajoue = ok.cadreGeometry("Cadre");
+ajoue.changeCouleur("Cadre", "rgb(241,241,241)");
+ajoue.plusItem("item1", 10, 100-(texting.split("<br/>").length*3), 80, -20+(texting.split("<br/>").length*3));
+ajoue.changeCouleur("item1", "white"); 
+ajoue.definirContour("item1", "mouse*030_rgba(50,50,50,1)_page1-1");
+ajoue.changeOrdre("item1", "160");
+var triag = "";
+for (var a = 0; a < choice.split("*").length; a++) {
+	triag += "<br/><button style='font-size: 38px; font-family: Helvetica;' onclick='suite(this, "+ '"' + choice.split("*")[a].split("#")[1] + '"' +")'>" + choice.split("*")[a].split("#")[0] + "</button>";
+}
+ajoue.utiliserHTML("item1", "<div style='font-size: 24px; font-family: Helvetica;' >" + texting + "</div><div style='position:fixed; bottom:0; right:50%'>" + triag + "</div>");
+ok.ajouterGeometry("page1-1", ajoue.GeoString());
+ var charge = ok.Activer(); 
+charge.ChargerPage("DIV030", "page1-1", true, false); 
+ok.autoZoom(false);
+charge.autoRedimention(false, "page1");document.getElementById("DIV7").click();}*/
+		</script>
+		
+</head>
+
+<body onload="App.init();">
+</body>
+
+</html>

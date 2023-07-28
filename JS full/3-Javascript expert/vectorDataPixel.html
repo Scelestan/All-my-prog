@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>critJS</title>
+
+
+<script>
+var ad=[],prog=function(e,t,i,n,o){document.body.clientWidth;var r=!1,m=window.innerHeight*F()/window.innerHeight/F(),l=window.innerWidth*F()/window.innerWidth/F();ad.push([e]);var a,u,d,g,s="",p=0,c=0,h=0,y=0,b=i,N=t;if(o)f=n,v=o;else var f=0,v=0;var w="",S=[],E=[],I=e;function B(e){var t,i=w;function n(){document.getElementById(s).innerHTML="";for(var e=i.item.length-1;e>=0;e--){for(var n=0,r=0,p=0;p<=i.item.length-1;p++)i.item[e].utilisation.id==i.item[p].utilisation.id&&e<p&&(n+=1),i.item[e].utilisation.id==i.item[p].utilisation.id&&e!=p&&(r=-2);0==r||0==n?c(e,Number(i.item[e].utilisation.Ordre)):console.log("erreur conflit d'identifiants")}function c(e,n){!function(r){if(t=i,"number"==typeof n){var p=document.createElement("div");p.id=i.item[e].utilisation.id,p.style.position="absolute",p.style.height=Number(E[e][1]-E[e][3]).toString()+"px",p.style.width=Number(E[e][0]-E[e][2]).toString()+"px",p.style.zIndex=n.toString(),p.style.top=Number(-1*(-a+E[e][3])).toString()+"px",p.align="left",i.item[e].utilisation.contour&&2==i.item[e].utilisation.contour.split("*").length&&(p.style.border=i.item[e].utilisation.contour.split("*")[1]+"px solid "+i.item[e].utilisation.contour.split("*")[0]),p.style.left=Number(E[e][2]).toString()+"px";var c='<canvas id="';c+=e.toString(),c+=i.item[e].utilisation.id,c+='" height="',c+=Number(Number(E[e][1]-E[e][3])).toString(),c+='" width="',c+=Number(Number(E[e][0]-E[e][2])).toString(),c+='"',c+=" style='top:0px; left:0px; height:0px; position:absolute;",c+=" width:0px;",c+="'",c+=">",c+="</canvas>",c+="<div",c+=" style='height:",c+=Number(Number(E[e][1]-E[e][3])).toString()+"px",c+="; position:absolute; z-index:",c+=(n-1).toString(),c+="; width:",c+=Number(Number(E[e][0]-E[e][2])).toString()+"px",c+=";'>",1==i.item[e].utilisation.utiliser.split("#*#").length&&(c+=i.item[e].utilisation.utiliser),c+="</div>",p.innerHTML=c,document.getElementById(s).appendChild(p);var h=document.getElementById(e.toString()+i.item[e].utilisation.id);h.style.position="absolute",h.style.zIndex=(n-2).toString();var y=document.getElementById(i.item[e].utilisation.id);y.style.height=Number(E[e][1]-E[e][3]).toString()+"px",y.style.width=Number(E[e][0]-E[e][2]).toString()+"px",h.style.height=Number(E[e][1]-E[e][3]).toString()+"px",h.style.width=Number(E[e][0]-E[e][2]).toString()+"px",y.style.zIndex=n.toString(),y.style.top=Number(-1*(-a+E[e][1])).toString()+"px",y.align="left",y.style.left=Number(E[e][2]).toString()+"px"}w=i.item[e].utilisation.route,S=i.item[e].utilisation.id,i.item[e].utilisation.utiliser,B=i.item[e].utilisation.contour,"null"!=w&&(O=w,J=S,(C=B)&&("mouse"==(C=C.split("_"))[0]?document.getElementById(J).addEventListener("mouseover",(function e(){for(var t,i=0;i<ad.length;i++)ad[i][0]==C[2]&&(t=i);document.getElementById(J).removeEventListener("mouseover",e);var n=ad[t][1],o=JSON.parse(n);for(i=0;i<o.item.length;i++)o.item[i].utilisation.id==J&&(o.item[i].utilisation.contour="this_"+C[1]+"_"+C[2]);n=JSON.stringify(o),ad[t][1]=n;var r=s,p=I,c=document.createElement("canvas");c.id="imgLoader",c.width="0",c.height="0",c.hidden=!0,document.body.appendChild(c);var h=document.createElement("img");h.id="loaderImages",h.width="0",h.height="0",document.body.appendChild(h);var y=document.createElement("div");y.id=r,y.style.position="absolute",document.body.appendChild(y),m=window.innerWidth/window.innerHeight*.7*F(),l=1*F(),d=Number(window.innerWidth),g=Number(window.innerHeight),document.getElementById(r).style.top=Number(g*f).toString()+"px",document.getElementById(r).style.left=Number(d*v).toString()+"px",document.getElementById(r).style.height=Number(g*m).toString()+"px",document.getElementById(r).style.width=Number(d*l).toString()+"px",a=Number(document.getElementById(r).style.height.split("p")[0])*b,u=Number(document.getElementById(r).style.width.split("p")[0])*N,document.getElementById(r).innerHTML="",s=r,x(p)})):"this"==C[0]&&document.getElementById(J).addEventListener("mouseout",(function e(){var t;document.getElementById(J).removeEventListener("mouseout",e);for(var i=0;i<ad.length;i++)ad[i][0]==C[2]&&(t=i);var n=ad[t][1],o=JSON.parse(n);for(i=0;i<o.item.length;i++)o.item[i].utilisation.id==J&&(o.item[i].utilisation.contour="mouse_"+C[1]+"_"+C[2]);n=JSON.stringify(o),ad[t][1]=n;var r=s,p=I,c=document.createElement("canvas");c.id="imgLoader",c.width="0",c.height="0",c.hidden=!0,document.body.appendChild(c);var h=document.createElement("img");h.id="loaderImages",h.width="0",h.height="0",h.hidden=!0,document.body.appendChild(h);var y=document.createElement("div");y.id=r,y.style.position="absolute",document.body.appendChild(y),m=window.innerWidth/window.innerHeight*.7*F(),l=1*F(),d=Number(window.innerWidth),g=Number(window.innerHeight),document.getElementById(r).style.top=Number(g*f).toString()+"px",document.getElementById(r).style.left=Number(d*v).toString()+"px",document.getElementById(r).style.height=Number(g*m).toString()+"px",document.getElementById(r).style.width=Number(d*l).toString()+"px",a=Number(document.getElementById(r).style.height.split("p")[0])*b,u=Number(document.getElementById(r).style.width.split("p")[0])*N,document.getElementById(r).innerHTML="",s=r,x(p)}))),null==O&&"null"==O||("this"==(O=O.split("_"))[0]?(O=["this",O[1],O[2]],document.getElementById(J).addEventListener("click",(function e(){if("this"==O[0]){document.getElementById(J).removeEventListener("click",e);var t=O[1],i=O[2];m=window.innerWidth/window.innerHeight*.7*F(),l=1*F(),d=Number(window.innerWidth),g=Number(window.innerHeight),document.getElementById(t).style.top=Number(g*f).toString()+"px",document.getElementById(t).style.left=Number(d*v).toString()+"px",document.getElementById(t).style.height=Number(g*m).toString()+"px",document.getElementById(t).style.width=Number(d*l).toString()+"px",a=Number(document.getElementById(t).style.height.split("p")[0])*b,u=Number(document.getElementById(t).style.width.split("p")[0])*N,document.getElementById(t).innerHTML="",s=t,I=i,x(i)}}))):"replace"==O[0]&&document.getElementById(J).addEventListener("click",(function e(){document.getElementById(J).removeEventListener("click",e),"replace"==O[0]&&"socket"==O[1]&&Manivelle(O[2])}))));var w,S,B,O,C,J;for(var H=h.getContext("2d"),L=[],T=Number(E[e][0]-E[e][2]),W=Number(E[e][1]-E[e][3]),M=0,k=0,P=0;P<i.item[e].geometrie.place[0].length;P++)M=o(0,i.item[e].geometrie.place[0][P][1],e,W),k=o(i.item[e].geometrie.place[0][P][0],0,e,T),L.push(k),L.push(M);var _,z=new Image;function G(){function t(t){if(0==t?"null"!=i.item[e].utilisation.couleur?"LoadImage"==i.item[e].utilisation.couleur.split("~")[0]?_=H.createPattern(R,"no-repeat"):"stroke"==i.item[e].utilisation.couleur.split("~")[0]?(_=i.item[e].utilisation.couleur.split("~")[1],H.strokeStyle="black"):_=i.item[e].utilisation.couleur:(_="rgba(0,0,0,0)",H.strokeStyle="black"):_=i.item[e].utilisation.contour.split("_")[1],H.fillStyle=_,H.moveTo(L[0],L[1]),"arc"==i.item[e].utilisation.contour)for(H.arcTo(L[0],L[1],L[2],L[3],100),item=0;item<L.length-1;item+=2)if(item<L.length-3){L[item+4],L[item+5],L[item+2],L[item+3];H.arcTo(L[item+2],L[item+3],L[item+4],L[item+5],100)}else item<L.length-1&&H.arcTo(L[0],L[1],L[2],L[3],100);else for(H.lineTo(L[0],L[1]),item=0;item<L.length-1;item+=2)item<L.length-3?H.lineTo(L[item+2],L[item+3]):(item,L.length);H.fill(),H.closePath()}if(H.beginPath(),t(0),4==i.item[e].utilisation.utiliser.split("#*#").length){var n=i.item[e].utilisation.utiliser.split("#*#");!function(e,t,i,n,o,r,m){var l=e.width,a=e.height,u=m.replace(/\n/g," \n ").split(" "),d=[];i=window.innerWidth/1600*(2.1*i)*F(),t.font=i+"px "+n;for(var g=0;g<u.length;g++)d.push(t.measureText(u[g]).width);var s=t.measureText(" ").width,p=[];t.fillStyle=r;var c=t.getImageData(0,0,l,a).data;for(g=0;g<c.length;g+=4)p.push(c[g+3]);function h(){var e=0,i=0,n=0,r=0;for(t.textBaseline="top";n<a&&r<u.length;){e=0,i=n;for(var m=r;e<l&&r<u.length&&"\n"!=u[r];){for(var g=y(e,i,o),p=g-e,c=s,h=c+d[r];p>=h&&"\n"!=u[r];)t.fillText(u[r],c+e,i),e+=h,p-=h,r++,h=(c=s)+d[r];e=g+1}"\n"==u[r]&&r++,n=r>m?n+o:n+1}}function y(e,t,i){for(var n=e,o=t,r=!0;r;)p[o*l+n]<250&&(r=!1),++o>=t+i&&(o=t,++n>=l&&(r=!1));return n}h()}(h,H,Number(n[0]),n[1],parseInt(1.286*Number(n[0])),n[2],n[3])}if(H.beginPath(),i.item[e].utilisation.contour){if("this"==i.item[e].utilisation.contour.split("_")[0]&&"null"!=i.item[e].utilisation.contour){for(H.globalCompositeOperation="source-in",H.fillStyle=i.item[e].utilisation.contour.split("_")[1],H.moveTo(L[0],L[1]),H.lineTo(L[0],L[1]),item=0;item<L.length-1;item+=2)item<L.length-3?H.lineTo(L[item+2],L[item+3]):(item,L.length);H.closePath(),H.beginPath(),H.globalCompositeOperation="multiply",t(1)}}else;h.update}if("LoadImage"==i.item[e].utilisation.couleur.split("~")[0]){var R=new Image;R.onload=function(){G()},z.onload=function(){document.getElementById("imgLoader").height=Number(y.style.height.split("p")[0]*r),document.getElementById("imgLoader").width=Number(y.style.width.split("p")[0]*r),document.getElementById("imgLoader").getContext("2d").drawImage(z,-(r-1)*(y.style.width.split("p")[0]/2),0,Number(y.style.width.split("p")[0]*r),Number(y.style.height.split("p")[0]*r)),document.getElementById("loaderImages").style.height=Number(h.style.height.split("p")[0]*r).toString()+"px",document.getElementById("loaderImages").style.width=Number(h.style.width.split("p")[0]*r).toString()+"px",document.getElementById("loaderImages").src=document.getElementById("imgLoader").toDataURL("image/png"),R.height=Number(y.style.height.split("p")[0]*r),R.width=Number(y.style.width.split("p")[0]*r),R.src=document.getElementById("loaderImages").src},z.height=Number(y.style.height.split("p")[0]*r),z.width=Number(y.style.width.split("p")[0]*r),z.src=i.item[e].utilisation.couleur.split("~")[1]}else G();i.item.length}(1)}}function o(e,t,i,n,o){if(o||(o=0),n<2)var r=a*n,m=u*n;else r=n,m=n;if(-1!=i)var l=parseFloat(S[i][2]+o),d=parseFloat(S[i][1]+o),g=parseFloat(S[i][4]+o),s=parseFloat(S[i][3]+o);else l=parseFloat(y),d=parseFloat(h),g=parseFloat(p),s=parseFloat(c);var b=r/Math.abs(g-s),N=m/Math.abs(d-l),f=Math.abs(d-e)*N,v=Math.abs(g-t)*b;return 0==e?v:0==t?f:void 0}!function(){t=i;for(var e=Number(t.item.length),r=0;r<e;r++){for(var m,l,a,u,d=0;d<t.item[r].geometrie.place[0].length;d++){0==d&&(a=Number.parseFloat(t.item[r].geometrie.place[0][d][0]),u=Number.parseFloat(t.item[r].geometrie.place[0][d][0]),m=Number.parseFloat(t.item[r].geometrie.place[0][d][1]),l=Number.parseFloat(t.item[r].geometrie.place[0][d][1]));for(var g=0;g<t.item[r].geometrie.place[0].length;g++)Number.parseFloat(t.item[r].geometrie.place[0][g][1])<=l||l<=Number.parseFloat(t.item[r].geometrie.place[0][g][1])&&(l=Number.parseFloat(t.item[r].geometrie.place[0][g][1])),Number.parseFloat(t.item[r].geometrie.place[0][g][1])>=m||m>=Number.parseFloat(t.item[r].geometrie.place[0][g][1])&&(m=Number.parseFloat(t.item[r].geometrie.place[0][g][1])),Number.parseFloat(t.item[r].geometrie.place[0][g][0])<=u||u<=Number.parseFloat(t.item[r].geometrie.place[0][g][0])&&(u=Number.parseFloat(t.item[r].geometrie.place[0][g][0])),Number.parseFloat(t.item[r].geometrie.place[0][g][0])>=a||a>=Number.parseFloat(t.item[r].geometrie.place[0][g][0])&&(a=Number.parseFloat(t.item[r].geometrie.place[0][g][0])),d==g&&g==t.item[r].geometrie.place[0].length-1&&(S.push([i.item[r].utilisation.id,a,u,m,l]),E.push([o(u,0,-1,1),o(0,l,-1,1),o(a,0,-1,1),o(0,m,-1,1)]))}e-1==r&&n()}}()}function x(e){p=0,c=0,h=0,y=0,S=[],E=[];var t,i,n=[];t=e,i=JSON.parse(function(e){for(var t=0;t<ad.length;t++)if(ad[t][0]==e)return ad[t][1]}(t)),w=i,function(){var e,t,o=i,r=Number(i.item.length);e=0,t=0;for(var m=0,l=0,a=0;a<r;a++){for(var u=0;u<o.item[a].geometrie.place[0].length;u++){0==a&&0==u&&(e=Number.parseFloat(o.item[a].geometrie.place[0][u][0]),m=Number.parseFloat(o.item[a].geometrie.place[0][u][0]),t=Number.parseFloat(o.item[a].geometrie.place[0][u][1]),l=Number.parseFloat(o.item[a].geometrie.place[0][u][1]));for(var d=0;d<o.item[a].geometrie.place[0].length;d++)e-Number.parseFloat(o.item[a].geometrie.place[0][d][0])>0||(e=Number.parseFloat(o.item[a].geometrie.place[0][d][0])),m-Number.parseFloat(o.item[a].geometrie.place[0][d][0])<0||(m=Number.parseFloat(o.item[a].geometrie.place[0][d][0])),t-Number.parseFloat(o.item[a].geometrie.place[0][d][1])>0||(t=Number.parseFloat(o.item[a].geometrie.place[0][d][1])),l-Number.parseFloat(o.item[a].geometrie.place[0][d][1])<0||(l=Number.parseFloat(o.item[a].geometrie.place[0][d][1]));if(u==o.item[a].geometrie.place[0].length-1&&a==o.item.length-1&&0==n.length&&(h=m,y=e,p=l,c=t,n.push(a),n.push(a),n.push(a),n.push(a)),4==n.length)break}if(4==n.length)break}4==n.length&&B()}()}function F(){return r?window.devicePixelRatio:1}return{autoZoom:function(e){"boolean"==typeof e?r=e:console.log("prog.autoZoom() dois être définie sur un boolean")},Activer:function(){return{autoRedimention:function(e){window.onresize=function(){m=window.innerWidth/window.innerHeight*.7*F(),l=1*F(),d=Number(window.innerWidth),g=Number(window.innerHeight),document.getElementById(s).style.top=Number(g*f).toString()+"px",document.getElementById(s).style.left=Number(d*v).toString()+"px",document.getElementById(s).style.height=Number(g*m).toString()+"px",document.getElementById(s).style.width=Number(d*l).toString()+"px",a=Number(document.getElementById(s).style.height.split("p")[0])*b,u=Number(document.getElementById(s).style.width.split("p")[0])*N,e?C():x(I)}},ChargerPage:function(e,t,i){if(i){var n=document.createElement("canvas");n.id="imgLoader",n.width="0",n.height="0",document.body.appendChild(n);var o=document.createElement("img");o.id="loaderImages",o.width="0",o.height="0",o.hidden=!0,document.body.appendChild(o);var r=document.createElement("div");r.id=e,r.style.position="absolute",document.body.appendChild(r)}m=window.innerWidth/window.innerHeight*.7*F(),l=1*F(),d=Number(window.innerWidth),g=Number(window.innerHeight),document.getElementById(e).style.top=Number(g*f).toString()+"px",document.getElementById(e).style.left=Number(d*v).toString()+"px",document.getElementById(e).style.height=Number(g*m).toString()+"px",document.getElementById(e).style.width=Number(d*l).toString()+"px",a=Number(document.getElementById(e).style.height.split("p")[0])*b,u=Number(document.getElementById(e).style.width.split("p")[0])*N,document.getElementById(e).innerHTML="",s=e,x(t)}}},ajouterGeometry:function(e,t){for(var i=-1,n=0;n<ad.length;n++)ad[n][0]==e&&(i=n);-1!=i?ad[i].push(t):(ad.push([e]),ad[ad.length-1].push(t))},cadreGeometry:function(e,t,i,n,o){t&&i&&n&&o||(t=1,i=1,n=100,o=100);var r='{\n"type":"Collection",\n"name":"XML_doss",\n"crs":{"type":"name","utilisation":{"name": "CritCanvas"}},\n"item":[\n{"type":"Feature","utilisation":{"id":"'+e+'","route":"null","couleur":"red","utiliser":"","contour":null,"Ordre":"-3"},"geometrie":{"type":"Polygon","place":[[['+t.toString()+","+i.toString()+"],["+(t+n).toString()+","+i.toString()+"],["+(t+n).toString()+","+(i+o).toString()+"],["+t.toString()+","+(i+o).toString()+"],["+t.toString()+","+i.toString()+"]]]}}]}";return{GeoString:function(){return r},GeoJson:function(){return JSON.parse(r)},plusItem:function(e,t,i,n,o){var m=JSON.parse(r),l='{"type":"Feature","utilisation":{"id":"'+e+'","route":"null","couleur":"blue","utiliser":"","contour":null,"Ordre":"-1"},"geometrie":{"type":"Polygon","place":[[['+t.toString()+","+i.toString()+"],["+(t+n).toString()+","+i.toString()+"],["+(t+n).toString()+","+(i+o).toString()+"],["+t.toString()+","+(i+o).toString()+"],["+t.toString()+","+i.toString()+"]]]}}";m.item.push(JSON.parse(l)),r=JSON.stringify(m)},changeCouleur:function(e,t){for(var i=JSON.parse(r),n=0;n<i.item.length;n++)i.item[n].utilisation.id==e&&(i.item[n].utilisation.couleur=t);r=JSON.stringify(i)},utiliserHTML:function(e,t){for(var i=JSON.parse(r),n=0;n<i.item.length;n++)i.item[n].utilisation.id==e&&(i.item[n].utilisation.utiliser=t.replace(/\"/g,"`"));r=JSON.stringify(i)},definirClique:function(e,t){for(var i=JSON.parse(r),n=0;n<i.item.length;n++)i.item[n].utilisation.id==e&&(i.item[n].utilisation.route=t);r=JSON.stringify(i)},changeOrdre:function(e,t){for(var i=JSON.parse(r),n=0;n<i.item.length;n++)i.item[n].utilisation.id==e&&(i.item[n].utilisation.Ordre=t);r=JSON.stringify(i)},definirContour:function(e,t){for(var i=JSON.parse(r),n=0;n<i.item.length;n++)i.item[n].utilisation.id==e&&(i.item[n].utilisation.contour=t);r=JSON.stringify(i)}}}}};
+</script>
+
+
+<script type="text/javascript">
+console.log(window.innerHeight + " / " + window.innerWidth);
+function protto(data) {
+protto[data] = data;
+}
+var ok;
+var ajoue;
+var buildings;
+ var widthFile;
+var heightFile;
+ var widthImg;
+var heightImg;
+var chargeIMG;
+var urlIMG = 0;
+var indii = 0;
+var opaciti = 0.1;
+
+function vectorDraw () {
+  const WH = document.getElementById('tailleImg').value;
+
+
+var exist;
+ if (!document.getElementById('load')) {
+exist = true;
+ } else {
+ document.getElementById('load').innerHTML = "";
+ document.getElementById("loaderImages").src = "";
+exist = false;
+ }
+
+ ok.ajouterGeometry("vector", ajoue);
+var charge = ok.Activer();
+ok.autoZoom(true);
+charge.ChargerPage("load", "vector", exist);
+
+}
+
+function createPage() {
+const fileInput = document.getElementById('addImg');
+document.getElementById('tailleImg').onchange = () => {
+console.log((document.getElementById('tailleImg').value*133).toString() + "Mo de mémoire vive va être utilisé si une image est importé");
+opaciti = (1.004-(document.getElementById('tailleImg').value*25))/(Math.PI/2);
+}
+fileInput.onchange = () => {
+  const selectedFile = fileInput.files[0];
+console.log(fileInput.files[0].type);
+  const utf8_blob = new Blob( [selectedFile], { endings: "native", type: fileInput.files[0].type } );
+ urlIMG = URL.createObjectURL(utf8_blob);
+var size = new Image();
+size.onload = function() {
+var exist;
+ if (!document.getElementById('load')) {
+exist = true;
+ } else {
+ document.getElementById('load').innerHTML = "";
+ document.getElementById("loaderImages").src = "";
+exist = false;
+ }
+widthFile = this.width;
+heightFile = this.height;
+ ad = [];
+var okay = prog("load", 1, 1);
+var ajouelink = okay.cadreGeometry("Cadrement");
+ajouelink.plusItem("loadCadre", 1, 1, document.getElementById('tailleImg').value*100, document.getElementById('tailleImg').value*100);
+ajouelink.changeCouleur("loadCadre", "LoadImage~"+urlIMG);
+okay.ajouterGeometry("load", ajouelink.GeoString());
+var charge = okay.Activer();
+okay.autoZoom(true);
+charge.ChargerPage("load", "load", exist);
+clearInterval(chargeIMG);
+chargeIMG = setInterval(execCompress, 250);
+function execCompress() {
+if (document.getElementById("loaderImages").src != "") {
+clearInterval(chargeIMG);
+putImgString();
+}
+}
+}
+size.src = urlIMG;
+}
+function putImgString() {
+var compresse = new Image();
+compresse.onload = function() { 
+WidthImg = this.width;
+HeightImg = this.height;
+console.log(WidthImg + "=width/" + HeightImg + "=height/" + compresse.src);
+document.getElementById("imgLoader").height = HeightImg; 
+document.getElementById("imgLoader").width = WidthImg;
+document.getElementById("imgLoader").style.height = HeightImg.toString()+"px"; 
+document.getElementById("imgLoader").style.width = WidthImg.toString()+"px";
+document.getElementById("imgLoader").getContext("2d").clearRect(0,0,document.getElementById("imgLoader").width, document.getElementById("imgLoader").height);
+document.getElementById("imgLoader").getContext("2d").drawImage(compresse, 0, 0, WidthImg, HeightImg);
+putVector(document.getElementById('1loadCadre'), document.getElementById('1loadCadre').getContext("2d"));
+/*
+document.getElementById("Ifinal").style.height = HeightImg+"px"; 
+document.getElementById("Ifinal").style.width = WidthImg+"px";
+document.getElementById('Ifinal').src = document.getElementById("imgLoader").toDataURL('image/jpeg', 1); 
+document.getElementById('strI').innerHTML = Math.trunc(document.getElementById('Ifinal').src.split("").length/3).toString() + " octet environ...";
+*/
+};
+compresse.src = document.getElementById('1loadCadre').toDataURL('image/jpeg', 1);
+}
+}
+
+
+function putVector(caneuvas, ContentX) {
+
+
+ad = [];
+
+ajoue = `{
+"type":"Collection",
+"name":"XML_doss",
+"crs":{"type":"name","utilisation":{"name": "XML_doss"}},
+"item":[`+
+`{"type":"Feature","utilisation":{"id":"vectorisation","route":"null","couleur":"null","utiliser":"","contour":null,"Ordre":1},"geometrie":{"type":"Polygon","place":[[[0, 0], [0, `+ parseFloat(1).toString() + `],[`+ parseFloat(1).toString() + `, ` + parseFloat(1).toString()+ `],[` + parseFloat(1).toString() + `, 0],[0, 0]]]}}]}`;
+buildings = JSON.parse(ajoue);
+
+var fontsize = 1;
+var fontface = "verdana"
+var lineHeight = 0;
+var text = " ";
+	var cw=Math.trunc(Number(caneuvas.style.width.split("px")[0])*1);
+    var ch=Math.trunc(Number(caneuvas.style.height.split("px")[0])*1);
+var trame = [];
+    var words=[" "];
+    var wordWidths=[];
+    
+    
+    var spaceWidth=0;
+    var wordIndex=0
+    var data=[];
+    // fill heart with text
+    //ContentX.fillStyle=colorim;
+
+    var imgDataData=ContentX.getImageData(0,0,cw,ch).data;
+    for(var i=0;i<imgDataData.length;i+=4){
+	/*
+imgDataData[i+0] = 255-imgDataData[i+0];
+imgDataData[i+1] = 255-imgDataData[i+1];
+imgDataData[i+2] = 255-imgDataData[i+2];
+*/
+        data.push(imgDataData[i+3]);
+    }
+ok = prog("vector", 1, 1);
+
+    placeWords();   
+
+    // draw words sequentially into next available block of 
+    //    available opaque pixels 
+    function placeWords(){
+        var sx=0;
+        var sy=0;
+        
+        var wordIndex=0;
+        
+		var boucly = 1;
+		/*
+        for (var y = Math.trunc(ch/2); y < ch; y+= boucly) {//(var y = Math.trunc(ch/2); y > -ch; y+=boucly) {
+
+	
+if (y < 2) {
+			boucly = 1;
+			y = Math.trunc(ch/2);
+			}//=Math.trunc(Math.random()*0.022.11*ch)+1
+
+            sx=0;
+            sy=y;
+			
+           
+           // while(sx<cw && wordIndex<words.length && words[wordIndex] != '\n'){
+                var x=getRect(sx,sy,lineHeight);
+				console.log(y);
+                
+               // sx=x+1;
+            //}
+			
+            //y=(wordIndex>startingIndex)?y+lineHeight:y+1;
+        }*/
+		for (var y = 0; y < ch; y++) {//(var y = Math.trunc(ch/2); y > -ch; y+=boucly) {
+
+	/*
+if (y > ch-2) {
+			boucly = 1;
+			y = Math.trunc(ch/2);
+			}//=Math.trunc(Math.random()*0.022.11*ch)+1
+*/
+            sx=0;
+            sy=y;
+			
+           
+           // while(sx<cw && wordIndex<words.length && words[wordIndex] != '\n'){
+var xs=getRect2(sx,sy,lineHeight, y);
+                //var x=getRect(sx,sy,lineHeight, cw, imgDataData);
+
+				console.log(y + "/" + ch);
+                
+               // sx=x+1;
+            //}
+			
+            //y=(wordIndex>startingIndex)?y+lineHeight:y+1;
+        }
+		boucly = 1;
+		
+		buildings = JSON.parse(ajoue);
+	
+    // draw words sequentially into next available block of 
+    //    available opaque pixels 
+		wordIndex=0;
+		boucly = 1;
+		var timery = 0;
+		
+		function getRect2(sx,sy,height, boubouc){
+        
+        var y=sy;
+        var otk=true;
+
+        
+		/*
+for (var p = 0; p < trame.length; p++) {
+            if(trame[p] < data[y*x*4]-115 || trame[p] > data[y*x*4]+115){ok=false;}
+}
+*/
+
+            
+			var boucl = -1;
+			var timer = 0;
+           for (var x = cw; x > 2; x+=boucl){
+			//for (var x = boucl; x > -cw; x+=boucl){
+			
+			
+	 
+			//y += boucly;
+			
+		
+
+			timer += 1;
+			
+			if (timer > cw) {
+			
+			//break;
+			
+			} else if (x < 2) {
+			boucl = 1;
+			x = Math.trunc(cw/2);
+			
+			}
+		
+			
+
+if (!protto(Math.round((imgDataData[y*x*4] - imgDataData[y*x*4+1]+(imgDataData[y*x*4+2] - imgDataData[y*x*4+0]))/22.22))) {
+//if ((imgDataData[y*x*4+3]/255)*1 == ((trame[pi][3]/255)*1)) {
+//if (imgDataData[y*x*4+3]*1.09876 > trame[pi][3] && imgDataData[y*x*4+3]*0.952 < trame[pi][3]) {
+/*if ((buildings.item[pi+1].geometrie.place[0][buildings.item[pi+1].geometrie.place[0].length-1][0] < x+(cw*0.0422)+3 && buildings.item[pi+1].geometrie.place[0][buildings.item[pi+1].geometrie.place[0].length-1][0] > x-(cw*0.0422)-3) || (buildings.item[pi+1].geometrie.place[0][buildings.item[pi+1].geometrie.place[0].length-1][1] < y+(ch*0.0422)+3 && buildings.item[pi+1].geometrie.place[0][buildings.item[pi+1].geometrie.place[0].length-1][1] > y-(ch*0.0422)-3)) {
+if (buildings.item[pi+1].geometrie.place[0][buildings.item[pi+1].geometrie.place[0].length-1][0] != x && buildings.item[pi+1].geometrie.place[0][buildings.item[pi+1].geometrie.place[0].length-1][1] != y) {
+*/
+addTI("null", x, y, imgDataData);
+
+} else {
+
+//if (trame[pi][0] < (imgDataData[y*x*4]*1.09876) && trame[pi][1] < (imgDataData[y*x*4+1]*1.09876) && trame[pi][2] < (imgDataData[y*x*4+2]*1.09876) && trame[pi][0] > (imgDataData[y*x*4]*0.0777) && trame[pi][1] > (imgDataData[y*x*4+1]*0.0777) && trame[pi][2] > (imgDataData[y*x*4+2]*0.0777)) {
+console.log("error");
+var ti = pi+1;
+//addTI(ti, x, y, imgDataData);
+}
+//}
+}
+
+//} else {
+//console.log(imgDataData[y*x*4+3]);
+//}
+//}
+//}
+                y=sy;
+                //x+=spaceWidth;
+                return(cw);
+            }
+        
+        
+    }
+	/*
+       for (var y = 2; y < ch; y+= boucly) {//(var y = Math.trunc(ch/2); y > -ch; y+=boucly) {
+
+	
+timery += 1;
+			console.log(timery + "t");
+			if (timery > ch) {
+			
+			//break;
+			
+			} else if (y < 2) {
+			boucly = 1;
+			y = Math.trunc(ch/2);
+			}
+            sx=cw;
+            sy=y;
+			
+          
+           // while(sx<cw && wordIndex<words.length && words[wordIndex] != '\n'){
+                var xs=getRect2(sx,sy,lineHeight, y);
+		
+				
+                
+                //sx=x-1;
+            //}
+			
+            //y=(wordIndex>startingIndex)?y+lineHeight:y+1;
+        }*/
+		ajoue = JSON.stringify(buildings);
+		
+		console.log("ENFIN");
+		function protobluid(data) {
+		
+		}
+		var trames = [];
+		var building = JSON.parse(`{
+"type":"Collection",
+"name":"XML_doss",
+"crs":{"type":"name","utilisation":{"name": "XML_doss"}},
+"item":[`+
+`{"type":"Feature","utilisation":{"id":"vectorisation","route":"null","couleur":"null","utiliser":"","contour":null,"Ordre":1},"geometrie":{"type":"Polygon","place":[[[0, 0], [0, `+ parseFloat(1).toString() + `],[`+ parseFloat(1).toString() + `, ` + parseFloat(1).toString()+ `],[` + parseFloat(1).toString() + `, 0],[0, 0]]]}}]}`);
+		for (var yx = 1; yx < buildings.item.length; yx++) {
+		var x1 = buildings.item[yx].geometrie.place[0][0][1];
+			var x2 = buildings.item[yx].geometrie.place[0][0][1];
+				var w1 = buildings.item[yx].geometrie.place[0][0][0];
+					var w2 = buildings.item[yx].geometrie.place[0][0][0];
+		
+		console.log(yx);
+		if (buildings.item[yx].geometrie.place[0].length > 3) {
+		var buildingss = [[]];
+		trames.push(trame[yx-1]);
+		for (var xy = buildings.item[yx].geometrie.place[0].length-1; xy > 0; xy --) {
+		
+		
+
+
+if (Number.parseFloat(buildings.item[yx].geometrie.place[0][xy][0])> w1) {
+
+if (Number.parseFloat(buildings.item[yx].geometrie.place[0][xy][0]) < w2) {
+
+
+
+} else { 
+if (w2 <= Number.parseFloat(buildings.item[yx].geometrie.place[0][xy][0])) {
+buildingss[0].push(buildings.item[yx].geometrie.place[0][xy]);
+w2 = Number.parseFloat(buildings.item[yx].geometrie.place[0][xy][0]);
+
+
+}}
+} else { 
+if (w1 >= Number.parseFloat(buildings.item[yx].geometrie.place[0][xy][0])) {
+buildingss[0].push(buildings.item[yx].geometrie.place[0][xy]);
+w1 = Number.parseFloat(buildings.item[yx].geometrie.place[0][xy][0]); 
+}
+}
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+		
+		buildings.item[yx].geometrie.place[0] = buildingss[0];
+		building.item.push(buildings.item[yx]);
+		} else {
+		console.log("s" + yx);
+		}
+		
+		 }
+ajoue = JSON.stringify(building);
+buildings = building;
+trame = trames;
+
+console.log("laoding vector..");
+		vectorDraw();
+		chargeIMG = setInterval(execCompress, 250);
+function execCompress() {
+console.log("in load ...");
+if (document.getElementById("loaderImages").src != "") {
+clearInterval(chargeIMG);
+iC = setInterval(createIMG, 5300);
+}
+}
+
+    }
+
+    // find a rectangular block of opaque pixels
+    function getRect(sx,sy,height, cw, imgDataData){
+        
+        var y=sy;
+        var otk=true;
+
+        
+		
+
+
+
+            
+			//console.log(y);
+			var boucl = 1;
+           for (var x = 1; x < cw; x+=boucl){
+			//for (var x = boucl; x > -cw; x+=boucl){
+			
+			
+	 
+			//y += boucly;
+			
+		
+
+			
+			/*
+			if (x < 2) {
+			boucl = 1;
+			x = Math.trunc(cw/2);
+			
+			}*/
+/*
+			for (var pi = 0; pi < trame.length; pi++) {
+
+if (imgDataData[y*x*4+3]+30 > trame[pi][3] && imgDataData[y*x*4+3]-30 < trame[pi][3]) {
+if ((buildings.item[pi+1].geometrie.place[0][buildings.item[pi+1].geometrie.place[0].length-1][0] < x+(cw*0.0422)+3 && buildings.item[pi+1].geometrie.place[0][buildings.item[pi+1].geometrie.place[0].length-1][0] > x-(cw*0.0422))-3 && (buildings.item[pi+1].geometrie.place[0][buildings.item[pi+1].geometrie.place[0].length-1][1] < y+(ch*0.0422)+3 && buildings.item[pi+1].geometrie.place[0][buildings.item[pi+1].geometrie.place[0].length-1][1] > y-(ch*0.0422)-3)) {
+if (buildings.item[pi+1].geometrie.place[0][buildings.item[pi+1].geometrie.place[0].length-1][0] != x && buildings.item[pi+1].geometrie.place[0][buildings.item[pi+1].geometrie.place[0].length-1][1] != y) {
+
+if (trame[pi][0] < (imgDataData[y*x*4]+30) && trame[pi][1] < (imgDataData[y*x*4+1]+30) && trame[pi][2] < (imgDataData[y*x*4+2]+30) && trame[pi][0] > (imgDataData[y*x*4]-30) && trame[pi][1] > (imgDataData[y*x*4+1]-30) && trame[pi][2] > (imgDataData[y*x*4+2]-30)) {
+
+var ti = pi+1;
+break;
+}
+}
+}
+} else {
+//console.log(imgDataData[y*x*4+3]);
+}
+
+}
+*/
+if (!protto(Math.round((imgDataData[y*x*4+0]-imgDataData[y*x*4+1]+(imgDataData[y*x*4+2] - imgDataData[y*x*4+0]))/22.22))) {
+//trame.push([imgDataData[y*x*4], imgDataData[y*x*4+1], imgDataData[y*x*4+2], imgDataData[y*x*4+3]]);
+protto(Math.round((imgDataData[y*x*4+0]-imgDataData[y*x*4+1]+(imgDataData[y*x*4+2]-imgDataData[y*x*4+0]))/22.22));
+//if (!protto('image' + (y*x*4).toString()+"alias"+indii.toString())) {
+//protto('image' + (y*x*4).toString()+"alias"+indii.toString());
+var geojs = ajoue.split("]}}]}");
+var jsgeo = geojs[0];
+indii += 1;
+jsgeo += ']}},{"type":"Feature","utilisation":{"id":"' + 'image' + (y*x*4).toString()+"alias"+indii.toString() + '","route":"null","couleur":"rgba(' + imgDataData[y*x*4].toString() + ',' + imgDataData[y*x*4+1].toString() + ',' + imgDataData[y*x*4+2].toString() + ',' + "1" + ')","utiliser":"","contour":"","Ordre":'+Math.trunc(indii).toString()+'},"geometrie":{"type":"Polygon","place":[[['+ ((-0.3+x)+0.9).toString() + "," + (-0.3+y).toString() +'],['+ ((x)+0.9).toString() + "," + ((-0.3+y)).toString() +'],['+ ((x)+0.9).toString() + "," + ((y)+0.9).toString() +'],['+ (-0.3+x).toString() + "," + ((y)+0.9).toString() +'],['+ (-0.3+x).toString() + "," + ((-0.3+y)).toString() +']]]}}]}'
+
+ajoue = jsgeo;
+//buildings = JSON.parse(ajoue);
+
+
+}
+ 
+        
+      
+    }
+	
+	
+	  return(0);
+	
+	
+}
+function addTI(ti2, x, y, grominet) {
+
+var geojs = ajoue.split("]}}]}");
+var jsgeo = geojs[0];
+indii += 1;
+jsgeo += ']}},{"type":"Feature","utilisation":{"id":"' + 'image' + (y*x*4).toString()+"alias"+indii.toString() + '","route":"null","couleur":"rgba(' + grominet[y*x*4].toString() + ',' + grominet[y*x*4+1].toString() + ',' + grominet[y*x*4+2].toString() + ',' + "1" + ')","utiliser":"","contour":"","Ordre":'+Math.trunc(indii).toString()+'},"geometrie":{"type":"Polygon","place":[[['+ x.toString() + "," + y.toString() +'],['+ (x+1).toString() + "," + (y).toString() +'],['+ (x+1).toString() + "," + (y+1).toString() +'],['+ x.toString() + "," + (y+1).toString() +'],['+ x.toString() + "," + (y).toString() +']]]}}]}'
+//opaciti.toString()
+ajoue = jsgeo;
+//buildings = JSON.parse(ajoue);
+
+
+
+
+}
+function createIMG() {
+clearInterval(iC);
+var imgCavs = document.querySelectorAll('canvas');
+var icc; + " / " + window.innerWidth
+document.getElementById("imgLoader").height = window.innerHeight; 
+document.getElementById("imgLoader").width = window.innerWidth;
+document.getElementById("imgLoader").style.height = window.innerHeight.toString() + "px"; 
+document.getElementById("imgLoader").style.width = window.innerWidth.toString() + "px";;
+document.getElementById("Ifinal").height = window.innerHeight; 
+document.getElementById("Ifinal").width = window.innerWidth;
+document.getElementById("Ifinal").style.height = window.innerHeight.toString() + "px";; 
+document.getElementById("Ifinal").style.width = window.innerWidth.toString() + "px";;
+for (var mul = imgCavs.length-1; mul > 1; mul --) {
+
+ if (imgCavs[mul].width!=0 && imgCavs[mul].height!=0 && imgCavs[mul].id.split('image').length > 1) {
+placeimg(imgCavs, mul);
+console.log("charge canvases + " + mul + "/ " + imgCavs.length);
+}
+
+
+  
+  
+}
+document.getElementById("imgLoader").style.Zindex = "11";
+icc = setInterval(iccc, 1500);
+function iccc() {
+clearInterval(icc);
+
+var createIMGm=new Image();
+
+createIMGm.onload=function(){
+  document.getElementById("Ifinal").src = createIMGm.src;
+  
+  document.getElementById("load").innerHTML = "";
+  
+  console.log("finit");
+  console.log(document.getElementById("Ifinal"));
+  
+  download("canvases", document.querySelector('#Ifinal').src);
+  }
+  createIMGm.src=document.getElementById("imgLoader").toDataURL('image/png', 1);
+}
+
+
+}
+
+
+
+
+
+
+//download("canv"+canvmult.length.toString(), document.getElementById('Ifinal').src);
+
+
+
+
+function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', text);
+  element.setAttribute('download', filename);
+
+  element.style.target = '_blank';
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+}
+function placeimg(imgCavs, mul) {
+
+var createIMG=new Image();
+createIMG.src=imgCavs[mul].toDataURL('image/png', 1);
+createIMG.onload=function(){
+  document.getElementById("imgLoader").getContext("2d").drawImage(this,Number(document.getElementById("image" + imgCavs[mul].id.split('image')[1].toString()).style.left.split('px')[0]),Number(document.getElementById("image" + imgCavs[mul].id.split('image')[1].toString()).style.top.split('px')[0]),this.width,this.height);//,Number(document.getElementById("image" + imgCavs[mul].id.split('image')[1].toString()).style.left.split('px')[0]),Number(document.getElementById("image" + imgCavs[mul].id.split('image')[1].toString()).style.top.split('px')[0])
+   
+};
+
+}
+var iC;
+</script>
+
+</head>
+
+<body onload="createPage();">
+
+<img id="Ifinal" src="" height="2150px" width="2150px" style="width:1150px;height:1150px;top:0px;left:0px;position:absolute;z-index:39;"/>
+<h1 id="strI" style="width:530px;height:100px;top:550px;left:250px;position:absolute;z-index:40;background-color:white;">programme en test, merci d'ouvrir la console du navigateur avant de cliquer sur quoi que ce soit !</h1>
+<input type="range" id="tailleImg" style="width:150px;height:150px;top:50px;left:50px;position:absolute;z-index:40;" value="0.05" min="0.025" max="0.1" step="0.005">
+<input type="file" id="addImg" style="width:350px;height:150px;top:250px;left:250px;position:absolute;z-index:40;">
+
+
+</body></html>

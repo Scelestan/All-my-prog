@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta https-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>pexlays</title>
+<style>
+body {position :absolute ; background-color :rgb(200,200,200); width:100%; height:100%;}
+div { position : absolute; }
+.class1 { position : absolute; }
+#id1 { top:20%; left:20%; }
+</style>
+</head>
+<body>
+<button class="class1" style="top:10%; left:80%;">Class0Visuel0 Cliquable</button>
+<button class="class1" style="top:10%; left:50%;">Class1Visuel2 Cliquable</button>
+<button class="class1" style="top:10%; left:20%;">Class2Visuel3 Cliquable</button>
+<div id="id1" onselectstart="return false">IdVisuel0 Cliquable plusieurs fois...</div>
+<a style="top:50%; left:50%; position:absolute;" onclick="clickage(this)" onselectstart="return false">StyleVisuel Cliquable aussi plusieurs fois...</a>
+<script>
+var nombreDeClick = 0;
+document.getElementById('id1').addEventListener('click', function() {
+nombreDeClick += 1;
+document.getElementById('id1').innerHTML = "IdVisuel" + nombreDeClick.toString();
+});
+var couleurs = "red";
+function clickage(ceci) {
+if (couleurs == "green") {
+couleurs = "red";
+} else {
+couleurs = "green";
+}
+ceci.style.color = couleurs;
+}
+var classis = document.querySelectorAll('.class1');
+for (var cl = 0; cl < classis.length; cl ++) {
+clicke(cl);
+}
+function clicke(cl) {
+classis[cl].addEventListener('click', function() {
+var classis2 = document.querySelectorAll('.class1');
+for (var cl2 = 0; cl2 < classis2.length; cl2 ++) {
+classis2[cl2].innerHTML = "Nombre % aléatoire : " + Math.trunc(Math.random()*100).toString();
+}
+});
+}
+var MouseX = 0;
+document.addEventListener('mousemove', function(e) {
+MouseX = e.clientX;
+});
+function detection(positionY) {
+if (positionY == Math.trunc(MouseX/(window.innerWidth/2))) {
+return true ;
+} else {
+return false ;
+}
+}
+function eventTest() {
+if  (detection(1)) {
+console.log(`le curseur est à droite`) ;
+} else if  (detection(0)) {
+console.log(`le curseur est à gauche`) ;
+}
+}
+var test = setInterval(eventTest, 1000) ;
+</script>
+</body>
+</html>
+                                  

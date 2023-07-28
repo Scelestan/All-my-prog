@@ -1,0 +1,239 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+<title>Create game with PIXIJS</title>
+
+<style>
+        html, body, canvas {
+		position : absolute;
+            width   : 100%;
+            height  : 100%;
+            margin  : 0;
+            padding : 0;
+        }
+
+        #renderCanvas {
+            width   : 22%;
+            height  : 22%;
+			top: 39%;
+			left: 37%;
+            touch-action: none;
+        }
+</style>
+<script src="https://pixijs.download/release/pixi.min.js"></script>
+
+
+</head>
+<body onload="C()">
+
+    
+  <script>
+  var scalex, scaley, w, z, stage,
+    Rotations = "r";
+
+function C() {
+    PIXI.utils.skipHello();
+    var e = new PIXI.Application({
+        width: 1960
+        , height: 1640
+        , backgroundColor: 0
+        , antialias: !0
+        , autoDensity: !0
+        , resolution: 2
+        , resizeTo: window
+    });
+    document.body.appendChild(e.view),
+        stage = e.stage;
+    document.innerWidth, document
+        .innerHeight;
+    e.stage.interactive = !0;
+    var t = .95 * window.innerWidth
+        , n = .95 * window.innerHeight;
+    e.screen.x = 0, e.screen.y = 0, e
+        .screen.width = t, e.screen
+        .height = n, stage.scale.x = .7,
+        stage.scale.y = .7;
+    let i = new PIXI.Container;
+    i.x = 1, i.y = 1, i.name = "joueur",
+        stage.addChild(i), e.ticker.add(
+            (e => {
+                "r" != (
+                    Rotations = -
+                    360 * Math
+                    .atan2(window
+                        .innerHeight /
+                        2 - clientY,
+                        window
+                        .innerWidth /
+                        2 - clientX
+                        ) / (2 *
+                        Math.PI) -
+                    90) && (stage
+                    .x += -3 * Math
+                    .sin(2 * Math
+                        .PI * (
+                            Rotations /
+                            360)),
+                    stage.y += -3 *
+                    Math.cos(2 *
+                        Math.PI * (
+                            Rotations /
+                            360)),
+                    console.log(-3 *
+                        Math.sin(2 *
+                            Math
+                            .PI * (
+                                Rotations /
+                                360)
+                            ))), i
+                    .x = stage.x, i
+                    .y = stage.y
+            }));
+    for (var r = 1; r < 80; r++)
+        for (var o = 1; o < 80; o++)
+            renderIsometricTile(stage,
+                0, 0, 48, 30, 5885328,
+                3648368, 2455376, r
+                .toString() + "entier" +
+                o.toString(), r, o)
+}
+
+function getSell(e, t, n, i) {
+    var r = [];
+    if ("contour" == i) {
+        for (var o = -n; o <= n; o +=
+            2 * n)
+            for (var a = 1 - n; a <= n -
+                1; a++) stage
+                .getChildByName(
+                    (e + o)
+                    .toString() +
+                    "entier" + (t + a)
+                    .toString()) && r
+                .push(stage
+                    .getChildByName((e +
+                            o)
+                        .toString() +
+                        "entier" + (t +
+                            a)
+                        .toString()));
+        for (o = 1 - n; o <= n - 1; o++)
+            for (a = -n; a <= n; a +=
+                2 * n) stage
+                .getChildByName((e + o)
+                    .toString() +
+                    "entier" + (t + a)
+                    .toString()) && r
+                .push(stage
+                    .getChildByName((e +
+                            o)
+                        .toString() +
+                        "entier" + (t +
+                            a)
+                        .toString()))
+    }
+    else if ("entier" == i)
+        for (o = -n; o <= n; o++)
+            for (a = -n; a <= n; a++)
+                stage.getChildByName((
+                        e + o)
+                    .toString() +
+                    "entier" + (t + a)
+                    .toString()) && r
+                .push(stage
+                    .getChildByName((e +
+                            o)
+                        .toString() +
+                        "entier" + (t +
+                            a)
+                        .toString()));
+    return r
+}
+
+function renderIsometricTile(e, t, n, i,
+    r, o, a, s, l, d, g) {
+    TILE_WIDTH = d, TILE_WIDTH_HALF =
+        42, TILE_HEIGHT = g,
+        TILE_HEIGHT_HALF = 31, t = g *
+        TILE_WIDTH_HALF - d *
+        TILE_WIDTH_HALF, n = g *
+        TILE_HEIGHT_HALF + d *
+        TILE_HEIGHT_HALF;
+    let c = new PIXI.Container;
+    c.name = l, e.addChild(c);
+    var h = new PIXI.Graphics;
+    h.beginFill(o), h.drawRect(0, 0, i,
+            i), h.endFill(), h
+        .setTransform(t, n + .5 * i, 1,
+            1, 0, 1.1, -.5, 0, 0);
+    var I = new PIXI.Graphics;
+    I.beginFill(a), I.drawRect(0, 0, r,
+            i), I.endFill(), I
+        .setTransform(t, n + .5 * i, 1,
+            1, 0, 1.1, 1.57, 0, 0);
+    var u = new PIXI.Graphics;
+    u.beginFill(s), u.drawRect(0, 0, i,
+            r), u.endFill(), u
+        .setTransform(t, n + .5 * i, 1,
+            1, 0, -0, -.5, -(i + .015 *
+                i), -(i - .06 * i)), h
+        .interactive = !0, h.cursor =
+        "pointer", h.on("click", (
+            function (e) {
+                console.log(e), w =
+                    .95 * window
+                    .innerWidth, z =
+                    .95 * window
+                    .innerHeight
+            })), h.on("mouseup", (
+            function () {})), h.on(
+            "mouseover", (function (e) {
+                for (var t =
+                        getSell(d,
+                            g, 9,
+                            "entier"
+                            ), n =
+                        0; n < t
+                    .length; n++) t[
+                    n].y += 4
+            })), h.on("mouseout", (
+            function () {
+                for (var e =
+                        getSell(d,
+                            g, 9,
+                            "entier"
+                            ), t =
+                        0; t < e
+                    .length; t++) e[
+                    t].y -= 4
+            })), c.addChild(h), c
+        .addChild(I), c.addChild(u)
+}
+
+function handleResize() {
+    w = .95 * window.innerWidth, z =
+        .95 * window.innerHeight,
+        scalex = w / 960, scaley = z /
+        640
+}
+window.addEventListener("resize",
+    handleResize, {
+        passive: !0
+    });
+var clientX = 0
+    , clientY = 0;
+window.addEventListener("mousemove", (
+    function (e) {
+        clientX = e.clientX,
+            clientY = e.clientY
+    }), {
+    passive: !0
+});
+
+  </script>
+<canvas id="renderCanvas" style='z-index:50;'></canvas>
+</body>
+</html>
