@@ -1,0 +1,3635 @@
+<!DOCTYPE html>
+<html>
+   
+   <head>
+      <meta name="viewport"
+         content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+      <title>CritJS Canvases API
+      </title>
+      <style>
+         html,
+         body,
+         canvas {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+         }
+      </style>
+      <script>
+         var ad = [];
+         var prog = function (A, x, y,
+            t1, l1) {
+            var boula2;
+            var WII = self
+            .innerWidth;
+            var zm = false;
+            var EH = (((self
+                     .innerHeight *
+                     getZoom()) /
+                  (self
+                     .innerHeight)
+                  ) / (
+            getZoom()) * y);
+            var EW = (self
+               .innerWidth *
+               getZoom()) / (self
+               .innerWidth) / (
+               getZoom() * x);
+            var c1113;
+            ad.push([
+                                                A
+               ]);
+            var Ce = "";
+            var ih;
+            var iw;
+            var X11 = 0;
+            var X22 = 0;
+            var W11 = 0;
+            var W22 = 0;
+            var VH = y;
+            var VW = x;
+            if (!l1) {
+               var ET = 0;
+               var EL = 0;
+               var VT = 0;
+               var VL = 0;
+            }
+            else {
+               var ET = t1;
+               var EL = l1;
+               var VT = t1;
+               var VL = l1;
+            }
+            var LW;
+            var LH;
+            var Ra = 1;
+            var tbd = "";
+            var ekt3 = [];
+            var ekt22 = [];
+            var VI = A;
+            var IC = A;
+            
+            function datacollei(
+            XXff) {
+               for (var addd =
+                  0; addd < ad
+                  .length; addd++) {
+                  if (ad[addd]
+                                                                [
+                                                                        0
+                        ] == XXff) {
+                     return ad[addd]
+                                                                        [
+                                                                                1
+                           ];
+                  }
+               }
+            }
+            
+            function LancementDD(
+               results, arrbo, bb,
+               menuOne, boula) {
+               //console.log("front click ajust");
+               var interv;
+               var bbb = bb;
+               if (!boula) {}
+               else {
+                  var bboula = boula;
+                  boula = boula
+                     .split('_');
+                  if (boula[0].split(
+                        "*")[0] ==
+                     "mouse") {
+                     boula2 = bboula;
+                     document
+                        .getElementById(
+                           bbb)
+                        .addEventListener(
+                           "mousedown",
+                           bghhemo);
+                  }
+                  else if (boula[0]
+                     .split("*")[
+                     0] == "this") {
+                     //console.log("front click ajust 2");
+                     document
+                        .getElementById(
+                           bbb)
+                        .addEventListener(
+                           "mouseout",
+                           bghhemo2);
+                  }
+               }
+               if (arrbo != null ||
+                  arrbo != "null") {
+                  arrbo = arrbo
+                     .split('_');
+                  if (arrbo[0].split(
+                        "*")[0] ==
+                     "this") {
+                     arrbo = [arrbo[
+                           0]
+                                                                        , arrbo[
+                           1]
+                                                                        , arrbo[
+                           2]
+                                                                        ];
+                     //console.log("front click ajust 3" + bbb);
+                     document
+                        .getElementById(
+                           bbb)
+                        .addEventListener(
+                           "mouseup",
+                           bghhe);
+                  }
+                  if (arrbo[0] ==
+                     "replace") {
+                     document
+                        .getElementById(
+                           bbb)
+                        .addEventListener(
+                           "mouseup",
+                           bghhe2);
+                  }
+               }
+               
+               function bghhemo() {
+                  var dre;
+                  for (var sT =
+                     0; sT < ad
+                     .length; sT++) {
+                     if (ad[sT]
+                                                                        [
+                                                                                0
+                           ] ==
+                        boula[2]) {
+                        //console.log("ici");
+                        dre = sT;
+                     }
+                  }
+                  document
+                     .getElementById(
+                        bbb)
+                     .removeEventListener(
+                        "mousedown",
+                        bghhemo);
+                  var cadre = ad[dre]
+                                                                [
+                                                                        1
+                        ];
+                  var cool = JSON
+                     .parse(cadre);
+                  for (var sT =
+                     0; sT < cool
+                     .item
+                     .length; sT++) {
+                     if (cool.item[
+                           sT]
+                        .utilisation
+                        .id == bbb
+                        .split(
+                        "DIV")[1]) {
+                        //console.log("test2");
+                        cool.item[sT]
+                           .utilisation
+                           .contour =
+                           "this*" +
+                           boula[0]
+                           .split(
+                              "*")[
+                           1] + "_" +
+                           boula[1] +
+                           "_" +
+                           boula[2];
+                     }
+                  }
+                  cadre = JSON
+                     .stringify(
+                     cool);
+                  ad[dre][1] = cadre;
+                  c1113 = Ce;
+                  var VI2 = VI;
+                  //document.body.innerHTML = "";
+                  //console.log(Ce);
+                  ih = Number(
+                     document
+                     .getElementById(
+                        boula[0]
+                        .split(
+                           "*")[1]
+                        )
+                     .style.height
+                     .split("p")[
+                        0]);
+                  iw = Number(
+                     document
+                     .getElementById(
+                        boula[0]
+                        .split(
+                           "*")[1]
+                        )
+                     .style.width
+                     .split("p")[
+                        0]);
+                  document
+                     .getElementById(
+                        boula[0]
+                        .split("*")[
+                           1])
+                     .innerHTML = "";
+                  if (boula2.split(
+                        "_")[0]
+                     .split("*")
+                     .length == 2) {
+                     Ce = boula2
+                        .split("_")[
+                           0].split(
+                           "*")[1];
+                  }
+                  else {
+                     Ce = c1113;
+                  }
+                  InitialLoadingBounds
+                     (boula[2]);
+               }
+               
+               function bghhemo2() {
+                  document
+                     .getElementById(
+                        bbb)
+                     .removeEventListener(
+                        "mouseout",
+                        bghhemo2);
+                  //console.log("test");
+                  var dre;
+                  for (var sT =
+                     0; sT < ad
+                     .length; sT++) {
+                     if (ad[sT]
+                                                                        [
+                                                                                0
+                           ] ==
+                        boula[2]) {
+                        dre = sT;
+                     }
+                  }
+                  var cadre = ad[dre]
+                                                                [
+                                                                        1
+                        ];
+                  /*
+                  if (boula2.split("_")[0].split("*").length == 2) {
+                  bbb = boula2.split("_")[0].split("*")[1];
+                  }
+                  */
+                  var cool = JSON
+                     .parse(cadre);
+                  for (var sT =
+                     0; sT < cool
+                     .item
+                     .length; sT++) {
+                     if (cool.item[
+                           sT]
+                        .utilisation
+                        .id == bbb
+                        .split(
+                        "DIV")[1]) {
+                        cool.item[sT]
+                           .utilisation
+                           .contour =
+                           "mouse*" +
+                           boula2
+                           .split(
+                              "_")[0]
+                           .split(
+                              "*")[
+                           1] + "_" +
+                           boula[1] +
+                           "_" +
+                           boula[2];
+                        //console.log(boula2);
+                     }
+                  }
+                  cadre = JSON
+                     .stringify(
+                     cool);
+                  ad[dre][1] = cadre;
+                  c1113 = Ce;
+                  var VI2 = VI;
+                  //document.body.innerHTML = "";
+                  if (boula2.split(
+                        "_")[0]
+                     .split("*")
+                     .length == 2) {
+                     Ce = boula2
+                        .split("_")[
+                           0].split(
+                           "*")[1];
+                  }
+                  else {
+                     Ce = c1113;
+                  }
+                  document
+                     .getElementById(
+                        Ce)
+                     .innerHTML = "";
+                  InitialLoadingBounds
+                     (boula[2]);
+               }
+               
+               function bghhe() {
+                  if (arrbo[0].split(
+                        "*")[0] ==
+                     "this") {
+                     //console.log("front click ajust 4");
+                     document
+                        .getElementById(
+                           bbb)
+                        .removeEventListener(
+                           "mouseup",
+                           bghhe);
+                     if (arrbo[0]
+                        .split("*")
+                        .length == 1
+                        ) {
+                        var cc =
+                           arrbo[1];
+                        var VI3 =
+                           arrbo[2];
+                        EH = (((self
+                                    .innerWidth) /
+                                 (self
+                                    .innerHeight
+                                    )
+                                 ) *
+                              0.49) *
+                           getZoom() *
+                           VH;
+                        EW = 1 *
+                           getZoom() *
+                           VW;
+                        /*
+                        LW = Number(self.innerWidth);
+                        LH = Number(self.innerHeight);
+                        document.getElementById(cc).style.top = Number(LH*ET).toString() + "px";
+                        document.getElementById(cc).style.left = Number(LW*EL).toString() + "px";
+                        document.getElementById(cc).style.height = Number(LH*EH).toString() + "px";
+                        document.getElementById(cc).style.width = Number(LW*EW).toString() + "px";
+                        */
+                        ih = Number(
+                           document
+                           .getElementById(
+                              cc)
+                           .style
+                           .height
+                           .split(
+                              "p"
+                              )[0]
+                           );
+                        iw = Number(
+                           document
+                           .getElementById(
+                              cc)
+                           .style
+                           .width
+                           .split(
+                              "p"
+                              )[0]
+                           );
+                        document
+                           .getElementById(
+                              cc)
+                           .innerHTML =
+                           "";
+                        Ce = cc;
+                        VI = VI3;
+                        InitialLoadingBounds
+                           (VI3);
+                     }
+                     else if (arrbo[
+                           0].split(
+                           "*")[1] ==
+                        "function") {
+                        var VI3 =
+                           arrbo[2];
+                        //document.getElementById(VI3.split("*")[0]).innerHTML = "";
+                        //InitialLoadingBounds(VI3.split("*")[1]);
+                     }
+                  }
+               }
+               
+               function bghhe2() {
+                  //console.log("test");
+                  document
+                     .getElementById(
+                        bbb)
+                     .removeEventListener(
+                        "mouseup",
+                        bghhe2);
+                  if (arrbo[0] ==
+                     "replace" &&
+                     arrbo[1] ==
+                     "socket") {
+                     Manivelle(arrbo[
+                        2]);
+                     //console.log(arrbo[2]);
+                  }
+               }
+            }
+            
+            function AA(Xf) {
+               var jesonContent;
+               var routes = tbd;
+               LanceB();
+               
+               function LanceB() {
+                  jesonContent =
+                     routes;
+                  var exo = Number(
+                     jesonContent
+                     .item.length);
+                  var as2 = 0;
+                  for (var o = 0; o <
+                     exo; o++) {
+                     var x1;
+                     var x2;
+                     var w1;
+                     var w2;
+                     for (var aaaa =
+                           0; aaaa <
+                        jesonContent
+                        .item[o]
+                        .geometry
+                        .coordinates[
+                           0]
+                        .length; aaaa++
+                        ) {
+                        if (aaaa ==
+                           0) {
+                           w1 =
+                              Number
+                              .parseFloat(
+                                 jesonContent
+                                 .item[
+                                    o
+                                    ]
+                                 .geometry
+                                 .coordinates[
+                                    0
+                                    ]
+                                                                                                [
+                                                                                                        aaaa
+                                    ]
+                                                                                                [
+                                                                                                        0
+                                    ]
+                                 );
+                           w2 =
+                              Number
+                              .parseFloat(
+                                 jesonContent
+                                 .item[
+                                    o
+                                    ]
+                                 .geometry
+                                 .coordinates[
+                                    0
+                                    ]
+                                                                                                [
+                                                                                                        aaaa
+                                    ]
+                                                                                                [
+                                                                                                        0
+                                    ]
+                                 );
+                           x1 =
+                              Number
+                              .parseFloat(
+                                 jesonContent
+                                 .item[
+                                    o
+                                    ]
+                                 .geometry
+                                 .coordinates[
+                                    0
+                                    ]
+                                                                                                [
+                                                                                                        aaaa
+                                    ]
+                                                                                                [
+                                                                                                        1
+                                    ]
+                                 );
+                           x2 =
+                              Number
+                              .parseFloat(
+                                 jesonContent
+                                 .item[
+                                    o
+                                    ]
+                                 .geometry
+                                 .coordinates[
+                                    0
+                                    ]
+                                                                                                [
+                                                                                                        aaaa
+                                    ]
+                                                                                                [
+                                                                                                        1
+                                    ]
+                                 );
+                        }
+                        for (var
+                              aaaaa =
+                              0; aaaaa <
+                           jesonContent
+                           .item[o]
+                           .geometry
+                           .coordinates[
+                              0]
+                           .length; aaaaa++
+                           ) {
+                           if (Number
+                              .parseFloat(
+                                 jesonContent
+                                 .item[
+                                    o
+                                    ]
+                                 .geometry
+                                 .coordinates[
+                                    0
+                                    ]
+                                                                                                [
+                                                                                                        aaaaa
+                                    ]
+                                                                                                [
+                                                                                                        1
+                                    ]
+                                 ) <=
+                              x2) {}
+                           else {
+                              if (
+                                 x2 <=
+                                 Number
+                                 .parseFloat(
+                                    jesonContent
+                                    .item[
+                                       o
+                                       ]
+                                    .geometry
+                                    .coordinates[
+                                       0
+                                       ]
+                                                                                                        [
+                                                                                                                aaaaa
+                                       ]
+                                                                                                        [
+                                                                                                                1
+                                       ]
+                                    )
+                                 ) {
+                                 x2 =
+                                    Number
+                                    .parseFloat(
+                                       jesonContent
+                                       .item[
+                                          o
+                                          ]
+                                       .geometry
+                                       .coordinates[
+                                          0
+                                          ]
+                                                                                                                [
+                                                                                                                        aaaaa
+                                          ]
+                                                                                                                [
+                                                                                                                        1
+                                          ]
+                                       );
+                              }
+                           }
+                           if (Number
+                              .parseFloat(
+                                 jesonContent
+                                 .item[
+                                    o
+                                    ]
+                                 .geometry
+                                 .coordinates[
+                                    0
+                                    ]
+                                                                                                [
+                                                                                                        aaaaa
+                                    ]
+                                                                                                [
+                                                                                                        1
+                                    ]
+                                 ) >=
+                              x1) {}
+                           else {
+                              if (
+                                 x1 >=
+                                 Number
+                                 .parseFloat(
+                                    jesonContent
+                                    .item[
+                                       o
+                                       ]
+                                    .geometry
+                                    .coordinates[
+                                       0
+                                       ]
+                                                                                                        [
+                                                                                                                aaaaa
+                                       ]
+                                                                                                        [
+                                                                                                                1
+                                       ]
+                                    )
+                                 ) {
+                                 x1 =
+                                    Number
+                                    .parseFloat(
+                                       jesonContent
+                                       .item[
+                                          o
+                                          ]
+                                       .geometry
+                                       .coordinates[
+                                          0
+                                          ]
+                                                                                                                [
+                                                                                                                        aaaaa
+                                          ]
+                                                                                                                [
+                                                                                                                        1
+                                          ]
+                                       );
+                              }
+                           }
+                           if (Number
+                              .parseFloat(
+                                 jesonContent
+                                 .item[
+                                    o
+                                    ]
+                                 .geometry
+                                 .coordinates[
+                                    0
+                                    ]
+                                                                                                [
+                                                                                                        aaaaa
+                                    ]
+                                                                                                [
+                                                                                                        0
+                                    ]
+                                 ) <=
+                              w2) {}
+                           else {
+                              if (
+                                 w2 <=
+                                 Number
+                                 .parseFloat(
+                                    jesonContent
+                                    .item[
+                                       o
+                                       ]
+                                    .geometry
+                                    .coordinates[
+                                       0
+                                       ]
+                                                                                                        [
+                                                                                                                aaaaa
+                                       ]
+                                                                                                        [
+                                                                                                                0
+                                       ]
+                                    )
+                                 ) {
+                                 w2 =
+                                    Number
+                                    .parseFloat(
+                                       jesonContent
+                                       .item[
+                                          o
+                                          ]
+                                       .geometry
+                                       .coordinates[
+                                          0
+                                          ]
+                                                                                                                [
+                                                                                                                        aaaaa
+                                          ]
+                                                                                                                [
+                                                                                                                        0
+                                          ]
+                                       );
+                              }
+                           }
+                           if (Number
+                              .parseFloat(
+                                 jesonContent
+                                 .item[
+                                    o
+                                    ]
+                                 .geometry
+                                 .coordinates[
+                                    0
+                                    ]
+                                                                                                [
+                                                                                                        aaaaa
+                                    ]
+                                                                                                [
+                                                                                                        0
+                                    ]
+                                 ) >=
+                              w1) {}
+                           else {
+                              if (
+                                 w1 >=
+                                 Number
+                                 .parseFloat(
+                                    jesonContent
+                                    .item[
+                                       o
+                                       ]
+                                    .geometry
+                                    .coordinates[
+                                       0
+                                       ]
+                                                                                                        [
+                                                                                                                aaaaa
+                                       ]
+                                                                                                        [
+                                                                                                                0
+                                       ]
+                                    )
+                                 ) {
+                                 w1 =
+                                    Number
+                                    .parseFloat(
+                                       jesonContent
+                                       .item[
+                                          o
+                                          ]
+                                       .geometry
+                                       .coordinates[
+                                          0
+                                          ]
+                                                                                                                [
+                                                                                                                        aaaaa
+                                          ]
+                                                                                                                [
+                                                                                                                        0
+                                          ]
+                                       );
+                              }
+                           }
+                           if (
+                              aaaa ==
+                              aaaaa &&
+                              aaaaa ==
+                              jesonContent
+                              .item[
+                                 o]
+                              .geometry
+                              .coordinates[
+                                 0]
+                              .length -
+                              1) {
+                              ekt3
+                                 .push(
+                                    [routes
+                                       .item[
+                                          o
+                                          ]
+                                                                                                .utilisation
+                                                                                                .id
+                                                                                                , w1
+                                                                                                , w2
+                                                                                                , x1
+                                                                                                , x2
+                                                                                                ]
+                                    );
+                              ekt22
+                                 .push(
+                                    [convert(
+                                          w2,
+                                          0,
+                                          -
+                                          1,
+                                          1
+                                          )
+                                                                                                , convert(
+                                          0,
+                                          x2,
+                                          -
+                                          1,
+                                          1
+                                          )
+                                                                                                , convert(
+                                          w1,
+                                          0,
+                                          -
+                                          1,
+                                          1
+                                          )
+                                                                                                , convert(
+                                          0,
+                                          x1,
+                                          -
+                                          1,
+                                          1
+                                          )
+                                                                                                ]
+                                    );
+                           }
+                        }
+                     }
+                     if (exo - 1 ==
+                        o) {
+                        LanceCC();
+                     }
+                  }
+               }
+               
+               function LanceCC() {
+                  var canv = document
+                     .getElementById(
+                        Ce);
+                  canv.innerHTML =
+                  "";
+                  for (var bbbb =
+                        routes.item
+                        .length -
+                        1; bbbb >=
+                     0; bbbb--) {
+                     var thebop = 0;
+                     var thebop2 = 0;
+                     for (var bbbb3 =
+                           0; bbbb3 <=
+                        routes.item
+                        .length -
+                        1; bbbb3++) {
+                        if (routes
+                           .item[
+                              bbbb]
+                           .utilisation
+                           .id ==
+                           routes
+                           .item[
+                              bbbb3]
+                           .utilisation
+                           .id &&
+                           bbbb <
+                           bbbb3) {
+                           thebop +=
+                              1;
+                        }
+                        if (routes
+                           .item[
+                              bbbb]
+                           .utilisation
+                           .id ==
+                           routes
+                           .item[
+                              bbbb3]
+                           .utilisation
+                           .id &&
+                           bbbb !=
+                           bbbb3) {
+                           thebop2
+                              = -2;
+                        }
+                     }
+                     if (thebop2 ==
+                        0) {
+                        smoth(bbbb,
+                           Number(
+                              routes
+                              .item[
+                                 bbbb
+                                 ]
+                              .utilisation
+                              .Ordre
+                              ));
+                     }
+                     else if (
+                        thebop == 0
+                        ) {
+                        smoth(bbbb,
+                           Number(
+                              routes
+                              .item[
+                                 bbbb
+                                 ]
+                              .utilisation
+                              .Ordre
+                              ));
+                     }
+                     else {
+                        console.log(
+                           "erreur conflit d'identifiants"
+                           );
+                     }
+                  }
+                  var imgo;
+                  
+                  function smoth(
+                     bbbb2, radie) {
+                     exea(Ra);
+                     
+                     function exea(
+                        condi) {
+                        jesonContent
+                           = routes;
+                        if ((typeof radie ==
+                              "number"
+                              )) {
+                           var divd3 =
+                              document
+                              .createElement(
+                                 "div"
+                                 );
+                           divd3.id =
+                              "DIV" +
+                              routes
+                              .item[
+                                 bbbb2
+                                 ]
+                              .utilisation
+                              .id;
+                           divd3
+                              .style
+                              .position =
+                              'absolute';
+                           divd3
+                              .style
+                              .height =
+                              Number(
+                                 (ekt22[
+                                       bbbb2
+                                       ]
+                                                                                                        [
+                                                                                                                1
+                                       ]
+                                    ) -
+                                 (ekt22[
+                                       bbbb2
+                                       ]
+                                                                                                        [
+                                                                                                                3
+                                       ]
+                                    )
+                                 )
+                              .toString() +
+                              "px";
+                           divd3
+                              .style
+                              .width =
+                              Number(
+                                 (ekt22[
+                                       bbbb2
+                                       ]
+                                                                                                        [
+                                                                                                                0
+                                       ]
+                                    ) -
+                                 (ekt22[
+                                       bbbb2
+                                       ]
+                                                                                                        [
+                                                                                                                2
+                                       ]
+                                    )
+                                 )
+                              .toString() +
+                              "px";
+                           divd3
+                              .style
+                              .zIndex =
+                              radie
+                              .toString();
+                           divd3
+                              .style
+                              .top =
+                              Number(
+                                 (-ih +
+                                    ekt22[
+                                       bbbb2
+                                       ]
+                                                                                                        [
+                                                                                                                3
+                                       ]
+                                    ) *
+                                 -1)
+                              .toString() +
+                              "px";
+                           divd3
+                              .align =
+                              "left";
+                           if (!
+                              routes
+                              .item[
+                                 bbbb2
+                                 ]
+                              .utilisation
+                              .contour
+                              ) {}
+                           else if (
+                              routes
+                              .item[
+                                 bbbb2
+                                 ]
+                              .utilisation
+                              .contour
+                              .split(
+                                 "*")
+                              .length ==
+                              2) {
+                              divd3
+                                 .style
+                                 .border =
+                                 routes
+                                 .item[
+                                    bbbb2
+                                    ]
+                                 .utilisation
+                                 .contour
+                                 .split(
+                                    "*"
+                                    )[
+                                    1
+                                    ] +
+                                 "px solid " +
+                                 routes
+                                 .item[
+                                    bbbb2
+                                    ]
+                                 .utilisation
+                                 .contour
+                                 .split(
+                                    "*"
+                                    )[
+                                    0
+                                    ];
+                           }
+                           divd3
+                              .style
+                              .left =
+                              Number(
+                                 ekt22[
+                                    bbbb2
+                                    ]
+                                                                                                [
+                                                                                                        2
+                                    ]
+                                 )
+                              .toString() +
+                              "px";
+                           var yop =
+                              '<canvas id="';
+                           yop += ""
+                           yop +=
+                              routes
+                              .item[
+                                 bbbb2
+                                 ]
+                              .utilisation
+                              .id;
+                           yop +=
+                              '" height="';
+                           yop +=
+                              Number(
+                                 Number(
+                                    (ekt22[
+                                          bbbb2
+                                          ]
+                                                                                                        [
+                                                                                                                1
+                                          ]
+                                       ) -
+                                    (ekt22[
+                                          bbbb2
+                                          ]
+                                                                                                        [
+                                                                                                                3
+                                          ]
+                                       )
+                                    )
+                                 )
+                              .toString();
+                           yop +=
+                              '" width="';
+                           yop +=
+                              Number(
+                                 Number(
+                                    (ekt22[
+                                          bbbb2
+                                          ]
+                                                                                                        [
+                                                                                                                0
+                                          ]
+                                       ) -
+                                    (ekt22[
+                                          bbbb2
+                                          ]
+                                                                                                        [
+                                                                                                                2
+                                          ]
+                                       )
+                                    )
+                                 )
+                              .toString();
+                           yop +=
+                           '"';
+                           yop +=
+                              " style='top:0px; left:0px; height:0px; position:absolute;";
+                           yop +=
+                              " width:0px;";
+                           yop +=
+                           "'";
+                           yop +=
+                              ' > ';
+                           yop +=
+                              '</canvas> ';
+                           yop +=
+                              "<div";
+                           yop +=
+                              " style='height:";
+                           yop +=
+                              Number(
+                                 Number(
+                                    (ekt22[
+                                          bbbb2
+                                          ]
+                                                                                                        [
+                                                                                                                1
+                                          ]
+                                       ) -
+                                    (ekt22[
+                                          bbbb2
+                                          ]
+                                                                                                        [
+                                                                                                                3
+                                          ]
+                                       )
+                                    )
+                                 )
+                              .toString() +
+                              "px";
+                           yop +=
+                              "; position:absolute; z-index:";
+                           yop += (
+                                 radie -
+                                 1)
+                              .toString();
+                           yop +=
+                              "; width:";
+                           yop +=
+                              Number(
+                                 Number(
+                                    (ekt22[
+                                          bbbb2
+                                          ]
+                                                                                                        [
+                                                                                                                0
+                                          ]
+                                       ) -
+                                    (ekt22[
+                                          bbbb2
+                                          ]
+                                                                                                        [
+                                                                                                                2
+                                          ]
+                                       )
+                                    )
+                                 )
+                              .toString() +
+                              "px";
+                           yop +=
+                              ";' ";
+                           if (routes
+                              .item[
+                                 bbbb2
+                                 ]
+                              .utilisation
+                              .route
+                              .split(
+                                 "_"
+                                 )[0]
+                              .split(
+                                 "*")
+                              .length ==
+                              2 &&
+                              routes
+                              .item[
+                                 bbbb2
+                                 ]
+                              .utilisation
+                              .route
+                              .split(
+                                 "_"
+                                 )[0]
+                              .split(
+                                 "*"
+                                 )[
+                              1] ==
+                              "function"
+                              ) {
+                              yop +=
+                                 "onclick='" +
+                                 routes
+                                 .item[
+                                    bbbb2
+                                    ]
+                                 .utilisation
+                                 .route
+                                 .split(
+                                    "_"
+                                    )[
+                                    1
+                                    ] +
+                                 "'";
+                           }
+                           yop +=
+                           ">";
+                           if (routes
+                              .item[
+                                 bbbb2
+                                 ]
+                              .utilisation
+                              .utiliser
+                              .split(
+                                 '#*#'
+                                 )
+                              .length ==
+                              1) {
+                              yop +=
+                                 routes
+                                 .item[
+                                    bbbb2
+                                    ]
+                                 .utilisation
+                                 .utiliser;
+                           }
+                           yop +=
+                              "</div>";
+                           divd3
+                              .innerHTML =
+                              yop;
+                           document
+                              .getElementById(
+                                 Ce)
+                              .appendChild(
+                                 divd3
+                                 );
+                           var canvd3 =
+                              document
+                              .getElementById(
+                                 (routes
+                                    .item[
+                                       bbbb2
+                                       ]
+                                    .utilisation
+                                    .id
+                                    )
+                                 );
+                           canvd3
+                              .style
+                              .position =
+                              'absolute';
+                           canvd3
+                              .style
+                              .zIndex =
+                              (radie -
+                                 2)
+                              .toString();
+                           var canvde =
+                              document
+                              .getElementById(
+                                 "DIV" +
+                                 routes
+                                 .item[
+                                    bbbb2
+                                    ]
+                                 .utilisation
+                                 .id
+                                 );
+                           canvde
+                              .style
+                              .height =
+                              Number(
+                                 ((ekt22[
+                                          bbbb2]
+                                       [
+                                                                                                        1
+                                          ]
+                                       ) -
+                                    (ekt22[
+                                          bbbb2
+                                          ]
+                                                                                                        [
+                                                                                                                3
+                                          ]
+                                       )
+                                    )
+                                 )
+                              .toString() +
+                              "px";
+                           canvde
+                              .style
+                              .width =
+                              Number(
+                                 ((ekt22[
+                                          bbbb2]
+                                       [
+                                                                                                        0
+                                          ]
+                                       ) -
+                                    (ekt22[
+                                          bbbb2
+                                          ]
+                                                                                                        [
+                                                                                                                2
+                                          ]
+                                       )
+                                    )
+                                 )
+                              .toString() +
+                              "px";
+                           canvd3
+                              .style
+                              .height =
+                              Number(
+                                 ((ekt22[
+                                          bbbb2]
+                                       [
+                                                                                                        1
+                                          ]
+                                       ) -
+                                    (ekt22[
+                                          bbbb2
+                                          ]
+                                                                                                        [
+                                                                                                                3
+                                          ]
+                                       )
+                                    )
+                                 )
+                              .toString() +
+                              "px";
+                           canvd3
+                              .style
+                              .width =
+                              Number(
+                                 ((ekt22[
+                                          bbbb2]
+                                       [
+                                                                                                        0
+                                          ]
+                                       ) -
+                                    (ekt22[
+                                          bbbb2
+                                          ]
+                                                                                                        [
+                                                                                                                2
+                                          ]
+                                       )
+                                    )
+                                 )
+                              .toString() +
+                              "px";
+                           canvde
+                              .style
+                              .zIndex =
+                              (radie)
+                              .toString();
+                           canvde
+                              .style
+                              .top =
+                              Number(
+                                 (-ih +
+                                    ekt22[
+                                       bbbb2
+                                       ]
+                                                                                                        [
+                                                                                                                1
+                                       ]
+                                    ) *
+                                 -1)
+                              .toString() +
+                              "px";
+                           canvde
+                              .align =
+                              "left";
+                           canvde
+                              .style
+                              .left =
+                              Number(
+                                 ekt22[
+                                    bbbb2
+                                    ]
+                                                                                                [
+                                                                                                        2
+                                    ]
+                                 )
+                              .toString() +
+                              "px";
+                        }
+                        cli(canvd3,
+                           routes
+                           .item[
+                              bbbb2
+                              ]
+                           .utilisation
+                           .route,
+                           canvde
+                           .id,
+                           routes
+                           .item[
+                              bbbb2
+                              ]
+                           .utilisation
+                           .utiliser,
+                           bbbb2,
+                           routes
+                           .item[
+                              bbbb2
+                              ]
+                           .utilisation
+                           .contour
+                           );
+                        //routes.item[bbbb2].utilisation.id
+                        var ctx =
+                           canvd3
+                           .getContext(
+                              '2d', {
+                                 willReadFrequently: true
+                              });
+                        var
+                     poly = [];
+                        var ppow =
+                           Number(((ekt22[
+                                    bbbb2
+                                    ]
+                                 [
+                                                                                                0
+                                    ]
+                                 ) -
+                              (ekt22[
+                                    bbbb2
+                                    ]
+                                                                                                [
+                                                                                                        2
+                                    ]
+                                 )
+                              ));
+                        var ppoh =
+                           Number(((ekt22[
+                                    bbbb2
+                                    ]
+                                 [
+                                                                                                1
+                                    ]
+                                 ) -
+                              (ekt22[
+                                    bbbb2
+                                    ]
+                                                                                                [
+                                                                                                        3
+                                    ]
+                                 )
+                              ));
+                        var hhhx = 0;
+                        var hhhy = 0;
+                        var hhhy22 =
+                           0;
+                        for (var
+                              aaaa =
+                              0; aaaa <
+                           routes
+                           .item[
+                              bbbb2]
+                           .geometry
+                           .coordinates[
+                              0]
+                           .length; aaaa++
+                           ) {
+                           hhhx =
+                              convert(
+                                 0,
+                                 routes
+                                 .item[
+                                    bbbb2
+                                    ]
+                                 .geometry
+                                 .coordinates[
+                                    0
+                                    ]
+                                                                                        [
+                                                                                                aaaa
+                                    ]
+                                                                                        [
+                                                                                                1
+                                    ],
+                                 bbbb2,
+                                 ppoh
+                                 );
+                           hhhy =
+                              convert(
+                                 routes
+                                 .item[
+                                    bbbb2
+                                    ]
+                                 .geometry
+                                 .coordinates[
+                                    0
+                                    ]
+                                                                                        [
+                                                                                                aaaa
+                                    ]
+                                                                                        [
+                                                                                                0
+                                    ],
+                                 0,
+                                 bbbb2,
+                                 ppow
+                                 );
+                           poly.push(
+                              hhhy
+                              );
+                           poly.push(
+                              hhhx
+                              );
+                        }
+                        var image =
+                           new Image();
+                        var pattern;
+                        
+                        function LoadImages() {
+                           ctx
+                        .beginPath();
+                           
+                           function draww(
+                              conte
+                              ) {
+                              if (
+                                 conte ==
+                                 0) {
+                                 if (
+                                    routes
+                                    .item[
+                                       bbbb2
+                                       ]
+                                    .utilisation
+                                    .couleur !=
+                                    "null"
+                                    ) {
+                                    if (
+                                       routes
+                                       .item[
+                                          bbbb2
+                                          ]
+                                       .utilisation
+                                       .couleur
+                                       .split(
+                                          "~"
+                                          )[
+                                          0
+                                          ] ==
+                                       "LoadImage"
+                                       ) {
+                                       pattern
+                                          =
+                                          ctx
+                                          .createPattern(
+                                             imagefinali,
+                                             "no-repeat"
+                                             );
+                                    }
+                                    else if (
+                                       routes
+                                       .item[
+                                          bbbb2
+                                          ]
+                                       .utilisation
+                                       .couleur
+                                       .split(
+                                          "~"
+                                          )[
+                                          0
+                                          ] ==
+                                       "stroke"
+                                       ) {
+                                       pattern
+                                          =
+                                          routes
+                                          .item[
+                                             bbbb2
+                                             ]
+                                          .utilisation
+                                          .couleur
+                                          .split(
+                                             "~"
+                                             )[
+                                             1
+                                             ];
+                                       ctx.strokeStyle =
+                                          "black";
+                                    }
+                                    else {
+                                       pattern
+                                          =
+                                          routes
+                                          .item[
+                                             bbbb2
+                                             ]
+                                          .utilisation
+                                          .couleur;
+                                    }
+                                 }
+                                 else {
+                                    pattern
+                                       =
+                                       "rgba(0,0,0,1)";
+                                    ctx.strokeStyle =
+                                       "black";
+                                 }
+                              }
+                              else {
+                                 pattern
+                                    =
+                                    routes
+                                    .item[
+                                       bbbb2
+                                       ]
+                                    .utilisation
+                                    .contour
+                                    .split(
+                                       "_"
+                                       )[
+                                       1
+                                       ];
+                              }
+                              ctx.fillStyle =
+                                 pattern;
+                              ctx.moveTo(
+                                 poly[
+                                    0
+                                    ],
+                                 poly[
+                                    1
+                                    ]
+                                 );
+                              if (
+                                 routes
+                                 .item[
+                                    bbbb2
+                                    ]
+                                 .utilisation
+                                 .contour ==
+                                 "arc"
+                                 ) {
+                                 ctx.arcTo(
+                                    poly[
+                                       0
+                                       ],
+                                    poly[
+                                       1
+                                       ],
+                                    poly[
+                                       2
+                                       ],
+                                    poly[
+                                       3
+                                       ],
+                                    100
+                                    );
+                                 for (
+                                    item =
+                                    0; item <
+                                    poly
+                                    .length -
+                                    1; item +=
+                                    2
+                                    ) {
+                                    if (
+                                       item <
+                                       poly
+                                       .length -
+                                       3
+                                       ) {
+                                       var calcpp =
+                                          (poly[item +
+                                                4
+                                                ] +
+                                             poly[
+                                                item +
+                                                5
+                                                ]
+                                             ) -
+                                          (poly[item +
+                                                2
+                                                ] +
+                                             poly[
+                                                item +
+                                                3
+                                                ]
+                                             );
+                                       ctx.arcTo(
+                                          poly[
+                                             item +
+                                             2
+                                             ],
+                                          poly[
+                                             item +
+                                             3
+                                             ],
+                                          poly[
+                                             item +
+                                             4
+                                             ],
+                                          poly[
+                                             item +
+                                             5
+                                             ],
+                                          100
+                                          );
+                                    }
+                                    else if (
+                                       item <
+                                       poly
+                                       .length -
+                                       1
+                                       ) {
+                                       ctx.arcTo(
+                                          poly[
+                                             0
+                                             ],
+                                          poly[
+                                             1
+                                             ],
+                                          poly[
+                                             2
+                                             ],
+                                          poly[
+                                             3
+                                             ],
+                                          100
+                                          );
+                                    }
+                                 }
+                              }
+                              else {
+                                 ctx.lineTo(
+                                    poly[
+                                       0
+                                       ],
+                                    poly[
+                                       1
+                                       ]
+                                    );
+                                 for (
+                                    item =
+                                    0; item <
+                                    poly
+                                    .length -
+                                    1; item +=
+                                    2
+                                    ) {
+                                    if (
+                                       item <
+                                       poly
+                                       .length -
+                                       3
+                                       ) {
+                                       ctx.lineTo(
+                                          poly[
+                                             item +
+                                             2
+                                             ],
+                                          poly[
+                                             item +
+                                             3
+                                             ]
+                                          );
+                                    }
+                                    else if (
+                                       item <
+                                       poly
+                                       .length -
+                                       1
+                                       ) {}
+                                 }
+                              }
+                              ctx
+                           .fill();
+                              ctx
+                           .closePath();
+                           }
+                           draww(0);
+                           if (routes
+                              .item[
+                                 bbbb2
+                                 ]
+                              .utilisation
+                              .utiliser
+                              .split(
+                                 '#*#'
+                                 )
+                              .length ==
+                              4) {
+                              var arrPutText =
+                                 routes
+                                 .item[
+                                    bbbb2
+                                    ]
+                                 .utilisation
+                                 .utiliser
+                                 .split(
+                                    '#*#'
+                                    );
+                              putText
+                                 (canvd3,
+                                    ctx,
+                                    Number(
+                                       arrPutText[
+                                          0
+                                          ]
+                                       ),
+                                    arrPutText[
+                                       1
+                                       ],
+                                    parseInt(
+                                       Number(
+                                          arrPutText[
+                                             0
+                                             ]
+                                          ) *
+                                       1.286
+                                       ),
+                                    arrPutText[
+                                       2
+                                       ],
+                                    arrPutText[
+                                       3
+                                       ]
+                                    );
+                              // 0 = taille 1 = police 2 = color 3 = texte
+                           }
+                           ctx
+                        .beginPath();
+                           if (!
+                              routes
+                              .item[
+                                 bbbb2
+                                 ]
+                              .utilisation
+                              .contour
+                              ) {}
+                           else if (
+                              routes
+                              .item[
+                                 bbbb2
+                                 ]
+                              .utilisation
+                              .contour
+                              .split(
+                                 "_"
+                                 )[0]
+                              .split(
+                                 "*"
+                                 )[
+                              0] ==
+                              "this" &&
+                              routes
+                              .item[
+                                 bbbb2
+                                 ]
+                              .utilisation
+                              .contour !=
+                              "null"
+                              ) {
+                              ctx.globalCompositeOperation =
+                                 'source-in';
+                              ctx.fillStyle =
+                                 routes
+                                 .item[
+                                    bbbb2
+                                    ]
+                                 .utilisation
+                                 .contour
+                                 .split(
+                                    "_"
+                                    )[
+                                    1
+                                    ];
+                              ctx.moveTo(
+                                 poly[
+                                    0
+                                    ],
+                                 poly[
+                                    1
+                                    ]
+                                 );
+                              ctx.lineTo(
+                                 poly[
+                                    0
+                                    ],
+                                 poly[
+                                    1
+                                    ]
+                                 );
+                              for (
+                                 item =
+                                 0; item <
+                                 poly
+                                 .length -
+                                 1; item +=
+                                 2) {
+                                 if (
+                                    item <
+                                    poly
+                                    .length -
+                                    3
+                                    ) {
+                                    ctx.lineTo(
+                                       poly[
+                                          item +
+                                          2
+                                          ],
+                                       poly[
+                                          item +
+                                          3
+                                          ]
+                                       );
+                                 }
+                                 else if (
+                                    item <
+                                    poly
+                                    .length -
+                                    1
+                                    ) {}
+                              }
+                              ctx
+                           .closePath();
+                              ctx
+                           .beginPath();
+                              ctx.globalCompositeOperation =
+                                 'multiply';
+                              draww(
+                                 1);
+                           }
+                           canvd3
+                              .update;
+                        }
+                        if (routes
+                           .item[
+                              bbbb2]
+                           .utilisation
+                           .couleur
+                           .split(
+                              "~")[
+                           0] ==
+                           "LoadImage"
+                           ) {
+                           var imagefinali =
+                              new Image();
+                           imagefinali
+                              .onload =
+                              function () {
+                                 LoadImages
+                                    ();
+                              };
+                           image
+                              .onload =
+                              function () {
+                                 document
+                                    .getElementById(
+                                       "loaderCanvases"
+                                       )
+                                    .height =
+                                    Number(
+                                       canvde
+                                       .style
+                                       .height
+                                       .split(
+                                          "p"
+                                          )[
+                                          0
+                                          ] *
+                                       condi
+                                       );
+                                 document
+                                    .getElementById(
+                                       "loaderCanvases"
+                                       )
+                                    .width =
+                                    Number(
+                                       canvde
+                                       .style
+                                       .width
+                                       .split(
+                                          "p"
+                                          )[
+                                          0
+                                          ] *
+                                       condi
+                                       );
+                                 document
+                                    .getElementById(
+                                       "loaderCanvases"
+                                       )
+                                    .getContext(
+                                       "2d",
+                                       {
+                                          willReadFrequently: true
+                                       }
+                                       )
+                                    .drawImage(
+                                       image,
+                                       -
+                                       ((condi -
+                                             1
+                                             ) *
+                                          (canvde
+                                             .style
+                                             .width
+                                             .split(
+                                                "p"
+                                                )[
+                                                0
+                                                ] /
+                                             2
+                                             )
+                                          ),
+                                       0,
+                                       Number(
+                                          canvde
+                                          .style
+                                          .width
+                                          .split(
+                                             "p"
+                                             )[
+                                             0
+                                             ] *
+                                          condi
+                                          ),
+                                       Number(
+                                          canvde
+                                          .style
+                                          .height
+                                          .split(
+                                             "p"
+                                             )[
+                                             0
+                                             ] *
+                                          condi
+                                          )
+                                       );
+                                 document
+                                    .getElementById(
+                                       "loaderIMG"
+                                       )
+                                    .style
+                                    .height =
+                                    Number(
+                                       canvd3
+                                       .style
+                                       .height
+                                       .split(
+                                          "p"
+                                          )[
+                                          0
+                                          ] *
+                                       condi
+                                       )
+                                    .toString() +
+                                    "px";
+                                 document
+                                    .getElementById(
+                                       "loaderIMG"
+                                       )
+                                    .style
+                                    .width =
+                                    Number(
+                                       canvd3
+                                       .style
+                                       .width
+                                       .split(
+                                          "p"
+                                          )[
+                                          0
+                                          ] *
+                                       condi
+                                       )
+                                    .toString() +
+                                    "px";
+                                 document
+                                    .getElementById(
+                                       "loaderIMG"
+                                       )
+                                    .src =
+                                    image
+                                    .src; //document.getElementById("loaderCanvases").toDataURL('image/png'); 
+                                 imagefinali
+                                    .height =
+                                    Number(
+                                       canvde
+                                       .style
+                                       .height
+                                       .split(
+                                          "p"
+                                          )[
+                                          0
+                                          ] *
+                                       condi
+                                       );
+                                 imagefinali
+                                    .width =
+                                    Number(
+                                       canvde
+                                       .style
+                                       .width
+                                       .split(
+                                          "p"
+                                          )[
+                                          0
+                                          ] *
+                                       condi
+                                       );
+                                 imagefinali
+                                    .src =
+                                    document
+                                    .getElementById(
+                                       "loaderIMG"
+                                       )
+                                    .src;
+                              };
+                           image
+                              .height =
+                              Number(
+                                 canvde
+                                 .style
+                                 .height
+                                 .split(
+                                    "p"
+                                    )[
+                                    0
+                                    ] *
+                                 condi
+                                 );
+                           image
+                              .width =
+                              Number(
+                                 canvde
+                                 .style
+                                 .width
+                                 .split(
+                                    "p"
+                                    )[
+                                    0
+                                    ] *
+                                 condi
+                                 );
+                           image
+                              .src =
+                              routes
+                              .item[
+                                 bbbb2
+                                 ]
+                              .utilisation
+                              .couleur
+                              .split(
+                                 "~"
+                                 )[
+                              1];
+                        }
+                        else {
+                           LoadImages
+                              ();
+                        }
+                        if (bbbb2 ==
+                           routes
+                           .item
+                           .length -
+                           1) {}
+                     };
+                  };
+               }
+               
+               function convert(lat,
+                  lng, opp, pourcent,
+                  opp2) {
+                  if (!opp2) {
+                     opp2 = 0;
+                  }
+                  if (pourcent < 2) {
+                     var MAP_HEIGHT =
+                        ih *
+                        pourcent;
+                     var MAP_WIDTH =
+                        iw *
+                        pourcent;
+                  }
+                  else {
+                     var MAP_HEIGHT =
+                        pourcent;
+                     var MAP_WIDTH =
+                        pourcent;
+                  }
+                  //extents of bounding box
+                  if (opp != -1) {
+                     var e2 =
+                        parseFloat(
+                           ekt3[opp]
+                                                                        [
+                                                                                2
+                              ] +
+                           opp2
+                           ); //eastern boundary latitude
+                     var w2 =
+                        parseFloat(
+                           ekt3[opp]
+                                                                        [
+                                                                                1
+                              ] +
+                           opp2
+                           ); //western boundary latitude
+                     var n2 =
+                        parseFloat(
+                           ekt3[opp]
+                                                                        [
+                                                                                4
+                              ] +
+                           opp2
+                           ); //north boundary longitude
+                     var s2 =
+                        parseFloat(
+                           ekt3[opp]
+                                                                        [
+                                                                                3
+                              ] +
+                           opp2
+                           ); //south boundary longitude
+                  }
+                  else {
+                     var e2 =
+                        parseFloat(
+                           W22
+                           ); //eastern boundary latitude
+                     var w2 =
+                        parseFloat(
+                           W11
+                           ); //western boundary latitude
+                     var n2 =
+                        parseFloat(
+                           X11
+                           ); //north boundary longitude
+                     var s2 =
+                        parseFloat(
+                           X22
+                           ); //south boundary longitude
+                  }
+                  //calculate extents based on differences, convert to positive values 
+                  var nsspan = Math
+                     .abs(n2 - s2);
+                  var ewspan = Math
+                     .abs(w2 - e2);
+                  var nspix =
+                     MAP_HEIGHT /
+                     nsspan; //gives you how many pixels in a lng point
+                  var ewpix =
+                     MAP_WIDTH /
+                     ewspan; //gives you how many pixels in a lat point
+                  var x2 = (Math.abs(
+                        w2 - lat)) *
+                     ewpix; //the difference between the western (right) edge of the box and the point in question, multiplied by pixels per point
+                  var y2 = (Math.abs(
+                        n2 - lng)) *
+                     nspix; //the difference between the northern (top) edge of the box and the point in question, multiplied by pixels per point
+                  if (lat == 0) {
+                     return y2;
+                  }
+                  else if (lng ==
+                     0) {
+                     return x2;
+                  }
+               }
+               
+               function cli(thit, id,
+                  buildi66, opp,
+                  aapp, pm) {
+                  if (id != "null") {
+                     //console.log(buildi66);
+                     LancementDD(
+                        thit, id,
+                        buildi66,
+                        opp, pm);
+                  }
+               }
+            }
+            
+            function InitialLoadingBounds(
+               frakt) {
+               X11 = 0;
+               X22 = 0;
+               W11 = 0;
+               W22 = 0;
+               ekt3 = [];
+               ekt22 = [];
+               var ekt2 = [];
+               lA(frakt);
+               
+               function lA(Xf) {
+                  var routes =
+                  "rien";
+                  var lload;
+                  //console.log(Xf);
+                  routes = JSON
+                     .parse(
+                        datacollei(
+                           Xf));
+                  tbd = routes;
+                  LanceB();
+                  
+                  function LanceB() {
+                     var jesonContent =
+                        routes;
+                     var exo =
+                        Number(routes
+                           .item
+                           .length);
+                     var as2 = 0;
+                     var w1;
+                     var x1;
+                     w1 = 0;
+                     x1 = 0;
+                     var w2 = 0;
+                     var x2 = 0;
+                     for (var o =
+                        0; o <
+                        exo; o++) {
+                        for (var
+                              aaaaa =
+                              0; aaaaa <
+                           jesonContent
+                           .item[o]
+                           .geometry
+                           .coordinates[
+                              0]
+                           .length; aaaaa++
+                           ) {
+                           if (o ==
+                              0 &&
+                              aaaaa ==
+                              0) {
+                              w1 =
+                                 Number
+                                 .parseFloat(
+                                    jesonContent
+                                    .item[
+                                       o
+                                       ]
+                                    .geometry
+                                    .coordinates[
+                                       0
+                                       ]
+                                                                                                        [
+                                                                                                                aaaaa
+                                       ]
+                                                                                                        [
+                                                                                                                0
+                                       ]
+                                    );
+                              w2 =
+                                 Number
+                                 .parseFloat(
+                                    jesonContent
+                                    .item[
+                                       o
+                                       ]
+                                    .geometry
+                                    .coordinates[
+                                       0
+                                       ]
+                                                                                                        [
+                                                                                                                aaaaa
+                                       ]
+                                                                                                        [
+                                                                                                                0
+                                       ]
+                                    );
+                              x1 =
+                                 Number
+                                 .parseFloat(
+                                    jesonContent
+                                    .item[
+                                       o
+                                       ]
+                                    .geometry
+                                    .coordinates[
+                                       0
+                                       ]
+                                                                                                        [
+                                                                                                                aaaaa
+                                       ]
+                                                                                                        [
+                                                                                                                1
+                                       ]
+                                    );
+                              x2 =
+                                 Number
+                                 .parseFloat(
+                                    jesonContent
+                                    .item[
+                                       o
+                                       ]
+                                    .geometry
+                                    .coordinates[
+                                       0
+                                       ]
+                                                                                                        [
+                                                                                                                aaaaa
+                                       ]
+                                                                                                        [
+                                                                                                                1
+                                       ]
+                                    );
+                           }
+                           for (var
+                                 aaaa =
+                                 0; aaaa <
+                              jesonContent
+                              .item[
+                                 o]
+                              .geometry
+                              .coordinates[
+                                 0]
+                              .length; aaaa++
+                              ) {
+                              if (
+                                 w1 -
+                                 Number
+                                 .parseFloat(
+                                    jesonContent
+                                    .item[
+                                       o
+                                       ]
+                                    .geometry
+                                    .coordinates[
+                                       0
+                                       ]
+                                                                                                        [
+                                                                                                                aaaa
+                                       ]
+                                                                                                        [
+                                                                                                                0
+                                       ]
+                                    ) >
+                                 0
+                                 ) {}
+                              else {
+                                 w1 =
+                                    Number
+                                    .parseFloat(
+                                       jesonContent
+                                       .item[
+                                          o
+                                          ]
+                                       .geometry
+                                       .coordinates[
+                                          0
+                                          ]
+                                                                                                                [
+                                                                                                                        aaaa
+                                          ]
+                                                                                                                [
+                                                                                                                        0
+                                          ]
+                                       );
+                              }
+                              if (
+                                 w2 -
+                                 Number
+                                 .parseFloat(
+                                    jesonContent
+                                    .item[
+                                       o
+                                       ]
+                                    .geometry
+                                    .coordinates[
+                                       0
+                                       ]
+                                                                                                        [
+                                                                                                                aaaa
+                                       ]
+                                                                                                        [
+                                                                                                                0
+                                       ]
+                                    ) <
+                                 0
+                                 ) {}
+                              else {
+                                 w2 =
+                                    Number
+                                    .parseFloat(
+                                       jesonContent
+                                       .item[
+                                          o
+                                          ]
+                                       .geometry
+                                       .coordinates[
+                                          0
+                                          ]
+                                                                                                                [
+                                                                                                                        aaaa
+                                          ]
+                                                                                                                [
+                                                                                                                        0
+                                          ]
+                                       );
+                              }
+                              if (
+                                 x1 -
+                                 Number
+                                 .parseFloat(
+                                    jesonContent
+                                    .item[
+                                       o
+                                       ]
+                                    .geometry
+                                    .coordinates[
+                                       0
+                                       ]
+                                                                                                        [
+                                                                                                                aaaa
+                                       ]
+                                                                                                        [
+                                                                                                                1
+                                       ]
+                                    ) >
+                                 0
+                                 ) {}
+                              else {
+                                 x1 =
+                                    Number
+                                    .parseFloat(
+                                       jesonContent
+                                       .item[
+                                          o
+                                          ]
+                                       .geometry
+                                       .coordinates[
+                                          0
+                                          ]
+                                                                                                                [
+                                                                                                                        aaaa
+                                          ]
+                                                                                                                [
+                                                                                                                        1
+                                          ]
+                                       );
+                              }
+                              if (
+                                 x2 -
+                                 Number
+                                 .parseFloat(
+                                    jesonContent
+                                    .item[
+                                       o
+                                       ]
+                                    .geometry
+                                    .coordinates[
+                                       0
+                                       ]
+                                                                                                        [
+                                                                                                                aaaa
+                                       ]
+                                                                                                        [
+                                                                                                                1
+                                       ]
+                                    ) <
+                                 0
+                                 ) {}
+                              else {
+                                 x2 =
+                                    Number
+                                    .parseFloat(
+                                       jesonContent
+                                       .item[
+                                          o
+                                          ]
+                                       .geometry
+                                       .coordinates[
+                                          0
+                                          ]
+                                                                                                                [
+                                                                                                                        aaaa
+                                          ]
+                                                                                                                [
+                                                                                                                        1
+                                          ]
+                                       );
+                              }
+                           }
+                           if (
+                              aaaaa ==
+                              jesonContent
+                              .item[
+                                 o]
+                              .geometry
+                              .coordinates[
+                                 0]
+                              .length -
+                              1 &&
+                              o ==
+                              jesonContent
+                              .item
+                              .length -
+                              1 &&
+                              ekt2
+                              .length ==
+                              0) {
+                              W11 =
+                                 w2;
+                              W22 =
+                                 w1;
+                              X11 =
+                                 x2;
+                              X22 =
+                                 x1;
+                              ekt2
+                                 .push(
+                                    o
+                                    );
+                              ekt2
+                                 .push(
+                                    o
+                                    );
+                              ekt2
+                                 .push(
+                                    o
+                                    );
+                              ekt2
+                                 .push(
+                                    o
+                                    );
+                           }
+                           if (ekt2
+                              .length ==
+                              4) {
+                              break;
+                           }
+                        }
+                        if (ekt2
+                           .length ==
+                           4) {
+                           break;
+                        }
+                     }
+                     if (ekt2
+                        .length == 4
+                        ) {
+                        AA(frakt);
+                     }
+                  }
+               }
+            }
+            
+            function putText(
+               caneuvas, ContentX,
+               fontsize, fontface,
+               lineHeight, colorim,
+               text) {
+               lineHeight *= 2.2;
+               var cw = caneuvas
+                  .width;
+               var ch = caneuvas
+                  .height;
+               var words = text
+                  .replace(/\n/g,
+                     ' \n ')
+                  .split(' ');
+               var wordWidths = [];
+               fontsize = (self
+                     .innerWidth /
+                     1600) * (
+                     fontsize * 2.1
+                     ) * getZoom();
+               ContentX.font =
+                  fontsize + 'px ' +
+                  fontface;
+               for (var i = 0; i <
+                  words.length; i++
+                  ) {
+                  wordWidths.push(
+                     ContentX
+                     .measureText(
+                        words[i])
+                     .width);
+               }
+               var spaceWidth =
+                  ContentX
+                  .measureText(' ')
+                  .width;
+               var wordIndex = 0
+               var data = [];
+               // fill heart with text
+               ContentX.fillStyle =
+                  colorim;
+               var imgDataData =
+                  ContentX
+                  .getImageData(0, 0,
+                     cw, ch)
+                  .data;
+               for (var i = 0; i <
+                  imgDataData
+                  .length; i += 4) {
+                  data.push(
+                     imgDataData[
+                        i + 3]);
+               }
+               coordinatesWords();
+               // draw words sequentially into next available block of 
+               //    available opaque pixels 
+               function coordinatesWords() {
+                  var sx = 0;
+                  var sy = 0;
+                  var y = 0;
+                  var wordIndex = 0;
+                  ContentX
+                     .textBaseline =
+                     'top';
+                  while (y < ch &&
+                     wordIndex <
+                     words.length) {
+                     sx = 0;
+                     sy = y;
+                     var startingIndex =
+                        wordIndex;
+                     while (sx <
+                        cw &&
+                        wordIndex <
+                        words
+                        .length &&
+                        words[
+                           wordIndex
+                           ] != '\n'
+                        ) {
+                        var x =
+                           getRect(
+                              sx, sy,
+                              lineHeight
+                              );
+                        var available =
+                           x - sx;
+                        var spacer =
+                           spaceWidth; // spacer=0 to have no left margin
+                        var w =
+                           spacer +
+                           wordWidths[
+                              wordIndex
+                              ];
+                        while (
+                           available >=
+                           w &&
+                           words[
+                              wordIndex
+                              ] !=
+                           '\n') {
+                           ContentX
+                              .fillText(
+                                 words[
+                                    wordIndex
+                                    ],
+                                 spacer +
+                                 sx,
+                                 sy);
+                           sx += w;
+                           available
+                              -= w;
+                           spacer =
+                              spaceWidth;
+                           wordIndex++;
+                           w = spacer +
+                              wordWidths[
+                                 wordIndex
+                                 ];
+                        }
+                        sx = x + 1;
+                     }
+                     if (words[
+                           wordIndex
+                           ] == '\n'
+                        ) {
+                        wordIndex++;
+                     }
+                     y = (wordIndex >
+                           startingIndex
+                           ) ? y +
+                        lineHeight :
+                        y + 1;
+                  }
+               }
+               // find a rectangular block of opaque pixels
+               function getRect(sx,
+                  sy, height) {
+                  var x = sx;
+                  var y = sy;
+                  var ok = true;
+                  while (ok) {
+                     if (data[y *
+                           cw + x] <
+                        250) {
+                        ok = false;
+                     }
+                     y++;
+                     if (y >= sy +
+                        height) {
+                        y = sy;
+                        x++;
+                        if (x >=
+                           cw) {
+                           ok =
+                           false;
+                        }
+                     }
+                  }
+                  return (x);
+               }
+            }
+            
+            function getZoom() {
+               if (zm) {
+                  return (window
+                     .devicePixelRatio
+                     );
+               }
+               else {
+                  return 1;
+               }
+            }
+            return {
+               autoZoom: function (
+               B) {
+                  if (typeof B ==
+                     "boolean") {
+                     zm = B;
+                  }
+                  else {
+                     console.log(
+                        "prog.autoZoom() dois être définie sur un boolean"
+                        );
+                  }
+               }
+               , Activer: function () {
+                  return {
+                     autoRedimention: function (
+                        VIp,
+                        VVi) {
+                        window
+                           .onresize =
+                           function () {
+                              EH =
+                                 (((self
+                                          .innerWidth) /
+                                       (self
+                                          .innerHeight
+                                          ) *
+                                       0.49
+                                       ) *
+                                    (
+                                    getZoom()) *
+                                    VH
+                                    );
+                              EW =
+                                 (0.99 *
+                                    getZoom() *
+                                    VW
+                                    );
+                              LW =
+                                 Number(
+                                    self
+                                    .innerWidth
+                                    );
+                              LH =
+                                 Number(
+                                    self
+                                    .innerHeight
+                                    );
+                              document
+                                 .getElementById(
+                                    Ce
+                                    )
+                                 .style
+                                 .top =
+                                 Number(
+                                    LH *
+                                    ET
+                                    )
+                                 .toString() +
+                                 "px";
+                              document
+                                 .getElementById(
+                                    Ce
+                                    )
+                                 .style
+                                 .left =
+                                 Number(
+                                    LW *
+                                    EL
+                                    )
+                                 .toString() +
+                                 "px";
+                              document
+                                 .getElementById(
+                                    Ce
+                                    )
+                                 .style
+                                 .height =
+                                 Number(
+                                    LH *
+                                    EH
+                                    )
+                                 .toString() +
+                                 "px";
+                              document
+                                 .getElementById(
+                                    Ce
+                                    )
+                                 .style
+                                 .width =
+                                 Number(
+                                    LW *
+                                    EW
+                                    )
+                                 .toString() +
+                                 "px";
+                              ih =
+                                 Number(
+                                    document
+                                    .getElementById(
+                                       Ce
+                                       )
+                                    .style
+                                    .height
+                                    .split(
+                                       "p"
+                                       )[
+                                       0
+                                       ]
+                                    );
+                              iw =
+                                 Number(
+                                    document
+                                    .getElementById(
+                                       Ce
+                                       )
+                                    .style
+                                    .width
+                                    .split(
+                                       "p"
+                                       )[
+                                       0
+                                       ]
+                                    );
+                              if (
+                                 !
+                                 VIp
+                                 ) {
+                                 //document.getElementById(VVi).innerHTML = "";
+                                 Ce =
+                                    VVi;
+                                 InitialLoadingBounds
+                                    (
+                                       VI);
+                              }
+                              else {
+                                 CCC
+                              ();
+                              }
+                           }
+                     }
+                     , ChargerPage: function (
+                        c, VI2,
+                        bool,
+                        bool2
+                        ) {
+                        //document.body.innerHTML = "";
+                        if (!
+                           document
+                           .getElementById(
+                              "loaderCanvases"
+                              )
+                           ) {
+                           var divdrr =
+                              document
+                              .createElement(
+                                 "canvas"
+                                 );
+                           divdrr
+                              .id =
+                              "loaderCanvases";
+                           divdrr
+                              .width =
+                              "0";
+                           divdrr
+                              .height =
+                              "0";
+                           divdrr
+                              .hidden =
+                              true;
+                           document
+                              .body
+                              .appendChild(
+                                 divdrr
+                                 );
+                           var divdrr2 =
+                              document
+                              .createElement(
+                                 "img"
+                                 );
+                           divdrr2
+                              .id =
+                              "loaderIMG";
+                           divdrr2
+                              .width =
+                              "0";
+                           divdrr2
+                              .height =
+                              "0";
+                           divdrr2
+                              .hidden =
+                              true;
+                           document
+                              .body
+                              .appendChild(
+                                 divdrr2
+                                 );
+                        }
+                        if (
+                           bool2 &&
+                           !
+                           document
+                           .getElementById(
+                              c
+                              )
+                           ) {
+                           var divd3 =
+                              document
+                              .createElement(
+                                 "div"
+                                 );
+                           divd3
+                              .id =
+                              c;
+                           document
+                              .body
+                              .appendChild(
+                                 divd3
+                                 );
+                        }
+                        if (
+                           bool
+                           ) {
+                           EH =
+                              (((self
+                                       .innerWidth) /
+                                    (self
+                                       .innerHeight
+                                       ) *
+                                    0.49
+                                    ) *
+                                 (
+                                 getZoom()) *
+                                 VH
+                                 );
+                           EW =
+                              (0.99 *
+                                 getZoom() *
+                                 VW
+                                 );
+                           LW =
+                              Number(
+                                 self
+                                 .innerWidth
+                                 );
+                           LH =
+                              Number(
+                                 self
+                                 .innerHeight
+                                 );
+                           document
+                              .getElementById(
+                                 c
+                                 )
+                              .style
+                              .position =
+                              'absolute';
+                           document
+                              .getElementById(
+                                 c
+                                 )
+                              .style
+                              .top =
+                              Number(
+                                 LH *
+                                 ET
+                                 )
+                              .toString() +
+                              "px";
+                           document
+                              .getElementById(
+                                 c
+                                 )
+                              .style
+                              .left =
+                              Number(
+                                 LW *
+                                 EL
+                                 )
+                              .toString() +
+                              "px";
+                           document
+                              .getElementById(
+                                 c
+                                 )
+                              .style
+                              .height =
+                              Number(
+                                 LH *
+                                 EH
+                                 )
+                              .toString() +
+                              "px";
+                           document
+                              .getElementById(
+                                 c
+                                 )
+                              .style
+                              .width =
+                              Number(
+                                 LW *
+                                 EW
+                                 )
+                              .toString() +
+                              "px";
+                        }
+                        ih =
+                           Number(
+                              document
+                              .getElementById(
+                                 c
+                                 )
+                              .style
+                              .height
+                              .split(
+                                 "p"
+                                 )[
+                                 0
+                                 ]
+                              );
+                        iw =
+                           Number(
+                              document
+                              .getElementById(
+                                 c
+                                 )
+                              .style
+                              .width
+                              .split(
+                                 "p"
+                                 )[
+                                 0
+                                 ]
+                              );
+                        /*
+
+                        */
+                        document
+                           .getElementById(
+                              c
+                              )
+                           .innerHTML =
+                           "";
+                        Ce = c;
+                        InitialLoadingBounds
+                           (
+                              VI2);
+                     }
+                  }
+               }
+               , ajouterGeometry: function (
+                  NN, GN) {
+                  var non = -1;
+                  for (var sT =
+                     0; sT < ad
+                     .length; sT++
+                     ) {
+                     if (ad[sT]
+                                                                        [
+                                                                                0
+                           ] == NN
+                        ) {
+                        non = sT;
+                     }
+                  }
+                  if (non != -1) {
+                     ad[non].push(
+                        GN);
+                  }
+                  else {
+                     ad.push([
+                                                                        NN
+                        ]);
+                     ad[ad.length -
+                           1]
+                        .push(GN);
+                  }
+               }
+               , cadreGeometry: function (
+                  II, L, T, W, H
+                  ) {
+                  if (!L || !T ||
+                     !W || !H) {
+                     L = 1;
+                     T = 1;
+                     W = 100;
+                     H = 100;
+                  }
+                  var cadre =
+                     `{
+"type":"Collection",
+"name":"XML_doss",
+"crs":{"type":"name","utilisation":{"name": "CritCanvas"}},
+"item":[
+{"type":"Feature","utilisation":{"id":"` + II +
+                     `","route":"null","couleur":"red","utiliser":"","contour":null,"Ordre":"-3"},"geometry":{"type":"Polygon","coordinates":[[[` +
+                     L
+                  .toString() +
+                     `,` + T
+                     .toString() +
+                     `],[` + (L +
+                        W)
+                     .toString() +
+                     `,` + T
+                     .toString() +
+                     `],[` + (L +
+                        W)
+                     .toString() +
+                     `,` + (T + H)
+                     .toString() +
+                     `],[` + L
+                     .toString() +
+                     `,` + (T + H)
+                     .toString() +
+                     `],[` + L
+                     .toString() +
+                     `,` + T
+                     .toString() +
+                     `]]]}}` +
+                     `]}`;
+                  return {
+                     GeoString: function () {
+                        return cadre;
+                     }
+                     , GeoJson: function () {
+                        return JSON
+                           .parse(
+                              cadre
+                              );
+                     }
+                     , plusItem: function (
+                        II, L,
+                        T, W, H
+                        ) {
+                        var Yu =
+                           JSON
+                           .parse(
+                              cadre
+                              );
+                        var Uy =
+                           `{"type":"Feature","utilisation":{"id":"` +
+                           II +
+                           `","route":"null","couleur":"blue","utiliser":"","contour":null,"Ordre":"-1"},"geometry":{"type":"Polygon","coordinates":[[[` +
+                           L
+                           .toString() +
+                           `,` +
+                           T
+                           .toString() +
+                           `],[` +
+                           (L +
+                              W
+                              )
+                           .toString() +
+                           `,` +
+                           T
+                           .toString() +
+                           `],[` +
+                           (L +
+                              W
+                              )
+                           .toString() +
+                           `,` +
+                           (T +
+                              H
+                              )
+                           .toString() +
+                           `],[` +
+                           L
+                           .toString() +
+                           `,` +
+                           (T +
+                              H
+                              )
+                           .toString() +
+                           `],[` +
+                           L
+                           .toString() +
+                           `,` +
+                           T
+                           .toString() +
+                           `]]]}}`;
+                        Yu.item
+                           .push(
+                              JSON
+                              .parse(
+                                 Uy
+                                 )
+                              );
+                        cadre =
+                           JSON
+                           .stringify(
+                              Yu
+                              );
+                     }
+                     , changeCouleur: function (
+                        ssT,
+                        coul) {
+                        var cool =
+                           JSON
+                           .parse(
+                              cadre
+                              );
+                        for (
+                           var sT =
+                              0; sT <
+                           cool
+                           .item
+                           .length; sT++
+                           ) {
+                           if (
+                              cool
+                              .item[
+                                 sT
+                                 ]
+                              .utilisation
+                              .id ==
+                              ssT
+                              ) {
+                              cool
+                                 .item[
+                                    sT
+                                    ]
+                                 .utilisation
+                                 .couleur =
+                                 coul;
+                           }
+                        }
+                        cadre =
+                           JSON
+                           .stringify(
+                              cool
+                              );
+                     }
+                     , utiliserHTML: function (
+                        ssT,
+                        coul) {
+                        var cool =
+                           JSON
+                           .parse(
+                              cadre
+                              );
+                        for (
+                           var sT =
+                              0; sT <
+                           cool
+                           .item
+                           .length; sT++
+                           ) {
+                           if (
+                              cool
+                              .item[
+                                 sT
+                                 ]
+                              .utilisation
+                              .id ==
+                              ssT
+                              ) {
+                              cool
+                                 .item[
+                                    sT
+                                    ]
+                                 .utilisation
+                                 .utiliser =
+                                 coul
+                                 .replace(
+                                    /\"/g,
+                                    "`"
+                                    );
+                           }
+                        }
+                        cadre =
+                           JSON
+                           .stringify(
+                              cool
+                              );
+                     }
+                     , definirClique: function (
+                        ssT,
+                        coul) {
+                        var cool =
+                           JSON
+                           .parse(
+                              cadre
+                              );
+                        for (
+                           var sT =
+                              0; sT <
+                           cool
+                           .item
+                           .length; sT++
+                           ) {
+                           if (
+                              cool
+                              .item[
+                                 sT
+                                 ]
+                              .utilisation
+                              .id ==
+                              ssT
+                              ) {
+                              cool
+                                 .item[
+                                    sT
+                                    ]
+                                 .utilisation
+                                 .route =
+                                 coul;
+                           }
+                        }
+                        cadre =
+                           JSON
+                           .stringify(
+                              cool
+                              );
+                     }
+                     , changeOrdre: function (
+                        ssT,
+                        coul) {
+                        var cool =
+                           JSON
+                           .parse(
+                              cadre
+                              );
+                        for (
+                           var sT =
+                              0; sT <
+                           cool
+                           .item
+                           .length; sT++
+                           ) {
+                           if (
+                              cool
+                              .item[
+                                 sT
+                                 ]
+                              .utilisation
+                              .id ==
+                              ssT
+                              ) {
+                              cool
+                                 .item[
+                                    sT
+                                    ]
+                                 .utilisation
+                                 .Ordre =
+                                 coul;
+                           }
+                        }
+                        cadre =
+                           JSON
+                           .stringify(
+                              cool
+                              );
+                     }
+                     , definirContour: function (
+                        ssT,
+                        coul) {
+                        var cool =
+                           JSON
+                           .parse(
+                              cadre
+                              );
+                        for (
+                           var sT =
+                              0; sT <
+                           cool
+                           .item
+                           .length; sT++
+                           ) {
+                           if (
+                              cool
+                              .item[
+                                 sT
+                                 ]
+                              .utilisation
+                              .id ==
+                              ssT
+                              ) {
+                              cool
+                                 .item[
+                                    sT
+                                    ]
+                                 .utilisation
+                                 .contour =
+                                 coul;
+                           }
+                        }
+                        cadre =
+                           JSON
+                           .stringify(
+                              cool
+                              );
+                     }
+                  }
+               }
+            }
+         }
+         // ---------------------------------------------------- //
+         // ------------------ CORE GRAPH ---------------------- //
+         // ---------------------------------------------------- //
+		 
+
+      </script>
+<body onload="int()">
+<script>
+var charge;
+var ok;
+var ajoue;
+function int () {
+ok = prog("page1", 1, 1);
+var ok2 = prog("page2", 1, 1);
+ajoue = ok.cadreGeometry("Cadre"); 
+var ajoue2 = ok2.cadreGeometry("Cadre");
+ajoue.plusItem("item1", 40, 40, 20, 20);
+ajoue.plusItem("item1-2", 10, 10, 20, 20);
+ajoue.plusItem("item1-3", 70, 70, 20, 20);
+ajoue2.plusItem("item2", 40, 40, 20, 20);
+ajoue.changeCouleur("item1", "white"); 
+ajoue.changeCouleur("Cadre", "yellow"); 
+ajoue.definirClique("item1", "this_CritJS_page2");
+ajoue2.definirClique("item2", "this*function_clickItem(this)");
+ajoue.changeOrdre("Cadre", "-5");
+ajoue.changeOrdre("item1", "50");
+ajoue2.changeOrdre("Cadre", "-5");
+ajoue2.changeCouleur("item2", "blue"); 
+ajoue2.changeCouleur("Cadre", "red"); 
+ajoue2.utiliserHTML("item2", "<p style='font-size:30px; position:absolute; left:40%; top:40%;'>Tu as bien cliqué !</p>");
+ajoue2.changeOrdre("item2", "2");
+ajoue.definirContour("item1", "mouse*DIVitem3_rgba(15,25,15,1)_page1");
+ok.ajouterGeometry("page1", ajoue.GeoString());
+ok.ajouterGeometry("page2", ajoue2.GeoString());
+
+charge = ok.Activer(); 
+charge.ChargerPage("CritJS", "page1", true, true);
+ok.autoZoom(true);
+charge.autoRedimention(false, "CritJS");
+
+}
+function clickItem(Element) {
+
+Element.innerHTML = "<button onclick='secondItemClick()' style='font-size:30px; color:black; text-align:center;'>Validation</button>";
+
+}
+
+function secondItemClick() {
+var ok3 = prog("page3", 1, 1);
+var ajoue3 = ok3.cadreGeometry("Cadre3"); 
+ajoue3.plusItem("item3", 10, 10, 80, 80);
+ajoue3.changeCouleur("item3", "purple"); 
+ajoue3.changeOrdre("Cadre3", "-5");
+ajoue3.changeOrdre("item3", "50");
+ajoue3.definirClique("item3", "this_DIVitem3_page1");
+ajoue3.definirContour("item3", "arc");
+ok.ajouterGeometry("page3", ajoue3.GeoString());
+charge.ChargerPage("CritJS", "page3", true, true);
+}
+</script>
+   </body>
+   
+</html>
