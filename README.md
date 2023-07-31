@@ -31,7 +31,7 @@
         Put an item in an other instance :
         ajoue2.plusItem("item2", 40, 40, 20, 20);
 
-        Change the color of the anthities. (default : blue)
+        Change the color of the anthities. (default : rgba(0,0,0,0))
         ajoue.changeCouleur("item1", "white"); 
         ajoue.changeCouleur("Cadre", "yellow"); 
         ajoue2.changeCouleur("item2", "blue"); 
