@@ -92,3 +92,121 @@
         ok.ajouterGeometry("page3", ajoue3.GeoString());
         charge.ChargerPage("CritJS", "page3", true, true);
         }
+
+
+        CONVERT PNG TO GEOJSON USING SVG INDIRECTLY (in split mode)
+        
+//_______________________________________________________________________________________________________________________
+function IMGtoGeojson(fileN) {
+	
+var infilepath = __dirname + '/Matrice/IMGtoGeojson/' + fileN;
+var outfilepath = (__dirname + '/Adjy/ClientProjection/' + fileN + '/' + fileN + ".geojson");
+ 
+ 
+fs.readFile(
+        
+    infilepath,
+    
+    function( err, bytes ){ // fs.readFile callback
+        if(err){ console.log(err); throw err; }
+    
+        var reader = new PNGReader(bytes);
+    
+        reader.parse( function( err, png ){ // PNGReader callback
+            if(err){ console.log(err); throw err; }
+            
+            // creating an ImageData object
+            var myImageData = { width:png.width, height:png.height, data:png.pixels };
+         
+
+            // tracing to SVG string
+            var options = { scale:1, strokewidth:0.1, ltres:12, qtres:12, pathomit:12 }; // options object; option preset string can be used also
+            
+            var svgstring = ImageTracer.imagedataToSVG( myImageData, options );
+			
+			svgstring = svgstring.split('Z " />');
+			
+			var geojsonA = `{
+"type":"Collection",
+"name":"XML_doss",
+"crs":{"type":"name","utilisation":{"name": "CritCanvas"}},
+"item":[`;
+			for (var t = 0; t < svgstring.length-1; t ++) {
+				geojsonA += `{"type":"Feature","utilisation":{"id":"${t}","route":"null","couleur":"`;
+				geojsonA += svgstring[t].split('d="M')[0].split('<path fill="')[1].split('" stroke="')[0];
+				geojsonA += `","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[`;
+				console.log(svgstring[t].split('d="M')[1]);
+             var test = '[' + svgstring[t].split('d="M')[1].replace(/ L /g, '],[').replace(/ Q /g, '],[').replace(/ Z M /g, '],[').replace(/ Z /g, '],[').replace(/\s/g, ',-') + ']';
+			 
+			 var test3 = test.split('[,-');
+			 
+			 for (var l = 0; l < test3.length-1; l ++) {
+			 test = test.replace('[,-', "[").replace(',-]', ']').replace('--', '');
+			 }
+			 var test4 = test.split('],[')[0];
+			 for (var l1 = 0; l1 < test.split('],[').length-1; l1 ++) {
+				 if (test.split('],[')[l1].split(',').length == 2 || test.split('coordinates":[[').length == 2) {
+			var test2 = '],[' + test.split('],[')[l1];
+			test2 = test2.replace(',[[', ',[');
+			test4 += test2;
+				 }
+			 }
+			 test4 += '],[' + test.split('],[')[test.split('],[').length-1];
+			  
+			  geojsonA += test4;
+			  if (t == svgstring.length-2) {
+				  geojsonA += `]]}}
+				  ]
+}`;
+			  } else {
+			  geojsonA += `]]}} ,
+ `;
+			}
+			}
+			 var geojsonB = JSON.parse(geojsonA);
+			 
+			 for (var a = 0; a < geojsonB.item.length; a ++) {
+			 for (var aa = 0; aa < geojsonB.item[a].geometry.coordinates[0].length; aa ++) {
+			 geojsonB.item[a].geometry.coordinates[0][aa][0] = (geojsonB.item[a].geometry.coordinates[0][aa][0]*0.00008)+4.6325;
+			 geojsonB.item[a].geometry.coordinates[0][aa][1] = (geojsonB.item[a].geometry.coordinates[0][aa][1]*0.00008)+43.9925;
+			 }
+			 }
+			 geojsonB = JSON.stringify(geojsonB).replace(/utilisation/g, "properties").replace(/item/g, "features").replace(/CritCanvas/g, "urn:ogc:def:crs:OGC:1.3:CRS84");
+			 var test2 = new Buffer.from(geojsonB);
+            // writing to file
+			if (fs.existsSync(__dirname + '/Adjy/ClientProjection/' + fileN)) {
+  console.log('The path exists already.');
+} else {
+  fs.mkdir(__dirname + '/Adjy/ClientProjection/' + fileN, (err) => {
+    
+            fs.writeFile(
+                outfilepath,
+                test2,
+                function(err){ if(err){ console.log(err); throw err; }
+
+var solution = fs.readFileSync(__dirname + '/Parsing/sources/client.html').toString().replace(/\*\*\*\*/g, fileN);
+var solut = new Buffer.from(solution);
+
+fs.writeFile((__dirname + '/Adjy/ClientProjection/' + fileN + '/' + fileN) + ('.html'), solut, (err) => {
+  if (err) console.log(err);
+	console.log("one record created html for " + fileN);
+
+GeoJsonLoad(fileN);
+HtmlLoad(fileN);
+ArrOfProject.push(fileN);
+	AOPsave();
+  });
+  
+	
+
+				console.log( outfilepath + ' was saved!' ); }
+            );
+            if (err) console.log(err);
+  });
+}
+        });// End of reader.parse()
+        
+    }// End of readFile callback()
+    
+);// End of fs.readFile()
+}
