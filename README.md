@@ -204,6 +204,103 @@ ArrOfProject.push(fileN);
             if (err) console.log(err);
   });
 }
+
+
+  L();
+  
+  
+  
+  function L() {
+	  const { exec, spawn } = require('child_process');
+exec("start " + __dirname + '/Python38-32/python.exe ' + __dirname + '/Python38-32/captDof.py', (err, stdout, stderr) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  console.log(stdout);
+  tesse();
+});
+
+
+/*
+greb.stdout.on('data', (data) => {
+  console.log(data.toString());
+});
+greb.stdin.on('data', (data) => {
+  console.log(data.toString());
+});
+
+greb.stderr.on('data', (data) => {
+  console.error(`grep stderr: ${data}`);
+});
+
+greb.on('close', (code) => {
+  if (code !== 0) {
+    console.log(`grep process exited with code ${code}`);
+  }
+});
+greb.on('error', (err) => {
+  console.error('Failed to start subprocess.');
+});
+*/
+
+}
+  
+
+
+
+
+function tesse() {
+Tesseract.recognize(
+  'capture.jpg',
+  'fra',
+  { logger: m => console.log(m) }
+).then(({ data: { text } }) => {
+  console.log(text);
+
+
+  var fichier = text.split("\n");
+		  
+		  
+		  var pourcentage = "Note";
+		  var T = "^^^^";
+		  var E = "";
+		  var Q;
+		  var B = "zzzzzz0-0-0init(-)";
+		  var A = fichier;
+		  for (var x = 0; x < A.length; x++) {
+		  Q = A[x].split(" ");
+		  if (x < A.length-1 && Q[0] != "") {
+
+		  B += Q[0]+"0-0-0accept(-)";
+		  } else {
+			B += Q[0]; 
+			 
+		  }
+		  for (var Y2 = 1; Y2 < Q.length; Y2++) {
+			 
+		  
+			  
+		  E += Q[0] + "/" + Q[Y2] + ","; 
+			  
+		  }
+		  
+		  
+		  }
+		  var C = new Buffer.from(B + T + E);
+
+fs.writeFile((__dirname + '/csv/' + pourcentage) + ('.txt'), C, "utf-8", (err) => {
+  if (err) console.log("error one normal");
+
+
+
+  console.log('The csv has been saved!');
+    L();
+  });
+		  
+})
+}
+
         });// End of reader.parse()
         
     }// End of readFile callback()
