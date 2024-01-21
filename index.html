@@ -41,6 +41,117 @@ body{
 </style>
 	    
         <script>
+
+		
+   function go(au,i,k){
+   var stringO = true;   
+	var trustrg = "";
+var trustinverse = "";
+if(tableau[i][k] != "0") {
+stringO = false;
+}
+ 
+      if(stringO == true){
+
+
+        if (tour){
+        tableau[i][k] = 'O';
+              au.innerHTML = tableau[i][k];
+          au.style.background=('lightcoral')
+    
+          tour = false;
+
+      }
+
+	}
+
+for (var B = 0; B < tableau[tableau.length-1].length; B ++) {
+
+	
+if ((tableau[B][0] == tableau[B][1] && tableau[B][1] == tableau[B][2] && tableau[B][0] == tableau[B][2]) && tableau[B][0] != "0" && tableau[B][1] != "0" && tableau[B][2] != "0") {
+alert("game end by ligne");
+score += 2;
+repop();
+B = tableau.length;
+}
+
+
+if (tableau.length-1 == B) {
+
+for (var A = 0; A < tableau.length; A ++) {
+
+trustrg += tableau[A][A];
+trustinverse += tableau[B-A][A];
+
+if ((tableau[0][A] == tableau[1][A] && tableau[1][A] == tableau[2][A] && tableau[0][A] == tableau[2][A]) && tableau[0][A] != "0" && tableau[1][A] != "0" && tableau[2][A] != "0") {
+alert("game end by colonne");
+score += 4;
+repop();
+B = tableau.length;
+}
+}
+
+if (trustrg == "OOO" || trustrg == "XXX") {
+alert("game end by DIAGONE");
+score += 7;
+repop();
+B = tableau.length;
+}
+if (trustinverse == "OOO" || trustinverse == "XXX") {
+alert("game end by DIAGOTWO");
+score += 10;
+repop();
+B = tableau.length;
+}
+repopIA = setInterval(1000, IA());
+
+}     
+}
+	}
+    
+function repop () {
+
+score -= 1;
+
+document.getElementById('score').innerHTML = score.toString() + "++";
+
+	ik = "";
+document.getElementById('ttt').innerHTML = "";
+for (var i=0;i<tableau.length;i++) {
+
+for (var k = 0; k < tableau[i].length; k++) {
+tableau[i][k] = "0";
+      ik += "A";
+      document.getElementById('ttt').innerHTML += " <button class='case' id=" + ik + " onclick='go(this, " + i.toString() + ", " + k.toString() + " )' style='background-color:#a22e34'> </button>"
+    }
+
+};
+
+if (tour == false) {
+
+doubl[0] = call(2);
+doubl[1] = call(2);
+
+	tableau[doubl[0]][doubl[1]] = 'X';
+	ident = "";
+	ass = 0;
+for ( var cas = 0; cas <= ((Math.abs((doubl[0]-tableau[doubl[1]].length)-(doubl[1]+tableau.length-1)))); cas ++) {
+	ident += "A";
+}
+	document.getElementById(ident).innerHTML = tableau[doubl[0]][doubl[1]];
+        document.getElementById(ident).style.background=('lightblue');
+		tour = true;
+}
+}
+function call (testage) {
+		
+		var GG = (Math.trunc(Math.random()*(testage + 0.4)))
+		
+	return GG;
+	
+	}
+
+		
 var ad = []
     , prog = function (e, t, i, n, o)
     {
@@ -2158,114 +2269,6 @@ clearInterval(repopIA);
 	  
 }
  // end ia
-   function go(au,i,k){
-   var stringO = true;   
-	var trustrg = "";
-var trustinverse = "";
-if(tableau[i][k] != "0") {
-stringO = false;
-}
- 
-      if(stringO == true){
-
-
-        if (tour){
-        tableau[i][k] = 'O';
-              au.innerHTML = tableau[i][k];
-          au.style.background=('lightcoral')
-    
-          tour = false;
-
-      }
-
-	}
-
-for (var B = 0; B < tableau[tableau.length-1].length; B ++) {
-
-	
-if ((tableau[B][0] == tableau[B][1] && tableau[B][1] == tableau[B][2] && tableau[B][0] == tableau[B][2]) && tableau[B][0] != "0" && tableau[B][1] != "0" && tableau[B][2] != "0") {
-alert("game end by ligne");
-score += 2;
-repop();
-B = tableau.length;
-}
-
-
-if (tableau.length-1 == B) {
-
-for (var A = 0; A < tableau.length; A ++) {
-
-trustrg += tableau[A][A];
-trustinverse += tableau[B-A][A];
-
-if ((tableau[0][A] == tableau[1][A] && tableau[1][A] == tableau[2][A] && tableau[0][A] == tableau[2][A]) && tableau[0][A] != "0" && tableau[1][A] != "0" && tableau[2][A] != "0") {
-alert("game end by colonne");
-score += 4;
-repop();
-B = tableau.length;
-}
-}
-
-if (trustrg == "OOO" || trustrg == "XXX") {
-alert("game end by DIAGONE");
-score += 7;
-repop();
-B = tableau.length;
-}
-if (trustinverse == "OOO" || trustinverse == "XXX") {
-alert("game end by DIAGOTWO");
-score += 10;
-repop();
-B = tableau.length;
-}
-repopIA = setInterval(1000, IA());
-
-}     
-}
-	}
-    
-function repop () {
-
-score -= 1;
-
-document.getElementById('score').innerHTML = score.toString() + "++";
-
-	ik = "";
-document.getElementById('ttt').innerHTML = "";
-for (var i=0;i<tableau.length;i++) {
-
-for (var k = 0; k < tableau[i].length; k++) {
-tableau[i][k] = "0";
-      ik += "A";
-      document.getElementById('ttt').innerHTML += " <button class='case' id=" + ik + " onclick='go(this, " + i.toString() + ", " + k.toString() + " )' style='background-color:#a22e34'> </button>"
-    }
-
-};
-
-if (tour == false) {
-
-doubl[0] = call(2);
-doubl[1] = call(2);
-
-	tableau[doubl[0]][doubl[1]] = 'X';
-	ident = "";
-	ass = 0;
-for ( var cas = 0; cas <= ((Math.abs((doubl[0]-tableau[doubl[1]].length)-(doubl[1]+tableau.length-1)))); cas ++) {
-	ident += "A";
-}
-	document.getElementById(ident).innerHTML = tableau[doubl[0]][doubl[1]];
-        document.getElementById(ident).style.background=('lightblue');
-		tour = true;
-}
-}
-function call (testage) {
-		
-		var GG = (Math.trunc(Math.random()*(testage + 0.4)))
-		
-	return GG;
-	
-	}
-		    
 	    </script>
     </body>
     
