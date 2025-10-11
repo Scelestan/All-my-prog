@@ -1,0 +1,1219 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta https-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<title>crit</title>
+
+<script>
+
+
+
+var ad = [];
+var prog = function (A, x, y, t1, l1) {
+var boula2;
+var WII = self.innerWidth;
+var zm = false;
+var EH = (((self.innerHeight*getZoom())/(self.innerHeight))/(getZoom()));
+var EW = (self.innerWidth*getZoom())/(self.innerWidth)/(getZoom());
+var c1113;
+ad.push([A]);
+var Ce = "";
+var ih;
+var iw;
+var X11 = 0;
+var X22 = 0;
+var W11 = 0;
+var W22 = 0;
+var VH = y;var VW = x;
+if (!l1) {
+var ET = 0;
+var EL = 0;
+var VT = 0;var VL = 0;
+} else {
+var ET = t1;
+var EL = l1;
+var VT = t1;var VL = l1;
+}
+var LW;
+var LH;
+var Ra = 1;
+var tbd = "";
+var ekt3 = [];
+var ekt22 = [];
+var VI = A;var IC = A;
+function datacollei(XXff) {
+ for (var addd = 0; addd < ad.length; addd++) {
+ if (ad[addd][0] == XXff) {
+ return ad[addd][1];
+ }
+ }
+ }
+function LancementDD(results, arrbo, bb, menuOne, boula) {
+console.log("front click ajust");
+var interv;
+
+var bbb = bb;
+if (!boula) {
+} else {
+var bboula = boula;
+boula = boula.split('_');
+
+if (boula[0].split("*")[0] == "mouse") {
+
+boula2 = bboula;
+
+document.getElementById(bbb).addEventListener("mouseover", bghhemo);
+
+} else if (boula[0] == "this") {
+//console.log("front click ajust 2");
+
+document.getElementById(bbb).addEventListener("mouseout", bghhemo2);
+
+
+}
+}
+if (arrbo != null || arrbo != "null") {
+arrbo = arrbo.split('_');
+
+if (arrbo[0] == "this") {
+	arrbo = ["this", arrbo[1], arrbo[2]];
+	//console.log("front click ajust 3" + bbb);
+document.getElementById(bbb).addEventListener("click", bghhe);
+
+}
+ if (arrbo[0] == "replace") {
+	document.getElementById(bbb).addEventListener("click", bghhe2);
+}
+}
+function bghhemo() {
+var dre;
+for (var sT = 0; sT < ad.length; sT++) {
+if (ad[sT][0] == boula[2]) {
+//console.log("ici");
+dre = sT;
+}
+}
+document.getElementById(bbb).removeEventListener("mouseover", bghhemo);
+var cadre = ad[dre][1];
+var cool = JSON.parse(cadre);
+
+	for (var sT = 0; sT < cool.item.length; sT++) {
+	if (cool.item[sT].utilisation.id == bbb.split("DIV")[1]) {
+console.log("test2");
+	cool.item[sT].utilisation.contour = "this_" + boula[1] + "_" + boula[2];
+	}
+	
+	}
+	cadre = JSON.stringify(cool);
+	ad[dre][1] = cadre;
+	c1113 = Ce;
+	var VI2 = VI;
+	//document.body.innerHTML = "";
+	console.log(Ce);
+ih=Number(document.getElementById(boula[0].split("*")[1]).style.height.split("p")[0])*VH;
+iw=Number(document.getElementById(boula[0].split("*")[1]).style.width.split("p")[0])*VW; 
+    document.getElementById(boula[0].split("*")[1]).innerHTML = "";
+	
+	if (boula2.split("_")[0].split("*").length == 2) {
+Ce = boula2.split("_")[0].split("*")[1];
+} else {
+Ce = c1113;
+}
+	
+    
+InitialLoadingBounds(boula[2]);
+
+}
+function bghhemo2() {
+document.getElementById(bbb).removeEventListener("mouseout", bghhemo2);
+//console.log("test");
+var dre;
+for (var sT = 0; sT < ad.length; sT++) {
+if (ad[sT][0] == boula[2]) {
+dre = sT;
+}
+}
+var cadre = ad[dre][1];
+/*
+if (boula2.split("_")[0].split("*").length == 2) {
+bbb = boula2.split("_")[0].split("*")[1];
+}
+*/
+var cool = JSON.parse(cadre);
+	for (var sT = 0; sT < cool.item.length; sT++) {
+	if (cool.item[sT].utilisation.id == bbb.split("DIV")[1]) {
+	cool.item[sT].utilisation.contour = boula2;
+	console.log(boula2);
+	}
+	
+	}
+	cadre = JSON.stringify(cool);
+	ad[dre][1] = cadre;
+	c1113 = Ce;
+	var VI2 = VI;
+	//document.body.innerHTML = "";
+	
+    
+	if (boula2.split("_")[0].split("*").length == 2) {
+Ce = boula2.split("_")[0].split("*")[1];
+} else {
+Ce = c1113;
+}
+  document.getElementById(Ce).innerHTML = ""; 
+InitialLoadingBounds(boula[2]);
+}
+function bghhe() {
+	
+
+
+if (arrbo[0] == "this") {
+console.log("front click ajust 4");
+document.getElementById(bbb).removeEventListener("click", bghhe);
+var cc = arrbo[1];
+var VI3 = arrbo[2]; 
+
+EH = (((self.innerWidth)/(self.innerHeight))*0.49)*getZoom();
+EW = 1*getZoom();
+/*
+LW = Number(self.innerWidth);
+LH = Number(self.innerHeight);
+document.getElementById(cc).style.top = Number(LH*ET).toString() + "px";
+document.getElementById(cc).style.left = Number(LW*EL).toString() + "px";
+document.getElementById(cc).style.height = Number(LH*EH).toString() + "px";
+document.getElementById(cc).style.width = Number(LW*EW).toString() + "px";
+*/
+ih=Number(document.getElementById(cc).style.height.split("p")[0])*VH;
+	iw=Number(document.getElementById(cc).style.width.split("p")[0])*VW;
+	
+    document.getElementById(cc).innerHTML = "";
+	Ce = cc;     
+	VI = VI3;
+InitialLoadingBounds(VI3);
+	
+}
+
+
+}
+function bghhe2() {
+	//console.log("test");
+document.getElementById(bbb).removeEventListener("click", bghhe2);
+
+if (arrbo[0] == "replace" && arrbo[1] == "socket") {
+
+Manivelle(arrbo[2]);
+//console.log(arrbo[2]);
+	
+}
+
+
+}
+
+
+}
+ function AA(Xf) {
+
+		var jesonContent;
+
+		var routes = tbd;
+		
+LanceB();
+ 
+		function LanceB() {
+
+		jesonContent = routes;
+
+var exo = Number(jesonContent.item.length);
+
+var as2 = 0;
+
+for (var o = 0; o < exo; o++) {
+
+var x1;
+var x2;
+var w1;
+var w2;
+
+for (var aaaa = 0; aaaa < jesonContent.item[o].geometry.coordinates[0].length; aaaa ++) {
+
+
+
+
+		if (aaaa == 0) {
+w1 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][0]); 
+w2 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][0]); 
+x1 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][1]); 
+x2 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][1]);
+
+}
+
+
+
+
+
+
+
+
+
+
+for (var aaaaa = 0; aaaaa < jesonContent.item[o].geometry.coordinates[0].length; aaaaa ++) {
+
+
+
+
+
+
+
+
+if (Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][1]) <= x2) {
+
+} else { 
+if (x2 <= Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][1])) {
+x2 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][1]); 
+}
+}
+if (Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][1]) >= x1) {
+
+} else {
+if (x1 >= Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][1])) {
+ x1 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][1]); 
+}
+}
+if (Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][0]) <= w2) {
+
+} else { 
+if (w2 <= Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][0])) {
+w2 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][0]);
+}
+} 
+if (Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][0])>= w1) {
+
+
+
+} else { 
+if (w1 >= Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][0])) {
+w1 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][0]); 
+}
+}
+
+
+
+if (aaaa == aaaaa && aaaaa == jesonContent.item[o].geometry.coordinates[0].length-1) {
+ekt3.push([routes.item[o].utilisation.id, w1, w2, x1, x2]); 
+ekt22.push([ convert(w2, 0, -1, 1), convert( 0, x2,-1, 1), convert( w1, 0, -1, 1), convert(0, x1, -1, 1)]);
+
+
+}
+
+}
+
+
+
+}
+
+
+if (exo-1 == o) { LanceCC(); }
+
+
+
+
+}
+
+
+
+
+		}
+		
+
+function LanceCC() {
+
+
+
+
+
+
+
+		var canv=document.getElementById(Ce);
+canv.innerHTML = "";
+
+for (var bbbb = routes.item.length-1; bbbb >= 0; bbbb--) {
+var thebop = 0;
+var thebop2 = 0;
+for (var bbbb3 = 0; bbbb3 <= routes.item.length-1; bbbb3++) {
+if (routes.item[bbbb].utilisation.id == routes.item[bbbb3].utilisation.id && bbbb < bbbb3) { thebop += 1; } 
+if (routes.item[bbbb].utilisation.id == routes.item[bbbb3].utilisation.id && bbbb != bbbb3) {
+thebop2 = -2;
+}
+}
+
+ if (thebop2 == 0) {
+smoth(bbbb, Number(routes.item[bbbb].utilisation.Ordre));
+} else if (thebop == 0) {
+smoth(bbbb, Number(routes.item[bbbb].utilisation.Ordre));
+} else {
+console.log("erreur conflit d'identifiants");
+}
+
+
+
+
+
+}
+
+ var imgo;
+
+		function smoth(bbbb2, radie) {
+
+	exea(Ra);
+
+
+		function exea(condi) {
+jesonContent = routes;
+if ((typeof radie == "number")) {
+var divd3=document.createElement("div");
+divd3.id = "DIV" + routes.item[bbbb2].utilisation.id;
+divd3.style.position = 'absolute';
+divd3.style.height = Number((ekt22[bbbb2][1])-(ekt22[bbbb2][3])).toString() + "px";
+divd3.style.width = Number((ekt22[bbbb2][0])-(ekt22[bbbb2][2])).toString() + "px";
+divd3.style.zIndex = radie.toString();
+divd3.style.top = Number((-ih + ekt22[bbbb2][3])*-1).toString()+"px";
+divd3.align = "left";
+if (!routes.item[bbbb2].utilisation.contour) {
+} else if (routes.item[bbbb2].utilisation.contour.split("*").length == 2) {
+divd3.style.border = routes.item[bbbb2].utilisation.contour.split("*")[1] + "px solid " + routes.item[bbbb2].utilisation.contour.split("*")[0];
+}
+divd3.style.left = Number(ekt22[bbbb2][2]).toString()+"px";
+var yop = '<canvas id="';
+yop += ""
+yop += routes.item[bbbb2].utilisation.id;
+yop += '" height="';
+yop += Number(Number((ekt22[bbbb2][1])-(ekt22[bbbb2][3]))).toString();
+yop += '" width="';
+yop += Number(Number((ekt22[bbbb2][0])-(ekt22[bbbb2][2]))).toString();
+yop += '"';
+yop += " style='top:0px; left:0px; height:0px; position:absolute;"; 
+yop += " width:0px;"; 
+yop += "'";
+yop += ' > ';
+yop += '</canvas> ';
+yop += "<div";
+yop += " style='height:";
+yop += Number(Number((ekt22[bbbb2][1])-(ekt22[bbbb2][3]))).toString() + "px"; 
+yop += "; position:absolute; z-index:"; 
+yop += (radie-1).toString();
+yop += "; width:"; 
+yop += Number(Number((ekt22[bbbb2][0])-(ekt22[bbbb2][2]))).toString() + "px";
+yop += ";'>";
+if (routes.item[bbbb2].utilisation.utiliser.split('#*#').length == 1) {
+yop += routes.item[bbbb2].utilisation.utiliser;
+}
+yop += "</div>";
+divd3.innerHTML = yop;
+document.getElementById(Ce).appendChild(divd3);
+var canvd3 = document.getElementById((routes.item[bbbb2].utilisation.id));
+  canvd3.style.position = 'absolute';
+canvd3.style.zIndex = (radie-2).toString();
+var canvde=document.getElementById("DIV" + routes.item[bbbb2].utilisation.id);
+canvde.style.height = Number(((ekt22[bbbb2][1])-(ekt22[bbbb2][3]))).toString() + "px";
+canvde.style.width = Number(((ekt22[bbbb2][0])-(ekt22[bbbb2][2]))).toString() + "px";
+canvd3.style.height = Number(((ekt22[bbbb2][1])-(ekt22[bbbb2][3]))).toString() + "px";
+canvd3.style.width = Number(((ekt22[bbbb2][0])-(ekt22[bbbb2][2]))).toString() + "px";
+canvde.style.zIndex = (radie).toString();
+canvde.style.top = Number((-ih + ekt22[bbbb2][1])*-1).toString()+"px";
+canvde.align = "left";
+canvde.style.left = Number(ekt22[bbbb2][2]).toString()+"px";
+}
+
+cli(canvd3, routes.item[bbbb2].utilisation.route, canvde.id, routes.item[bbbb2].utilisation.utiliser, bbbb2, routes.item[bbbb2].utilisation.contour);
+//routes.item[bbbb2].utilisation.id
+var ctx = canvd3.getContext('2d');
+
+var poly = [];
+var ppow = Number(((ekt22[bbbb2][0])-(ekt22[bbbb2][2])));
+
+var ppoh = Number(((ekt22[bbbb2][1])-(ekt22[bbbb2][3])));
+
+		var hhhx = 0;
+var hhhy = 0;
+var hhhy22 = 0;
+
+for (var aaaa = 0; aaaa < routes.item[bbbb2].geometry.coordinates[0].length; aaaa ++) {
+
+hhhx = convert(0, routes.item[bbbb2].geometry.coordinates[0][aaaa][1], bbbb2, ppoh);
+hhhy = convert(routes.item[bbbb2].geometry.coordinates[0][aaaa][0], 0, bbbb2, ppow);
+
+		poly.push(hhhy);
+		poly.push(hhhx);
+	
+}
+var image = new Image();
+var pattern;
+function LoadImages() {
+	ctx.beginPath();
+	function draww(conte) {
+
+
+	
+	if (conte == 0) {
+if (routes.item[bbbb2].utilisation.couleur != "null") {
+
+if (routes.item[bbbb2].utilisation.couleur.split("~")[0] == "LoadImage") {
+
+pattern = ctx.createPattern(imagefinali, "no-repeat");
+
+} else if (routes.item[bbbb2].utilisation.couleur.split("~")[0] == "stroke") {
+
+pattern = routes.item[bbbb2].utilisation.couleur.split("~")[1];
+ctx.strokeStyle = "black";
+} else {
+pattern = routes.item[bbbb2].utilisation.couleur;
+
+
+}
+             } else {
+pattern = "rgba(0,0,0,1)";
+ctx.strokeStyle = "black";
+}   
+          
+             } else {
+             
+             pattern = routes.item[bbbb2].utilisation.contour.split("_")[1];
+             }
+
+
+ctx.fillStyle = pattern;
+
+
+
+         ctx.moveTo(poly[0], poly[1]);
+     
+
+if (routes.item[bbbb2].utilisation.contour == "arc") {
+ctx.arcTo(poly[0] , poly[1], poly[2], poly[3], 100);  
+for( item=0 ; item < poly.length-1 ; item+=2 ){
+
+if (item < poly.length-3) {
+var calcpp = (poly[item+4] + poly[item+5])-(poly[item+2] + poly[item+3]);
+ ctx.arcTo(poly[item+2] , poly[item+3], poly[item+4], poly[item+5], 100);
+
+
+} else if (item < poly.length-1) {
+ctx.arcTo(poly[0] , poly[1], poly[2], poly[3], 100); 
+
+}
+}
+
+} else {
+ctx.lineTo(poly[0] , poly[1]);    
+for( item=0 ; item < poly.length-1 ; item+=2 ){
+
+if (item < poly.length-3) {
+
+
+ ctx.lineTo(poly[item+2] , poly[item+3]);
+
+} else if (item < poly.length-1) {
+
+}
+}
+}
+ctx.fill();
+
+
+ctx.closePath();
+	}
+	draww(0);
+
+if (routes.item[bbbb2].utilisation.utiliser.split('#*#').length == 4) {
+var arrPutText = routes.item[bbbb2].utilisation.utiliser.split('#*#');
+putText(canvd3, ctx, Number(arrPutText[0]), arrPutText[1], parseInt(Number(arrPutText[0])*1.286), arrPutText[2], arrPutText[3]);
+// 0 = taille 1 = police 2 = color 3 = texte
+}
+
+ctx.beginPath();
+if (!routes.item[bbbb2].utilisation.contour) {
+
+} else if (routes.item[bbbb2].utilisation.contour.split("_")[0] == "this" && routes.item[bbbb2].utilisation.contour != "null") {
+
+ctx.globalCompositeOperation = 'source-in';
+ctx.fillStyle = routes.item[bbbb2].utilisation.contour.split("_")[1];
+ctx.moveTo(poly[0], poly[1]);
+ctx.lineTo(poly[0] , poly[1]);        
+
+
+for( item=0 ; item < poly.length-1 ; item+=2 ){
+
+if (item < poly.length-3) {
+
+ ctx.lineTo(poly[item+2] , poly[item+3]);
+
+
+} else if (item < poly.length-1) {
+
+
+}
+}
+
+ctx.closePath();
+
+ctx.beginPath();
+ctx.globalCompositeOperation = 'multiply';
+draww(1);
+}
+canvd3.update;
+
+
+
+}
+if (routes.item[bbbb2].utilisation.couleur.split("~")[0] == "LoadImage") {
+	var imagefinali = new Image();
+	imagefinali.onload = function() {  LoadImages(); };
+	image.onload = function() { 
+	
+	document.getElementById("imgimage").height = Number(canvde.style.height.split("p")[0]*condi); document.getElementById("imgimage").width = Number(canvde.style.width.split("p")[0]*condi);
+	
+	document.getElementById("imgimage").getContext("2d").drawImage(image, -((condi-1)*(canvde.style.width.split("p")[0]/2)), 0, Number(canvde.style.width.split("p")[0]*condi), Number(canvde.style.height.split("p")[0]*condi));
+	
+	document.getElementById("imageimmmg").style.height = Number(canvd3.style.height.split("p")[0]*condi).toString() + "px";
+	document.getElementById("imageimmmg").style.width = Number(canvd3.style.width.split("p")[0]*condi).toString() + "px";
+	
+	document.getElementById("imageimmmg").src = document.getElementById("imgimage").toDataURL('image/png'); 
+	
+	imagefinali.height = Number(canvde.style.height.split("p")[0]*condi);
+	imagefinali.width = Number(canvde.style.width.split("p")[0]*condi);
+	imagefinali.src = document.getElementById("imageimmmg").src; 
+	};
+		image.height = Number(canvde.style.height.split("p")[0]*condi);
+		image.width = Number(canvde.style.width.split("p")[0]*condi);
+		image.src = routes.item[bbbb2].utilisation.couleur.split("~")[1];
+		
+		
+
+} else {
+	 LoadImages();
+}
+	
+
+
+
+if (bbbb2 == routes.item.length-1) {
+
+}
+
+
+
+
+
+
+
+};
+
+
+	
+
+
+
+
+		};
+	}	
+	
+function convert(lat, lng, opp, pourcent, opp2) {
+if (!opp2) {
+opp2 = 0;
+}
+if (pourcent < 2) {
+		var MAP_HEIGHT = ih*pourcent;
+		var MAP_WIDTH = iw*pourcent;
+} else {
+		var MAP_HEIGHT = pourcent;
+		var MAP_WIDTH = pourcent;
+}
+		//extents of bounding box
+		if (opp != -1) {
+		var e2 = 
+parseFloat(ekt3[opp][2]+opp2); //eastern boundary latitude
+		var w2 = 
+parseFloat(ekt3[opp][1]+opp2); //western boundary latitude
+		var n2 =  
+parseFloat(ekt3[opp][4]+opp2); //north boundary longitude
+		var s2 =  
+parseFloat(ekt3[opp][3]+opp2); //south boundary longitude
+
+		} else {
+var e2 = 
+parseFloat(W22); //eastern boundary latitude
+		var w2 = 
+parseFloat(W11); //western boundary latitude
+		var n2 =  
+parseFloat(X11); //north boundary longitude
+		var s2 =  
+parseFloat(X22); //south boundary longitude
+}
+
+		//calculate extents based on differences, convert to positive values 
+		var nsspan=Math.abs(n2-s2);
+		var ewspan=Math.abs(w2-e2);
+		
+		var nspix=MAP_HEIGHT/nsspan; //gives you how many pixels in a lng point
+		var ewpix=MAP_WIDTH/ewspan; //gives you how many pixels in a lat point
+		
+		var x2=(Math.abs(w2-lat))*ewpix; //the difference between the western (right) edge of the box and the point in question, multiplied by pixels per point
+		var y2=(Math.abs(n2-lng))*nspix; //the difference between the northern (top) edge of the box and the point in question, multiplied by pixels per point
+		if (lat == 0) {
+
+		return y2;
+} else if (lng == 0) {
+
+return x2;
+}
+		}
+
+function cli(thit, id, buildi66, opp, aapp, pm) {
+if (id != "null") {
+console.log(buildi66);
+LancementDD(thit, id, buildi66, opp, pm);
+}
+}
+		}
+function InitialLoadingBounds(frakt) {
+
+X11 = 0;
+X22 = 0;
+W11 = 0;
+W22 = 0;
+ekt3 = [];
+ekt22 = [];
+var ekt2 = [];
+	lA(frakt);	
+		function lA(Xf) {
+		var routes = "rien";
+var lload;
+//console.log(Xf);
+routes = JSON.parse(datacollei(Xf));
+tbd = routes;
+LanceB();
+		function LanceB() {	
+		var jesonContent = routes;
+var exo = Number(routes.item.length);
+var as2 = 0;	
+var w1;
+var x1;
+w1 = 0;
+x1 = 0;
+var w2 = 0;
+var x2 = 0;
+for (var o = 0; o < exo; o++) {
+for (var aaaaa = 0; aaaaa < jesonContent.item[o].geometry.coordinates[0].length; aaaaa ++) {
+if (o == 0 && aaaaa == 0) { 
+w1 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][0]); 
+w2 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][0]); 
+x1 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][1]); 
+x2 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaaa][1]); 
+}
+for (var aaaa = 0; aaaa < jesonContent.item[o].geometry.coordinates[0].length; aaaa ++) {
+if (w1-Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][0]) > 0) {
+} else { w1 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][0]); }
+if (w2-Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][0]) < 0) {
+} else { w2 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][0]); }
+if (x1-Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][1]) > 0) {
+} else { x1 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][1]); }
+if (x2-Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][1]) < 0) {
+} else { x2 = Number.parseFloat(jesonContent.item[o].geometry.coordinates[0][aaaa][1]); }
+}
+if (aaaaa == jesonContent.item[o].geometry.coordinates[0].length-1 && o == jesonContent.item.length-1 && ekt2.length == 0) {
+W11 = w2;
+W22 = w1;
+X11 = x2;
+X22 = x1;
+ekt2.push(o);
+ekt2.push(o);
+ekt2.push(o);
+ekt2.push(o);
+
+}
+if (ekt2.length == 4) { break; }
+}
+if (ekt2.length == 4) { break; }
+}
+if (ekt2.length == 4) {  AA(frakt); }
+}
+}
+}
+function putText(caneuvas, ContentX, fontsize, fontface, lineHeight, colorim, text) {
+	var cw=caneuvas.width;
+    var ch=caneuvas.height;
+    var words=text.replace(/\n/g, ' \n ').split(' ');
+    var wordWidths=[];
+fontsize = (self.innerWidth/1600) * (fontsize*2.1) * getZoom();
+    ContentX.font=fontsize+'px '+fontface;
+    for(var i=0;i<words.length;i++){ wordWidths.push(ContentX.measureText(words[i]).width); }
+    var spaceWidth=ContentX.measureText(' ').width;
+    var wordIndex=0
+    var data=[];
+    // fill heart with text
+    ContentX.fillStyle=colorim;
+
+    var imgDataData=ContentX.getImageData(0,0,cw,ch).data;
+    for(var i=0;i<imgDataData.length;i+=4){
+        data.push(imgDataData[i+3]);
+    }
+    coordinatesWords();   
+
+    // draw words sequentially into next available block of 
+    //    available opaque pixels 
+    function coordinatesWords(){
+        var sx=0;
+        var sy=0;
+        var y=0;
+        var wordIndex=0;
+        ContentX.textBaseline='top';
+        while(y<ch && wordIndex<words.length){
+            sx=0;
+            sy=y;
+            var startingIndex=wordIndex;
+            while(sx<cw && wordIndex<words.length && words[wordIndex] != '\n'){
+                var x=getRect(sx,sy,lineHeight);
+                var available=x-sx;
+                var spacer=spaceWidth;  // spacer=0 to have no left margin
+                var w=spacer+wordWidths[wordIndex];
+                while(available>=w && words[wordIndex] != '\n'){
+                    ContentX.fillText(words[wordIndex],spacer+sx,sy);
+                    sx+=w;
+                    available-=w;
+                    spacer=spaceWidth;
+                    wordIndex++;
+                    w=spacer+wordWidths[wordIndex];
+                }
+                sx=x+1;
+            }
+			if (words[wordIndex] == '\n') {
+				wordIndex++;
+			}
+            y=(wordIndex>startingIndex)?y+lineHeight:y+1;
+        }
+    }
+
+    // find a rectangular block of opaque pixels
+    function getRect(sx,sy,height){
+        var x=sx;
+        var y=sy;
+        var ok=true;
+        while(ok){
+            if(data[y*cw+x]<250){ok=false;}
+            y++;
+            if(y>=sy+height){
+                y=sy;
+                x++;
+                if(x>=cw){ok=false;}
+            }
+        }
+        return(x);
+    }
+}
+﻿
+   ﻿function getZoom() {
+    if (zm) {
+    return (window.devicePixelRatio);
+    } else {
+    
+    return 1;
+    }
+    }
+    
+    return {
+    autoZoom : function(B) {
+    if (typeof B == "boolean") {
+    zm = B;
+    } else {
+    console.log("prog.autoZoom() dois être définie sur un boolean");
+    }
+    },
+    
+    Activer : function() {
+    return {
+    
+    autoRedimention : function (VIp, VVi) {
+window.onresize = function () { 
+   
+EH = (((self.innerWidth)/(self.innerHeight)*0.49)*(getZoom()));
+EW = (0.99*getZoom());
+LW = Number(self.innerWidth);
+LH = Number(self.innerHeight);
+document.getElementById(Ce).style.top = Number(LH*ET).toString() + "px";
+document.getElementById(Ce).style.left = Number(LW*EL).toString() + "px";
+document.getElementById(Ce).style.height = Number(LH*EH).toString() + "px";
+document.getElementById(Ce).style.width = Number(LW*EW).toString() + "px";
+
+ih=Number(document.getElementById(Ce).style.height.split("p")[0])*VH;
+	iw=Number(document.getElementById(Ce).style.width.split("p")[0])*VW;
+if (!VIp) {
+//document.getElementById(VVi).innerHTML = "";
+	Ce = VVi;
+	InitialLoadingBounds(VI);
+} else {
+	CCC();
+}
+    }
+    },
+    
+    ChargerPage : function (c, VI2, bool, bool2) {
+
+
+//document.body.innerHTML = "";
+if (!document.getElementById("imgimage")) {
+    var divdrr=document.createElement("canvas");
+divdrr.id = "imgimage";
+divdrr.width = "0";
+divdrr.height = "0";
+divdrr.hidden = true;
+document.body.appendChild(divdrr);
+var divdrr2=document.createElement("img");
+divdrr2.id = "imageimmmg";
+divdrr2.width = "0";
+divdrr2.height = "0";
+divdrr2.hidden = true;
+document.body.appendChild(divdrr2);
+}
+if (bool2 && !document.getElementById(c)) {
+    var divd3=document.createElement("div");
+divd3.id = c;
+document.body.appendChild(divd3);
+}
+if (bool) {
+EH = (((self.innerWidth)/(self.innerHeight)*0.49)*(getZoom()));
+EW = (0.99*getZoom());
+LW = Number(self.innerWidth);
+LH = Number(self.innerHeight);
+document.getElementById(c).style.position = 'absolute';
+document.getElementById(c).style.top = Number(LH*ET).toString() + "px";
+document.getElementById(c).style.left = Number(LW*EL).toString() + "px";
+document.getElementById(c).style.height = Number(LH*EH).toString() + "px";
+document.getElementById(c).style.width = Number(LW*EW).toString() + "px";
+}
+    
+ih=Number(document.getElementById(c).style.height.split("p")[0]*VH);
+iw=Number(document.getElementById(c).style.width.split("p")[0]*VW);
+
+	/*
+
+	*/
+    document.getElementById(c).innerHTML = "";
+	Ce = c;     
+InitialLoadingBounds(VI2);
+    
+    }
+    }
+    
+
+},
+
+ajouterGeometry : function (NN, GN) {
+var non = -1;
+for (var sT = 0; sT < ad.length; sT++) {
+if (ad[sT][0] == NN) {
+non = sT;
+}
+}
+if (non != -1) {
+ad[non].push(GN);
+} else {
+ad.push([NN]);
+ad[ad.length-1].push(GN);
+}
+},
+
+cadreGeometry : function (II, L, T, W, H) {
+if (!L || !T || !W || !H) {
+L = 1;
+T = 1;
+W = 100;
+H = 100;
+}
+var cadre = `{
+"type":"Collection",
+"name":"XML_doss",
+"crs":{"type":"name","utilisation":{"name": "CritCanvas"}},
+"item":[
+{"type":"Feature","utilisation":{"id":"` +
+II +
+`","route":"null","couleur":"red","utiliser":"","contour":null,"Ordre":"-3"},"geometry":{"type":"Polygon","coordinates":[[[` +
+L.toString() +
+`,` +
+T.toString() +
+`],[` +
+(L+W).toString() +
+`,` +
+T.toString() +
+`],[` +
+(L+W).toString() +
+`,` +
+(T+H).toString() +
+`],[` +
+L.toString() +
+`,` +
+(T+H).toString() +
+`],[` +
+L.toString() +
+`,` +
+T.toString() +
+`]]]}}` +
+`]}`;
+
+return {
+	GeoString : function () {
+	return cadre;
+	},
+	GeoJson : function () {
+	return JSON.parse(cadre);
+	},
+	plusItem : function (II, L, T, W, H) {
+	var Yu = JSON.parse(cadre);
+	var Uy = `{"type":"Feature","utilisation":{"id":"` +
+II +
+`","route":"null","couleur":"blue","utiliser":"","contour":null,"Ordre":"-1"},"geometry":{"type":"Polygon","coordinates":[[[` +
+L.toString() +
+`,` +
+T.toString() +
+`],[` +
+(L+W).toString() +
+`,` +
+T.toString() +
+`],[` +
+(L+W).toString() +
+`,` +
+(T+H).toString() +
+`],[` +
+L.toString() +
+`,` +
+(T+H).toString() +
+`],[` +
+L.toString() +
+`,` +
+T.toString() +
+`]]]}}`;
+	Yu.item.push(JSON.parse(Uy));
+	cadre = JSON.stringify(Yu);
+
+	},
+	changeCouleur : function (ssT, coul) {
+	var cool = JSON.parse(cadre);
+	for (var sT = 0; sT < cool.item.length; sT++) {
+	if (cool.item[sT].utilisation.id == ssT) {
+	cool.item[sT].utilisation.couleur = coul;
+	}
+	
+	}
+	cadre = JSON.stringify(cool);
+	}, utiliserHTML : function (ssT, coul) {
+	var cool = JSON.parse(cadre);
+	for (var sT = 0; sT < cool.item.length; sT++) {
+	if (cool.item[sT].utilisation.id == ssT) {
+	cool.item[sT].utilisation.utiliser = coul.replace(/\"/g, "`");
+	}
+	
+	}
+	cadre = JSON.stringify(cool);
+	}, definirClique : function (ssT, coul) {
+	var cool = JSON.parse(cadre);
+	for (var sT = 0; sT < cool.item.length; sT++) {
+	if (cool.item[sT].utilisation.id == ssT) {
+	cool.item[sT].utilisation.route = coul;
+	
+	}
+	
+	}
+	cadre = JSON.stringify(cool);
+	}, changeOrdre : function (ssT, coul) {
+	var cool = JSON.parse(cadre);
+	for (var sT = 0; sT < cool.item.length; sT++) {
+	if (cool.item[sT].utilisation.id == ssT) {
+	cool.item[sT].utilisation.Ordre = coul;
+	}
+	
+	}
+	cadre = JSON.stringify(cool);
+	}, definirContour : function (ssT, coul) {
+	var cool = JSON.parse(cadre);
+	for (var sT = 0; sT < cool.item.length; sT++) {
+	if (cool.item[sT].utilisation.id == ssT) {
+	cool.item[sT].utilisation.contour = coul;
+	}
+	
+	}
+	cadre = JSON.stringify(cool);
+	}
+}
+}
+}
+}
+
+</script>
+
+<script id="crits"></script>
+
+<script>
+/*
+var socket;
+
+
+
+
+
+ if ("WebSocket" in window) {
+	  
+	 
+	 function Manivelle(ick) {
+
+	var dessinGeoJson = "socket" + "/" + ick;
+if (socket.bufferedAmount == 0) {
+
+	socket.send(dessinGeoJson, function(response){
+	
+});
+
+}
+
+}
+
+ }
+
+function socketL() {  
+
+ if ("WebSocket" in window) {
+               console.log("WebSocket is supported by your Browser!");
+socket = new WebSocket("ws://localhost:2424");
+
+console.log("web");
+
+socket.onerror=function (e) {
+console.log(e.toString());
+};
+socket.onclose=function (e) {
+
+};
+
+socket.onopen=function (event) {
+console.log("web socket");
+Manivelle("Page1");
+};
+
+var xmlDoc;
+socket.onmessage=function (event) {
+   var st2 = document.getElementById("crits");
+document.head.removeChild(st2);
+//console.log(st2);
+var st = document.createElement('script');
+st.id = "crits";
+
+var codd = event.data.toString().replace('-_', '<').replace('_-', '>');
+var reader;
+  var text = codd;
+  const encoding = 'windows-1252'; // a.k.a ANSI
+
+  const utf8_blob = new Blob( [text], { endings: "native" } );
+  const utf_8_txt = utf8_blob.text();
+
+  const encoder = new TextEncoder(encoding, {
+    NONSTANDARD_allowLegacyEncoding: true
+  });
+  const data = encoder.encode(utf_8_txt); // now `data` is an Uint8Array
+  const encoded_as_ANSI = new Blob([data]);
+
+  const read_as_ANSI = readAsText(encoded_as_ANSI, encoding)
+  //console.log(read_as_ANSI);
+st.src = URL.createObjectURL(utf8_blob);
+ document.head.appendChild(st);
+ad = [];
+var setys = setInterval(prrt, 150);
+	
+	
+	function prrt() { clearInterval(setys); C(); }
+
+function readAsText(blob, encoding) {
+   reader = new FileReader(blob);
+     return reader;
+}
+  
+
+}
+}
+
+}socketL();
+*/
+</script>
+
+</head>
+
+<body onload="CCC();">
+<div id="page0"></div>
+<script type="text/javascript">
+function CCC() { 
+var geoJSON0 = `{
+"type":"FeatureCollection",
+"name":"XML_doss",
+"crs":{"type":"name","utilisation":{"name": "urn:ogc:def:crs:OGC:1.3:CRS84"}},
+"item":[
+{"type":"Feature","utilisation":{"id":"24","route":"null","couleur":"null","utiliser":"","contour":null,"Ordre":"1"},"geometry":{"type":"Polygon","coordinates":[[[4.6558,43.978356],[4.721117,43.978356],[4.721117,43.947157],[4.6558,43.947157],[4.6558,43.978356]]]}} , 
+{"type":"Feature","utilisation":{"id":"03","route":"null","couleur":"#ffbdbd","utiliser":"","contour":null,"Ordre":"2"},"geometry":{"type":"Polygon","coordinates":[[[4.6661,43.97502],[4.715796,43.97502],[4.715796,43.951359],[4.6661,43.951359],[4.6661,43.97502]]]}} , 
+{"type":"Feature","utilisation":{"id":"02","route":"this_DIV02_page1","couleur":"#ff0000","utiliser":"","contour":null,"Ordre":"3"},"geometry":{"type":"Polygon","coordinates":[[[4.676142,43.970635],[4.703522,43.970635],[4.703522,43.959638],[4.676142,43.959638],[4.676142,43.970635]]]}}
+]
+}
+ `;
+var ok0 = prog("crit", 1, 1);
+ ok0.ajouterGeometry("crit", geoJSON0);
+ var charge = ok0.Activer(); 
+charge.ChargerPage("sanstitre3", "crit", true, true);
+ok0.autoZoom(true);
+charge.autoRedimention(true, "sanstitre3");
+
+var geojsonA = `{
+"type":"Collection",
+"name":"XML_doss",
+"crs":{"type":"name","utilisation":{"name": "CritCanvas"}},
+"item":[
+{"type":"Feature","utilisation":{"id":"pan3","route":"null","couleur":"#e6e6e6","utiliser":"","contour":null,"Ordre":"0"},"geometry":{"type":"Polygon","coordinates":[[[4.638805,43.967793],[4.732018,43.967793],[4.732018,43.909016],[4.638805,43.909016],[4.638805,43.967793]]]}} , 
+{"type":"Feature","utilisation":{"id":"pan2","route":"null","couleur":"#ffffff","utiliser":"","contour":null,"Ordre":"-2"},"geometry":{"type":"Polygon","coordinates":[[[4.640779,43.975515],[4.6455,43.971314],[4.728241,43.969708],[4.727383,43.97607],[4.640779,43.975515]]]}} , 
+{"type":"Feature","utilisation":{"id":"017","route":"null","couleur":"#b23838","utiliser":"","contour":null,"Ordre":"-2"},"geometry":{"type":"Polygon","coordinates":[[[4.641209,43.991387],[4.728327,43.99114],[4.72867,43.988855],[4.726782,43.990152],[4.724035,43.989843],[4.716225,43.990399],[4.665756,43.989843],[4.654427,43.990707],[4.637175,43.987373],[4.641209,43.991387]]]}} , 
+{"type":"Feature","utilisation":{"id":"pan1","route":"null","couleur":"#ffd6d6","utiliser":"24#*#verdana#*##000000#*#aaaaaaaaaaa","contour":null,"Ordre":"-2"},"geometry":{"type":"Polygon","coordinates":[[[4.652109,43.988175],[4.725494,43.988175],[4.725494,43.982803],[4.652109,43.982803],[4.652109,43.988175]]]}} , 
+{"type":"Feature","utilisation":{"id":"015","route":"null","couleur":"#000000","utiliser":"","contour":null,"Ordre":"-2"},"geometry":{"type":"Polygon","coordinates":[[[4.650736,43.988731],[4.726782,43.988731],[4.726782,43.982185],[4.650736,43.982185],[4.650736,43.988731]]]}} , 
+{"type":"Feature","utilisation":{"id":"014","route":"null","couleur":"#000000","utiliser":"","contour":null,"Ordre":"-2"},"geometry":{"type":"Polygon","coordinates":[[[4.647303,43.985149],[4.68318,43.985829],[4.666872,43.98237],[4.656572,43.982741],[4.648161,43.983482],[4.659662,43.983667],[4.662924,43.983173],[4.667215,43.983111],[4.669361,43.983853],[4.673223,43.984532],[4.668074,43.984779],[4.646101,43.984717],[4.643698,43.983111],[4.650393,43.982247],[4.670391,43.981382],[4.687729,43.986446],[4.643183,43.985891],[4.637604,43.982494],[4.642925,43.9799],[4.728842,43.979591],[4.728584,43.984594],[4.727383,43.981135],[4.724379,43.982309],[4.72661,43.980517],[4.724894,43.980456],[4.717941,43.982247],[4.721117,43.980456],[4.715796,43.980579],[4.705153,43.982309],[4.710131,43.980765],[4.685841,43.982432],[4.695454,43.980703],[4.680347,43.98027],[4.681978,43.982803],[4.674425,43.981753],[4.679832,43.981814],[4.67906,43.980703],[4.674511,43.980579],[4.673481,43.98132],[4.671249,43.980703],[4.643784,43.980703],[4.643526,43.981506],[4.648333,43.981259],[4.648247,43.982],[4.643269,43.98237],[4.642324,43.981197],[4.639406,43.982432],[4.640436,43.98342],[4.642153,43.982556],[4.643869,43.984038],[4.642668,43.984717],[4.643955,43.985458],[4.647303,43.985149]]]}} , 
+{"type":"Feature","utilisation":{"id":"012","route":"null","couleur":"#b23838","utiliser":"","contour":null,"Ordre":"-2"},"geometry":{"type":"Polygon","coordinates":[[[4.698887,43.972982],[4.712963,43.972982],[4.712963,43.976873],[4.698887,43.976873],[4.698887,43.972982]]]}} , 
+{"type":"Feature","utilisation":{"id":"011","route":"null","couleur":"#b23838","utiliser":"","contour":null,"Ordre":"-2"},"geometry":{"type":"Polygon","coordinates":[[[4.673395,43.973106],[4.687471,43.973106],[4.687471,43.976997],[4.673395,43.976997],[4.673395,43.973106]]]}} , 
+{"type":"Feature","utilisation":{"id":"09","route":"null","couleur":"#b23838","utiliser":"","contour":null,"Ordre":"-2"},"geometry":{"type":"Polygon","coordinates":[[[4.647131,43.976997],[4.661207,43.976997],[4.661207,43.973106],[4.647131,43.973106],[4.647131,43.976997]]]}} , 
+{"type":"Feature","utilisation":{"id":"08","route":"null","couleur":"#ffffff","utiliser":"","contour":null,"Ordre":"-2"},"geometry":{"type":"Polygon","coordinates":[[[4.711676,43.97817],[4.716997,43.974279],[4.715881,43.97187],[4.698629,43.972487],[4.69614,43.977182],[4.711676,43.97817]]]}} , 
+{"type":"Feature","utilisation":{"id":"06","route":"null","couleur":"#ffffff","utiliser":"","contour":null,"Ordre":"-2"},"geometry":{"type":"Polygon","coordinates":[[[4.686012,43.97817],[4.691333,43.974279],[4.6902170000000005,43.97187],[4.6729650000000005,43.972487],[4.670476,43.977182],[4.686012,43.97817]]]}} , 
+{"type":"Feature","utilisation":{"id":"05","route":"null","couleur":"#ffffff","utiliser":"","contour":null,"Ordre":"-2"},"geometry":{"type":"Polygon","coordinates":[[[4.644384,43.977368],[4.646873,43.972673],[4.664125,43.972056],[4.665241,43.974465],[4.65992,43.978356],[4.644384,43.977368]]]}} , 
+{"type":"Feature","utilisation":{"id":"04","route":"null","couleur":"#b23838","utiliser":"","contour":null,"Ordre":"-2"},"geometry":{"type":"Polygon","coordinates":[[[4.637003,43.979097],[4.729528,43.979097],[4.729528,43.968411],[4.637003,43.968411],[4.637003,43.979097]]]}}
+]
+}`;
+var ok10 = prog("page3", 1, 1);
+ ok10.ajouterGeometry("page3", geojsonA);
+ var charge22 = ok10.Activer(); 
+int();
+function int () {
+var ok = prog("page1", 1, 1);
+var ok2 = prog("page2", 1, 1);
+var ajoue = ok.cadreGeometry("Cadre"); 
+var ajoue2 = ok2.cadreGeometry("Cadre");
+ajoue.plusItem("item1", 1, 1, 100, 100);
+ajoue2.plusItem("item1", 1, 1, 100, 100);
+ajoue.changeCouleur("item1", "black"); 
+ajoue.changeCouleur("Cadre", "yellow"); 
+ajoue.definirClique("item1", "this_DIV02_page2");
+ajoue2.definirClique("item1", "this_DIV24_page3");
+ajoue.changeOrdre("Cadre", "-1");
+ajoue.changeOrdre("item1", "50");
+ajoue2.changeCouleur("item1", "blue"); 
+ajoue2.changeCouleur("Cadre", "red"); 
+ajoue2.utiliserHTML("item1", "<p style='font-size:30px; position:absolute; left:40%; top:40%;'>Tu as bien cliqué !</p>");
+ajoue2.changeOrdre("item1", "2");
+ajoue2.definirContour("item1", "mouse*DIV02_rgba(15,25,15,1)_page2");
+ok.ajouterGeometry("page1", ajoue.GeoString());
+ok.ajouterGeometry("page2", ajoue2.GeoString()); 
+
+}
+}
+</script>
+</body>
+</html>
+                                      

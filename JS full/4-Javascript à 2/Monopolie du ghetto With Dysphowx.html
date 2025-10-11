@@ -1106,8 +1106,8 @@ var ok = prog("page1", 1, 1);
 var ok2 = prog("page2", 1, 1);
 var ajoue = ok.cadreGeometry("Cadre"); 
 var ajoue2 = ok2.cadreGeometry("Cadre2");
-ajoue.plusItem("item1", 20, 20, 90, 90);
-ajoue2.plusItem("GameGraph", 40, 40, 20, 20);
+ajoue.plusItem("item1", 10, 10, 55, 55);
+ajoue2.plusItem("GameGraph", 20, 18, 30, 30);
 ajoue.changeCouleur("item1", "black"); 
 ajoue.changeCouleur("Cadre", "white"); 
 ajoue.definirClique("item1", "this_DIVitem1_page2");
@@ -1129,8 +1129,8 @@ document.getElementById("Header").style.zIndex = "-55";
     load : function() {
 				// his.sizeMap = number of anthite has to display (nombre de case de monopolie)
 ad = [];
-critJS = prog("graphGame", 1.922, 0.722, 0.02, 0.52);
-addition = critJS.cadreGeometry("Font", 2, 1, his.sizeMap/4-2, his.sizeMap/4-2); 
+critJS = prog("graphGame", 0.8, 0.8, 0.42, 0.12);
+addition = critJS.cadreGeometry("Font", 2, 1, his.sizeMap/4-4, his.sizeMap/4-2); 
 
 	addition.changeCouleur("Font", "rgb(125,125,125)");//transparent = rgba(125,125,125, 0)
 	addition.definirContour("Font", "arc");
